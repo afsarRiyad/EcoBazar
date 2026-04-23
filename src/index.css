@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme{
+    --text-hsize: 32px;
+    --color-primary: #00B207;
+    --color-badgeone: #EA4B48;
+    --color-badgetwo: #2388FF;
+    --color-gry : #F2F2F2;
+    --font-pop : "Poppins", sans-serif;
+}
+
+ 
