@@ -5,6 +5,13 @@ const useDropdown = () => {
    const [open, setOpen] = useState(false)
 
    const toggle = () => setOpen(prev => !prev)
+   const close = () =>{
+        if(open){
+           setOpen(false)
+        }else {
+         return
+        }
+   }
     
    useEffect(() => {
 
@@ -21,7 +28,7 @@ const useDropdown = () => {
 
    },[]);
    
-   return { ref,  open, toggle}
+   return { ref,  open, toggle, close}
 }
 
 export default useDropdown

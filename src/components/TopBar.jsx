@@ -1,7 +1,7 @@
-import Container from '../Container'
+import Container from './Container'
 import { CiLocationOn } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
-import useDropdown from "../../hooks/useDropdown"
+import useDropdown from "../hooks/useDropdown"
 import { useState } from 'react';
 
 
@@ -40,7 +40,7 @@ const TopBar = () => {
                                     <ul className='select-none w-full cursor-pointer '>
                                         {
                                             langOptions.map((item, index )=> (
-                                            <li key={index} className={`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedLang == item ? 'bg-gray-200' : 'bg-gray-100'}`} onClick={()=>{ setSelectedLag(item) ; lang.toggle() }} >{item}</li>
+                                            <li key={index} className={`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedLang == item ? 'bg-gray-200' : 'bg-gray-100'}`} onClick={()=>{ setSelectedLag(item) ; lang.close() }} >{item}</li>
                                             )) 
                                         }
                                     </ul>
@@ -55,7 +55,7 @@ const TopBar = () => {
                                     <ul className='select-none w-full cursor-pointer '>
                                         {
                                             currencyOptions.map((item, index) =>(
-                                                <li key={index} className= {`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedCrncy == item ? 'bg-gray-200' : 'bg-gray-100' }`} onClick={()=> {setSelectedCrncy(item) ; currency.toggle()}}>{item}</li>
+                                                <li key={index} className= {`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedCrncy == item ? 'bg-gray-200' : 'bg-gray-100' }`} onClick={()=> {setSelectedCrncy(item) ; currency.close()}}>{item}</li>
                                             ))
                                         }
                                     </ul>
