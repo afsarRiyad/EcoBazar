@@ -28,10 +28,13 @@ const TopBar = () => {
         <div className='border-b border-gry text-[#666666] font-pop text-sm py-3.5'>
             <Container>
                 <div className='flex items-center justify-between'>
+                       {/* location starts here  */}
                     <div className='flex items-center gap-2'>
                         <CiLocationOn /> Store Location: Lincoln- 344, Illinois, Chicago, USA
                     </div>
+                          {/* location ends here  */}
                     <div className='flex items-center gap-x-5 relative '>
+                             {/* language dropdown section starts here  */}
                         <div ref={lang.ref} className='relative min-w-[50px] z-50'>
                             <div className='flex items-center gap-2.5  cursor-pointer select-none hover:bg-gray-200 active:bg-gray-100 ' onClick={lang.toggle}>{selectedLang} <FaAngleDown /></div>
                             {
@@ -47,6 +50,9 @@ const TopBar = () => {
                                 </div>)
                             }
                         </div>
+                             {/* language dropdown ends here   */}
+                                          
+                                {/* currency dropdown starts here  */}
                         <div ref={currency.ref} className='relative min-w-[50px] z-50'>
                             <div className=' hover:bg-gray-200 active:bg-gray-100 flex items-center gap-1 cursor-pointer select-none' onClick={currency.toggle}>{selectedCrncy} <FaAngleDown /></div>
                             {
@@ -62,6 +68,7 @@ const TopBar = () => {
                                 </div>)
                             }
                         </div>
+                        {/* currency dropdown ends here  */}
                         <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-18px] after:top-0'>Sign In / Sign Up</div>
                     </div>
                 </div>

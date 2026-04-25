@@ -54,13 +54,9 @@ const Navbar = () => {
                     
               <div className='flex items-center relative w-[240px] cursor-pointer select-none text-[16px] bg-gray-800 py-5 pl-4 text-gry'>{cate} <FaAngleUp className={`absolute right-6 ${category.open && 'rotate-180'} transition-transform duration-300`}/>
                </div>
-                     {/* custom dropdown starts here  */}
-                     {/* custom dropdown starts here  */}
 
-              {
-                category.open && (
-                    <>
-                      <ul className='absolute top-full mt-[20px] border bg-white z-50 border-gray-200 select-none cursor-pointer'>
+                {/* categories dropdown starts here  */}
+                <ul className={`absolute top-full mt-[20px] border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${category.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
                   {
                     categories.map((item, index)=> {
                         const Icon = item.icon;
@@ -76,12 +72,10 @@ const Navbar = () => {
                      <span className='pl-5'>
                         <IoAddSharp className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300'/>
                       </span>
-                     <span className='py-4.5 w-[228px] group-hover:text-white transition-colors duration-300'>View All Categories</span>
+                     <span className='py-4 w-[228px] group-hover:text-white transition-colors duration-300'>View All Categories</span>
                   </li>
                 </ul>
-                    </>
-                )
-              }    
+   
             </div>  
            </div>
                         {/* customer service starts here  */}
