@@ -1,8 +1,0 @@
-@reference "tailwindcss";
-
-.dropLi {
-  @apply pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ;
-}
-.toggleBtn{
-    @apply flex items-center gap-2.5  cursor-pointer select-none active:bg-gray-100 
-}
