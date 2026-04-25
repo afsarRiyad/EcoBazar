@@ -1,16 +1,18 @@
 import React from 'react'
-import TopBar from '../TopBar'
+import TopBar from '../Header/TopBar'
 import { Outlet } from 'react-router'
-import Header from '../Header'
-import Navbar from '../Navbar'
+import MainHeader from '../Header/MainHeader'
+import Navbar from '../Header/Navbar'
+import NewsLetter from '../Footer/NewsLetter'
 
 const MainLayout = () => {
   return (
     <>
        <TopBar/>
-       <Header/>
+       <MainHeader/>
        <Navbar/>
        <Outlet/>
+       <NewsLetter/>
     </>
   )
 }

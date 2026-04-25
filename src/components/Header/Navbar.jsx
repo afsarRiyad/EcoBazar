@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Container from './Container'
+import Container from '../Container'
 import { FaAngleUp } from "react-icons/fa6";
 import { PiPhoneCallThin, PiFish  } from "react-icons/pi";
 import { CiApple, CiBowlNoodles  } from "react-icons/ci";
@@ -7,7 +7,7 @@ import { IoIceCreamOutline } from "react-icons/io5";
 import { GiChickenLeg, GiCupcake, GiButter, GiCampCookingPot    } from "react-icons/gi";
 import { IoAddSharp } from "react-icons/io5";
 import { RiDrinksLine } from "react-icons/ri";
-import useDropdown from '../hooks/useDropdown';
+import useDropdown from '../../hooks/useDropdown';
 
 
 
@@ -38,7 +38,8 @@ const Navbar = () => {
 
 
     return (
-     <Container>
+      <div className=' bg-gray-900'>
+         <Container>
         <nav className='flex items-center  font-pop  '>
            <div ref={category.ref}>
                 {/* React custom hambarger starts here */}
@@ -52,7 +53,7 @@ const Navbar = () => {
                 {/* React custom hambarger ends here */}
                 {/* React custom hambarger ends here */}
                     
-              <div className='flex items-center relative w-[240px] cursor-pointer select-none text-[16px] bg-gray-800 py-5 pl-4 text-gry'>{cate} <FaAngleUp className={`absolute right-6 ${category.open && 'rotate-180'} transition-transform duration-300`}/>
+              <div className='flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer select-none text-[16px] bg-gray-700 py-5 pl-4 text-gry'>{cate} <FaAngleUp className={`absolute right-6 ${category.open && 'rotate-180'} transition-transform duration-300`}/>
                </div>
 
                 {/* categories dropdown starts here  */}
@@ -104,6 +105,7 @@ const Navbar = () => {
             </div>
         </nav>
     </Container>
+      </div>
     )
 }
 

@@ -1,12 +1,12 @@
 import React from 'react'
-import plant from '../assets/images/plant.jpg'
-import Ecobazar from '../assets/images/Ecobazar.png'
-import Container from './Container'
+import plant from '../../assets/images/plant.jpg'
+import Ecobazar from '../../assets/images/Ecobazar.png'
+import Container from './../Container'
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 
-const Header = () => {
+const MainHeader = () => {
     return (
         <>
             <Container>
@@ -45,4 +45,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default MainHeader
