@@ -17,7 +17,7 @@ const NewsLetter = () => {
                          placeholder='Your email address ' 
                          className='bg-white outline-none rounded-l-[46px] 
                                       w-full pr-[140px] py-[14px] pl-6 
-                                      focus:ring-2 focus:ring-gray-200'/> 
+                                      focus:ring-2 focus:ring-gray-200 border border-l-gray-200'/> 
                       <button className='
                            text-white bg-primary py-4 px-10 rounded-[46px] text-[15px]
                            absolute top-1/2 right-[-40px] -translate-y-1/2 cursor-pointer
