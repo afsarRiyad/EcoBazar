@@ -32,7 +32,7 @@ const TopBar = () => {
                         <CiLocationOn /> Store Location: Lincoln- 344, Illinois, Chicago, USA
                     </div>
                     <div className='flex items-center gap-x-5 relative '>
-                        <div ref={lang.ref} className='relative min-w-[50px]'>
+                        <div ref={lang.ref} className='relative min-w-[50px] z-50'>
                             <div className='flex items-center gap-2.5  cursor-pointer select-none hover:bg-gray-200 active:bg-gray-100 ' onClick={lang.toggle}>{selectedLang} <FaAngleDown /></div>
                             {
                                 lang.open &&
@@ -47,7 +47,7 @@ const TopBar = () => {
                                 </div>)
                             }
                         </div>
-                        <div ref={currency.ref} className='relative min-w-[50px]'>
+                        <div ref={currency.ref} className='relative min-w-[50px] z-50'>
                             <div className=' hover:bg-gray-200 active:bg-gray-100 flex items-center gap-1 cursor-pointer select-none' onClick={currency.toggle}>{selectedCrncy} <FaAngleDown /></div>
                             {
                                 currency.open &&
