@@ -1,6 +1,6 @@
 import React from 'react'
 import plant from '../../assets/images/plant.jpg'
-import ecoBazar from '../../assets/images/ecobazar.png'
+import EcoBazar from '../../assets/images/Ecobazar.png'
 import Container from '../Container'
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
@@ -12,7 +12,7 @@ const Header = () => {
                 <div className="flex justify-between items-center py-9 font-pop">
                     <div className='flex-shrink-0 flex items-center gap-2 '>
                         <img src={plant} alt="plant" className='w-8 h-8' />
-                        <img src={ecoBazar} alt="ecoBazar" className='' />
+                        <img src={EcoBazar} alt="ecoBazar" className='' />
                     </div>
                     <div className='flex-shrink-1 relative gap-[1px] '>
                         <CiSearch className='absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-900 w-5 h-5' />
