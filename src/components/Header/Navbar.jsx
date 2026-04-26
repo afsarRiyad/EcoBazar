@@ -44,8 +44,8 @@ const Navbar = () => {
     <div className=' bg-gray-900'>
       <Container>
         <nav className='flex items-center  font-pop  '>
-            {/* React custom hambarger starts here */}
-            
+            {/* mobile view menu bar stats herer  */}
+            {/* React custom hambarger */}
               <div ref={mobileMenu.ref} className='sm:hidden flex items-center relative '  >
               <div className='flex flex-col items-center gap-2 cursor-pointer justify-center px-5 h-16 bg-primary' onClick={mobileMenu.toggle}>
                 <span className={`w-5 h-[2px] bg-white ${mobileMenu.open && ' rotate-45 translate-y-[6px]'} 
@@ -54,9 +54,7 @@ const Navbar = () => {
                                                         transition-all duration-300`} ></span>
                 <span className={`w-5 h-[2px] bg-white ${mobileMenu.open && ' -rotate-45 -translate-y-[6px]'} transition-transform duration-300`}></span>
               </div>
-              {/* React custom hambarger ends here */}
-
-              {/* mobile view menu bar stats herer  */}
+                 <span className='text-white sm:hidden pl-4 whitespace-nowrap'>{clickedMenu}</span>
               <ul className={`absolute  top-full mt-[10px] border px-2 bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${mobileMenu.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
                 {
                   menu.map((item, index) => (
