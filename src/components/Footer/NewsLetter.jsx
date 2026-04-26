@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaPinterestP, FaInstagram    } from "react-icons
 
 const NewsLetter = () => {
   return (
-    <div className='font-pop py-10 bg-[#F7F7F7]'>
+    <div className='font-pop py-10  bg-[#F7F7F7]'>
         <Container>
              <div className='flex items-center justify-between'>
                 <span>

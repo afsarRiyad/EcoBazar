@@ -25,15 +25,18 @@ const TopBar = () => {
                         ]
 
     return (
-        <div className='border-b border-gry text-[#666666] font-pop text-sm py-3.5'>
+        <div className='border-b border-gry text-[#666666] font-pop text-sm  sm:py-3.5 py-2'>
             <Container>
-                <div className='flex items-center justify-between'>
+                <div className='flex items-center justify-between gap-3'>
                        {/* location starts here  */}
-                    <div className='flex items-center gap-2'>
-                        <CiLocationOn /> Store Location: Lincoln- 344, Illinois, Chicago, USA
+                    <div className='flex items-center sm:gap-2  min-w-0'>
+                        <CiLocationOn className='shrink-0 hidden sm:block'/> 
+                        <p className='truncate hidden sm:block sm:max-w-[260px] md:max-w-none'>Store Location: Lincoln- 344, Illinois, Chicago, USA</p>
+                        <CiLocationOn className='shrink-0 block sm:hidden'/> 
+                        <p className='inline sm:hidden'>BD</p>
                     </div>
                           {/* location ends here  */}
-                    <div className='flex items-center gap-x-5 relative '>
+                    <div className='flex items-center gap-x-3 sm:gap-x-4 md:gap-x-5 relative flex-wrap'>
                              {/* language dropdown section starts here  */}
                         <div ref={lang.ref} className='relative min-w-[50px] z-50'>
                             <div className='flex items-center justify-around  cursor-pointer select-none hover:bg-gray-200 active:bg-gray-100 ' onClick={lang.toggle}>{selectedLang}
@@ -70,7 +73,7 @@ const TopBar = () => {
                                 </div>
                         </div>
                         {/* currency dropdown ends here  */}
-                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-18px] after:top-0'>Sign In / Sign Up</div>
+                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-14px] sm:after:left-[-18px] whitespace-nowrap sm-after:top-0 '>Sign In / Sign Up</div>
                     </div>
                 </div>
             </Container>
