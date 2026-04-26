@@ -20,7 +20,7 @@ const NewsLetter = () => {
                                       focus:ring-2 focus:ring-gray-200 '/> 
                       <button className='
                            text-white bg-primary py-4 sm:px-10 px-6 z-50 rounded-[46px] text-[15px]
-                           absolute top-[45px] sm:right-[-40px] right-[-33px] -translate-y-1/2 cursor-pointer
+                           absolute top-[45px] sm:right-[-40px] right-[-30px] -translate-y-1/2 cursor-pointer
                            active:bg-green-500
                       '>Subscribe</button>
                      </div>

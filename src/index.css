@@ -9,4 +9,14 @@
     --font-pop : "Poppins", sans-serif;
 }
 
- 
+ .eliment{
+    @apply font-pop text-gray-500 text-[14px] pb-4
+ }
+
+ .fheading{
+    @apply font-pop text-white font-medium text-[16px] pb-4
+ }
+
+ .footerHover{
+    @apply hover:text-white transition-colors
+ }

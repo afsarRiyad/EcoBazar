@@ -7,7 +7,7 @@ const Home = () => {
     let selector = useSelector((state => console.log(state.count.value)))
   return (
     <Container>
-      <h1 className='h-[200px]'>Home</h1>
+      <h1 className='h-[400px]'>Home</h1>
     </Container>
   )
 }

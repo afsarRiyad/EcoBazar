@@ -5,6 +5,7 @@ import MainHeader from '../Header/MainHeader'
 import Navbar from '../Header/Navbar'
 import NewsLetter from '../Footer/NewsLetter'
 import FooterLinks from '../Footer/FooterLinks'
+import Copyright from '../Footer/Copyright'
 
 const MainLayout = () => {
   return (
@@ -15,6 +16,7 @@ const MainLayout = () => {
        <Outlet/>
        <NewsLetter/>
        <FooterLinks/>
+       <Copyright/>
     </>
   )
 }
