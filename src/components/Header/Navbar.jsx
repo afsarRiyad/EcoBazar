@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Container from '../Container'
-import { FaAngleUp, FaAngleDown  } from "react-icons/fa6";
+import { FaAngleUp, FaAngleDown, FaAngleRight } from "react-icons/fa6";
 import { PiPhoneCallThin, PiFish } from "react-icons/pi";
 import { CiApple, CiBowlNoodles, CiHeart } from "react-icons/ci";
 import { IoIceCreamOutline } from "react-icons/io5";
@@ -16,6 +16,7 @@ const Navbar = () => {
   const category = useDropdown()
   const mobileMenu = useDropdown()
   const [cate, setCate] = useState('All Categories')
+  const [clickedMenu, setClickedMenu] = useState('')
   const [active, setActive] = useState(false)
   const categories = [
     { name: 'Fresh Fruits', icon: CiApple },
@@ -43,39 +44,46 @@ const Navbar = () => {
     <div className=' bg-gray-900'>
       <Container>
         <nav className='flex items-center  font-pop  '>
-          <div sm:ref={category.ref}
-                ref={mobileMenu.ref}>
             {/* React custom hambarger starts here */}
-            <div className='flex items-center relative ' onClick={mobileMenu.toggle}  sm:onClick={category.toggle}>
-              <div className='flex flex-col items-center gap-2 cursor-pointer justify-center px-5 h-16 bg-primary' >
-                <span className={`w-5 h-[2px] bg-white sm:${category.open && ' rotate-45 translate-y-[6px] '} 
-                                                      ${mobileMenu.open && ' rotate-45 translate-y-[6px]'} 
+            
+              <div ref={mobileMenu.ref} className='sm:hidden flex items-center relative '  >
+              <div className='flex flex-col items-center gap-2 cursor-pointer justify-center px-5 h-16 bg-primary' onClick={mobileMenu.toggle}>
+                <span className={`w-5 h-[2px] bg-white ${mobileMenu.open && ' rotate-45 translate-y-[6px]'} 
                                                      transition-transform duration-300`}></span>
-                <span className={`w-5 h-[2px] bg-white sm:${category.open && 'opacity-0'} 
-                                                        ${mobileMenu.open && 'opacity-0'}
+                <span className={`w-5 h-[2px] bg-white ${mobileMenu.open && 'opacity-0'}
                                                         transition-all duration-300`} ></span>
-                <span className={`w-5 h-[2px] bg-white sm:${category.open && ' -rotate-45 -translate-y-[6px]'}
-                                                        ${mobileMenu.open && ' -rotate-45 -translate-y-[6px]'} transition-transform duration-300`}></span>
+                <span className={`w-5 h-[2px] bg-white ${mobileMenu.open && ' -rotate-45 -translate-y-[6px]'} transition-transform duration-300`}></span>
               </div>
               {/* React custom hambarger ends here */}
 
-               {/* mobile view menu bar stats herer  */}
-               <ul className={`absolute  top-full mt-[10px] border px-2 bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${mobileMenu.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
-                  {
-                    menu.map((item, index) => (
-                      <li className='flex gap-3 px-3 py-2 whitespace-nowrap items-center group
-                             hover:bg-primary transiton group hover:text-white' key={index} >
-                            {item} <span className='w-full flex justify-end'> <FaAngleDown /></span>
-                      </li>
-                    ))
-                  }
-                </ul>
-
-              <div className='flex hidden sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer select-none text-[16px] bg-gray-700 py-5 pl-4 text-gry'>{cate} <FaAngleUp className={`absolute right-6 ${category.open && 'rotate-180'} transition-transform duration-300`} />
+              {/* mobile view menu bar stats herer  */}
+              <ul className={`absolute  top-full mt-[10px] border px-2 bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${mobileMenu.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
+                {
+                  menu.map((item, index) => (
+                    <li className={`flex gap-3 px-8 py-4 border-b border-b-gray-200 
+                              whitespace-nowrap items-center group
+                             hover:bg-primary transiton group hover:text-white 
+                              ${clickedMenu === item && 'bg-primary text-white'}`} key={index}
+                      onClick={() => {setClickedMenu(item); mobileMenu.close()}}> {item} <span className='w-full flex justify-end'>{clickedMenu == item ? <FaAngleRight /> : <FaAngleDown />} </span>
+                    </li>
+                  ))
+                }
+              </ul>
               </div>
-
+            
               {/* categories dropdown starts here  */}
-              <ul className={`absolute hidden lg:inline top-full mt-[20px] border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${category.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
+            <div ref={category.ref} className=' hidden sm:flex relative ' onClick={category.toggle}>
+               <div className='flex flex-col items-center gap-2 cursor-pointer justify-center px-5 h-16 bg-primary' >
+                <span className={`w-5 h-[2px] bg-white ${category.open && ' rotate-45 translate-y-[6px] '} 
+                                                     transition-transform duration-300`}></span>
+                <span className={`w-5 h-[2px] bg-white ${category.open && 'opacity-0'} 
+                                                        transition-all duration-300`} ></span>
+                <span className={`w-5 h-[2px] bg-white ${category.open && ' -rotate-45 -translate-y-[6px]'}
+                                                               transition-transform duration-300`}></span>
+                        </div>
+                <div className='flex hidden sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer select-none text-[16px] bg-gray-700 py-5 pl-4 text-gry'>{cate} <FaAngleDown className={`absolute right-6 ${category.open && 'rotate-180'} transition-transform duration-300`} />
+              </div>
+              <ul className={`absolute lg:inline top-full mt-[20px] border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${category.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
                 {
                   categories.map((item, index) => {
                     const Icon = item.icon;
@@ -83,11 +91,11 @@ const Navbar = () => {
                       <li key={index} className={`flex gap-3 pr-4 items-center group hover:bg-primary 
                             ${cate == item.name ? 'bg-primary text-white' : 'bg-white text-black'}`} onClick={(e) => { e.stopPropagation(); setCate(item.name); category.close(); }}>
                         <span className='pl-5'>
-                             <Icon className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
+                          <Icon className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
                         </span>
                         <span className='py-4 w-[228px] group-hover:text-white transition-colors duration-150'>
-                               {item.name}
-                          </span>
+                          {item.name}
+                        </span>
                       </li>
                     )
                   })
@@ -100,8 +108,8 @@ const Navbar = () => {
                 </li>
               </ul>
 
+            
             </div>
-          </div>
           {/* customer service starts here  */}
           {/* customer service starts here  */}
           <div className='flex items-center justify-between w-full bg-gray-900'>

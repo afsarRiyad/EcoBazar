@@ -4,6 +4,7 @@ import { Outlet } from 'react-router'
 import MainHeader from '../Header/MainHeader'
 import Navbar from '../Header/Navbar'
 import NewsLetter from '../Footer/NewsLetter'
+import FooterLinks from '../Footer/FooterLinks'
 
 const MainLayout = () => {
   return (
@@ -13,6 +14,7 @@ const MainLayout = () => {
        <Navbar/>
        <Outlet/>
        <NewsLetter/>
+       <FooterLinks/>
     </>
   )
 }

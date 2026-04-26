@@ -5,13 +5,7 @@ const useDropdown = () => {
    const [open, setOpen] = useState(false)
 
    const toggle = () => setOpen(prev => !prev)
-   const close = () =>{
-        if(open){
-           setOpen(false)
-        }else {
-         return
-        }
-   }
+const close = () => setOpen(false)
     
    useEffect(() => {
 
