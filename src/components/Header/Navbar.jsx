@@ -31,6 +31,7 @@ const Navbar = () => {
     { name: 'Cooking', icon: GiCampCookingPot },
 
   ]
+  
 
   const menu = [
     'Home',
@@ -54,7 +55,7 @@ const Navbar = () => {
               <div ref={mobileMenu.ref} className='sm:hidden flex items-center relative '  >
                   <Hamburger open={mobileMenu.open} toggle={mobileMenu.toggle}/>
                  <span className='text-white sm:hidden pl-4 whitespace-nowrap'>{clickedMenu}</span>
-              <div  className={`fixed inset-0  whitespace-nowrap w-[75%]  pt-6 border  bg-white z-50 border-gray-200  
+              <div  className={`fixed top-0 left-0 h-full w-[70%] pt-6 border whitespace-nowrap bg-white z-50 border-gray-200  
                   select-none transition-all transform duration-300  ease-in-out 
                     ${mobileMenu.open ? '-translate-x-0  opacity-100 z-50' : 
                     '-translate-x-full opacity-100 pointer-events-none '}`}>
@@ -86,7 +87,7 @@ const Navbar = () => {
                     const Icon = item.icon;
                     return (
                       <li key={item.name} className={`flex gap-3 px-8 py-2 border-b border-b-gray-200 
-                              whitespace-nowrap items-center group mobilemenuLi  active:scale-[0.97] active:bg-primary/40 touch-manipulation
+                              whitespace-nowrap items-center group mobilemenuLi  active:scale-[0.97] active:bg-primary/40 touch-manipulation 
                              hover:bg-primary transition-colors group hover:text-white 
                               ${clickedMenu === item.name && 'bg-primary text-white'}`} 
                       onClick={() => {setClickedMenu(item.name); mobileMenu.close()}}>

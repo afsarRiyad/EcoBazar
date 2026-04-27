@@ -16,11 +16,11 @@ const NewsLetter = () => {
                         <input type="text"
                          placeholder='Your email address ' 
                          className='bg-white outline-none rounded-l-[46px] 
-                                      lg:w-full lg:pr-[140px] pr-25 py-[14px] pl-6 
+                                      lg:w-full lg:pr-[140px] pr-22 py-[14px] pl-3 
                                       focus:ring-2 focus:ring-gray-200 '/> 
                       <button className='
-                           text-white bg-primary py-4 sm:px-10 px-6 z-30 rounded-[46px] text-[15px]
-                           absolute top-[45px] sm:right-[-40px] right-[-30px] -translate-y-1/2 cursor-pointer
+                           text-white bg-primary py-4 sm:px-10 px-4 z-30 rounded-[46px] text-[15px]
+                           absolute top-[45px] sm:right-[-40px] right-[-25px] -translate-y-1/2 cursor-pointer
                            active:bg-green-500 hover:bg-green-600
                       '>Subscribe</button>
                      </div>

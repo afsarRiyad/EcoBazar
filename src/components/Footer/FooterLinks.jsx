@@ -49,7 +49,7 @@ const FooterLinks = () => {
                         <ul className='cursor-pointer space-y-2 sm:space-y-0'>
                             <li className='eliment footerHover'>Contact</li>
                             <li className='eliment footerHover'>FAQs</li>
-                            <li className='eliment footerHover'>Terms & Conditions</li>
+                            <li className='eliment footerHover whitespace-nowrap'>Terms & Conditions</li>
                             <li className='eliment footerHover'>Privacy & Policy</li>
                         </ul>
                     </div>
