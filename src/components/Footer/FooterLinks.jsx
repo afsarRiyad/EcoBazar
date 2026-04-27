@@ -9,7 +9,7 @@ const FooterLinks = () => {
     return (
         <div className='sm:py-15 bg-gray-900'>
             <Container>
-                <div className='sm:flex  sm:gap-12 grid grid-cols-2 gap-x-10 py-10'>
+                <div className='sm:flex  sm:gap-12 grid grid-cols-2 w-full gap-x-14 py-10'>
                     {/* company details  */}
                     <div className='sm:w-[336px] pb-4'>
                         <span className='flex gap-2 max-w-[143px] pb-4'>
@@ -30,8 +30,8 @@ const FooterLinks = () => {
                         </div>
                     </div>
                     {/* My accounts section  */}
-                    <div>
-                        <h2 className='fheading'>
+                    <div className=''>
+                        <h2 className='fheading '>
                             My Account
                         </h2>
                         <ul className='cursor-pointer space-y-2 sm:space-y-0'>
@@ -66,7 +66,7 @@ const FooterLinks = () => {
                         </ul>
                     </div>
                     {/* apple & google store */}
-                    <div>
+                    <div className='col-span-2'>
                         <h2 className="fheading whitespace-nowrap">Download Mobile App</h2>
                         {/* card  */}
                         <div className='flex gap-5  col-span-2'>
@@ -78,7 +78,7 @@ const FooterLinks = () => {
                                 </div>
                             </div>
                             {/* card 2  */}
-                            <div className='flex gap-1 items-center p-[10px] bg-gray-600 rounded hover:bg-gray-500 transition-colors'>
+                            <div className='flex fluid gap-1 items-center p-[10px] bg-gray-600 rounded hover:bg-gray-500 transition-colors'>
                                 <BiLogoPlayStore className='text-white w-10 h-10 cursor-pointer' />
                                 <div className='text-white font-pop '>
                                     <p className='text-gray-400 text-[14px] '>Download on the</p>

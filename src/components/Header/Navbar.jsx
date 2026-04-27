@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../Container'
 import { FaAngleUp, FaAngleDown, FaAngleRight } from "react-icons/fa6";
 import { PiPhoneCallThin, PiFish } from "react-icons/pi";
@@ -16,7 +16,7 @@ const Navbar = () => {
   const category = useDropdown()
   const mobileMenu = useDropdown()
   const [cate, setCate] = useState('All Categories')
-  const [clickedMenu, setClickedMenu] = useState('')
+  const [clickedMenu, setClickedMenu] = useState('Home')
   const [active, setActive] = useState(false)
   const categories = [
     { name: 'Fresh Fruits', icon: CiApple },
@@ -55,21 +55,72 @@ const Navbar = () => {
                 <span className={`w-5 h-[2px] bg-white ${mobileMenu.open && ' -rotate-45 -translate-y-[6px]'} transition-transform duration-300`}></span>
               </div>
                  <span className='text-white sm:hidden pl-4 whitespace-nowrap'>{clickedMenu}</span>
-              <ul className={`absolute  top-full mt-[10px] border px-2 bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${mobileMenu.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
+
+              <div  className={`absolute    whitespace-nowrap top-full  border  bg-white z-50 border-gray-200 w-[280px] 
+                  select-none transition-all transform duration-300  ease-in-out 
+                    ${mobileMenu.open ? '-translate-x-0 opacity-100 z-51' : 
+                    '-translate-x-80 opacity-100 pointer-events-none'}`}>
+                    <div className='flex '>
+                      <h1 onClick={() => setActive(false)} className={`text-[18px] text-gray-400 relative font-medium  h-12  px-3 pt-2
+                         cursor-pointer  after:content[""] after:absolute bg-gray-100 after:h-[2px] after:w-0 after:bg-primary hover:text-black
+                          hover:after:w-full after:bottom-0 after:right-0 after:transition-all after:duration-150
+                          ${!active && 'bg-gray-200 border-b text-gray-800 border-b-primary'}`}>
+                        All Categories
+                      </h1>
+                      <h1 onClick={() => setActive(true)} className={`text-[18px] w-full flex justify-center text-gray-400 bg-gray-100 relative font-medium  h-12 px-3 pt-2
+                         cursor-pointer    after:content[""] after:absolute 
+                            after:h-[2px] after:w-0 after:bg-primary
+                          hover:after:w-full after:bottom-0 after:left-0 after:transition-all hover:text-black after:duration-150
+                          ${active && 'bg-gray-200 text-gray-800 border-b border-b-primary'}`}>
+                        Menu
+                     </h1>
+                    </div>
+                  <div className='relative w-full'>    
+                 {/* mobile menu all categories */}
+                  <ul className={` w-full cursor-pointer 
+                                    ${!active ? 'opacity-100 transition-all duration-150 ease-in-out translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+                         {
+                  categories.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <li key={item.name} className={`flex gap-3 px-8 py-2 border-b border-b-gray-200 
+                              whitespace-nowrap items-center group
+                             hover:bg-primary transition-colors group hover:text-white 
+                              ${clickedMenu === item.name && 'bg-primary text-white'}`} 
+                      onClick={() => {setClickedMenu(item.name); mobileMenu.close()}}>
+                        <span className=''>
+                          <Icon key={item.icon} className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
+                        </span>
+                        <span className='py-4 w-[228px] group-hover:text-white transition-colors duration-150'>
+                          {item.name}
+                        </span>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+                    
+                 {/* mobile menu all Menubar  */}
+                  <ul className={`absolute top-0 left-0 w-full
+                                    ${active  ? 'opacity-100 transition-all duration-150 ease-in-out pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-2'}`}>
                 {
                   menu.map((item, index) => (
-                    <li className={`flex gap-3 px-8 py-4 border-b border-b-gray-200 
+                    <li className={`flex gap-3 px-8 py-5 border-b border-b-gray-200 
                               whitespace-nowrap items-center group
-                             hover:bg-primary transiton group hover:text-white 
+                             hover:bg-primary transition-colors group hover:text-white 
                               ${clickedMenu === item && 'bg-primary text-white'}`} key={index}
                       onClick={() => {setClickedMenu(item); mobileMenu.close()}}> {item} <span className='w-full flex justify-end'>{clickedMenu == item ? <FaAngleRight /> : <FaAngleDown />} </span>
                     </li>
                   ))
                 }
               </ul>
+                </div>
+                  </div>
+                  
               </div>
+
             
-              {/* categories dropdown starts here  */}
+              {/*large device categories dropdown starts here  */}
             <div ref={category.ref} className=' hidden sm:flex relative ' onClick={category.toggle}>
                <div className='flex flex-col items-center gap-2 cursor-pointer justify-center px-5 h-16 bg-primary' >
                 <span className={`w-5 h-[2px] bg-white ${category.open && ' rotate-45 translate-y-[6px] '} 

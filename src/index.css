@@ -20,3 +20,4 @@
  .footerHover{
     @apply hover:text-white transition-colors
  }
+

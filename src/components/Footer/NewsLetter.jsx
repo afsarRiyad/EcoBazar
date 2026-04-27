@@ -12,11 +12,11 @@ const NewsLetter = () => {
                     <p className='sm:w-[448px] w-80 text-gray-400 text-[14px] pr-5 sm:pr-0'>Pellentesque eu nibh eget mauris congue mattis mattis nec tellus. Phasellus imperdiet elit eu magna.</p>
                 </span>
                 <div className='flex sm:items-center gap-21'>
-                     <div className='relative  sm:w-[492px] pt-5'>
+                     <div className='relative  lg:w-[492px] pt-5'>
                         <input type="text"
                          placeholder='Your email address ' 
                          className='bg-white outline-none rounded-l-[46px] 
-                                      sm:w-full sm:pr-[140px] pr-25 py-[14px] pl-6 
+                                      lg:w-full lg:pr-[140px] pr-25 py-[14px] pl-6 
                                       focus:ring-2 focus:ring-gray-200 '/> 
                       <button className='
                            text-white bg-primary py-4 sm:px-10 px-6 z-50 rounded-[46px] text-[15px]
