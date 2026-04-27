@@ -19,16 +19,16 @@ const NewsLetter = () => {
                                       lg:w-full lg:pr-[140px] pr-25 py-[14px] pl-6 
                                       focus:ring-2 focus:ring-gray-200 '/> 
                       <button className='
-                           text-white bg-primary py-4 sm:px-10 px-6 z-50 rounded-[46px] text-[15px]
+                           text-white bg-primary py-4 sm:px-10 px-6 z-30 rounded-[46px] text-[15px]
                            absolute top-[45px] sm:right-[-40px] right-[-30px] -translate-y-1/2 cursor-pointer
-                           active:bg-green-500
+                           active:bg-green-500 hover:bg-green-600
                       '>Subscribe</button>
                      </div>
                     <div className='sm:flex sm:items-center sm:mt-4 sm:gap-2 gap-4 flex-col sm:flex-row absolute sm:static right-0 top-[-30px]'>
-                       <FaFacebook className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600 transition ease-in-out'/>
-                          <FaTwitter className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600 transition ease-in-out'/>
-                           <FaPinterestP className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600 transition ease-in-out'/>
-                             <FaInstagram className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600 transition ease-in-out'/>
+                       <FaFacebook className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600  active:text-primary transition ease-in-out'/>
+                          <FaTwitter className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600  active:text-primary transition ease-in-out'/>
+                           <FaPinterestP className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600 active:text-primary  transition ease-in-out'/>
+                             <FaInstagram className='sm:h-10 h-6 sm:w-10 w-6 mb-3 cursor-pointer hover:text-gray-600  active:text-primary transition ease-in-out'/>
                     </div>
                 </div>
              </div>

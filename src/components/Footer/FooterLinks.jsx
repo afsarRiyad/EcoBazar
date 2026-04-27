@@ -70,7 +70,7 @@ const FooterLinks = () => {
                         <h2 className="fheading whitespace-nowrap">Download Mobile App</h2>
                         {/* card  */}
                         <div className='flex gap-5  col-span-2'>
-                            <div className='flex gap-1 items-center p-[10px] bg-gray-600 rounded hover:bg-gray-500'>
+                            <div className='flex gap-1 items-center p-[10px] bg-gray-600 rounded hover:bg-gray-500 active:bg-gray-500'>
                                 <FaApple className='text-white w-10 h-10 cursor-pointer transition-colors' />
                                 <div className='text-white font-pop '>
                                     <p className='text-gray-400 text-[14px] '>Download on the</p>
@@ -78,7 +78,8 @@ const FooterLinks = () => {
                                 </div>
                             </div>
                             {/* card 2  */}
-                            <div className='flex fluid gap-1 items-center p-[10px] bg-gray-600 rounded hover:bg-gray-500 transition-colors'>
+                            <div className='flex fluid gap-1 items-center p-[10px]
+                              bg-gray-600 rounded hover:bg-gray-500 transition-colors active:bg-gray-500'>
                                 <BiLogoPlayStore className='text-white w-10 h-10 cursor-pointer' />
                                 <div className='text-white font-pop '>
                                     <p className='text-gray-400 text-[14px] '>Download on the</p>

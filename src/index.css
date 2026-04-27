@@ -18,6 +18,9 @@
  }
 
  .footerHover{
-    @apply hover:text-white transition-colors
+    @apply hover:text-white transition-colors active:text-white
  }
 
+.mobilemenuLi{
+   @apply active:bg-primary active:text-white 
+}
