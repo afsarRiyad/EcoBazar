@@ -10,7 +10,7 @@ const MainHeader = () => {
     return (
         <>
             <Container>
-                <div className="flex justify-between items-center py-5 sm:py-9 font-pop gap-1 sm:gap-0">
+                <div className="flex justify-between items-center py-5 sm:py-9 font-pop gap-1 sm:gap-0 z-10" >
                       {/* Logo here  */}
                     <div className='flex-shrink-0 flex flex-col sm:flex-row  items-center gap-1 sm:gap-2 cursor-pointer'>
                         <img src={plant} alt="plant" className='sm:w-8 sm:h-8 w-4 h-4' />

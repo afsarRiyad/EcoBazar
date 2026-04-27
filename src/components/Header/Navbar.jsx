@@ -134,7 +134,7 @@ const Navbar = () => {
                         </div>
                 <div className='flex hidden sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer select-none text-[16px] bg-gray-700 py-5 pl-4 text-gry'>{cate} <FaAngleDown className={`absolute right-6 ${category.open && 'rotate-180'} transition-transform duration-300`} />
               </div>
-              <ul className={`absolute lg:inline top-full mt-[20px] border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${category.open ? 'translate-x-0 opacity-100 z-50' : '-translate-x-12 opacity-0 pointer-events-none'}`}>
+              <ul className={`absolute lg:inline top-full  border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${category.open ? 'scale-y-100 origin-top opacity-100 z-50' : 'scale-y-0 origin-top opacity-0 pointer-events-none '}`}>
                 {
                   categories.map((item, index) => {
                     const Icon = item.icon;
@@ -161,7 +161,6 @@ const Navbar = () => {
 
             
             </div>
-          {/* customer service starts here  */}
           {/* customer service starts here  */}
           <div className='flex items-center justify-between w-full bg-gray-900'>
             <ul className=' hidden sm:flex  gap-8 text-gray-400 cursor-pointer select-none  py-[21.5px] px-8 text-[14px]'>

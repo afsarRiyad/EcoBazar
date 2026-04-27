@@ -27,7 +27,7 @@ const TopBar = () => {
     return (
         <div className='border-b border-gry text-[#666666] font-pop text-sm  sm:py-3.5 py-2'>
             <Container>
-                <div className='flex items-center justify-between gap-3'>
+                <div className='flex items-center justify-between gap-3 z-10'>
                        {/* location starts here  */}
                     <div className='flex items-center sm:gap-2  min-w-0'>
                         <CiLocationOn className='shrink-0 hidden sm:block'/> 
