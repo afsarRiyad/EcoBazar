@@ -86,7 +86,7 @@ const Navbar = () => {
                     const Icon = item.icon;
                     return (
                       <li key={item.name} className={`flex gap-3 px-8 py-2 border-b border-b-gray-200 
-                              whitespace-nowrap items-center group mobilemenuLi active:translate-x-1
+                              whitespace-nowrap items-center group mobilemenuLi  active:scale-[0.97] active:bg-primary/40 touch-manipulation
                              hover:bg-primary transition-colors group hover:text-white 
                               ${clickedMenu === item.name && 'bg-primary text-white'}`} 
                       onClick={() => {setClickedMenu(item.name); mobileMenu.close()}}>
@@ -107,7 +107,7 @@ const Navbar = () => {
                                     ${active  ? 'opacity-100 transition-all duration-150 ease-in-out pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-3'}`}>
                 {
                   menu.map((item, index) => (
-                    <li className={`flex gap-3 px-8 py-5 border-b border-b-gray-200 cursor-pointer
+                    <li className={`flex gap-3 px-8 py-5 border-b border-b-gray-200 cursor-pointer active:scale-[0.97] active:bg-primary/40 touch-manipulation
                               whitespace-nowrap items-center group mobilemenuLi transition-all active:translate-x-1
                              hover:bg-primary transition-colors group hover:text-white 
                               ${clickedMenu === item && 'bg-primary text-white'}`} key={index}
