@@ -159,7 +159,6 @@ const Navbar = () => {
                   <span className='py-4 w-[228px] group-hover:text-white transition-colors duration-300'>View All Categories</span>
                 </li>
               </ul>
-
             
             </div>
           {/* customer service starts here  */}
