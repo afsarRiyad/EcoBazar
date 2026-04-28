@@ -6,7 +6,7 @@ const NewsLetter = () => {
   return (
     <div className='font-pop py-10  bg-[#F7F7F7]'>
         <Container>
-             <div className='flex sm:flex-row flex-col md:w-auto items-center justify-between gap-6 relative overflow-hidden'>
+             <div className='flex sm:flex-row flex-col md:w-auto text-center sm:text-start items-center justify-between gap-6 relative overflow-hidden'>
                 <span>
                     <p className='sm:text-[24px] text-[18px] font-semibold text-gray-900 pb-2'>Subcribe our Newsletter </p>
                     <p className='sm:w-[448px] w-80 text-gray-400 text-[14px] pr-5 sm:pr-0'>Pellentesque eu nibh eget mauris congue mattis mattis nec tellus. Phasellus imperdiet elit eu magna.</p>

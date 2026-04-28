@@ -55,7 +55,7 @@ const Navbar = () => {
               <div ref={mobileMenu.ref} className='sm:hidden flex items-center relative '  >
                   <Hamburger open={mobileMenu.open} toggle={mobileMenu.toggle}/>
                  <span className='text-white sm:hidden pl-4 whitespace-nowrap'>{clickedMenu}</span>
-              <div  className={`fixed top-0 left-0 h-full w-[70%] pt-6 border whitespace-nowrap bg-white z-50 border-gray-200  
+              <div  className={`fixed top-0 left-0 h-full w-[75%] pt-6 border whitespace-nowrap bg-white z-50 border-gray-200  
                   select-none transition-all transform duration-300  ease-in-out 
                     ${mobileMenu.open ? '-translate-x-0  opacity-100 z-50' : 
                     '-translate-x-full opacity-100 pointer-events-none '}`}>
