@@ -18,10 +18,10 @@ if(!modalOpen) return
     <>
 
       <section className={`fixed transition-all inset-0 bg-black/50 z-50 flex items-center justify-center `}>
-       <div ref={modalRef} className={`relative lg:w-[872px] sm:w-[650px] w-[400px ] transition-all duration-300 flex flex-col sm:flex-row  font-pop rounded-lg p-2 bg-white gap-10 shadow-2xl animate-[fadeIn_0.3s_ease-out]`}>
+       <div ref={modalRef} className={`relative lg:w-[872px] sm:w-[650px] transition-all duration-300 flex flex-col sm:flex-row  font-pop rounded-lg p-2 bg-white gap-10 shadow-2xl animate-[fadeIn_0.3s_ease-out]`}>
          <RiCloseCircleLine className='absolute right-3 top-3 text-3xl cursor-pointer' onClick={()=> setModalOpen(false)}/>
-         <div>
-          <img src={modalImg} alt="modalImg" />
+         <div className='content-center'>
+          <img src={modalImg} alt="modalImg"  />
         </div>
         <div className='md:pt-8 sm:pt-6 '>
             <span className='flex flex-col justify-center items-center'>

@@ -3,7 +3,8 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
 import useOutsideClick from "../../hooks/outsideClick"
 import { useRef, useState } from 'react';
-
+import { Link } from "react-router"
+import Login from './../../pages/Login';
 
 const TopBar = () => {
     const [langOpen, setLangOpen] = useState(false)
@@ -84,7 +85,7 @@ const TopBar = () => {
                                 </div>
                         </div>
                         {/* currency dropdown ends here  */}
-                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-14px] sm:after:left-[-18px] whitespace-nowrap sm-after:top-0 '>Sign In / Sign Up</div>
+                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-14px] sm:after:left-[-18px] whitespace-nowrap sm-after:top-0 '><Link to='login'> Sign In </Link> / <Link to='registration '> Sign Up </Link></div>
                     </div>
                 </div>
             </Container>

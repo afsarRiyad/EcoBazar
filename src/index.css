@@ -28,6 +28,12 @@
 .default{
    @apply font-pop text-gray-400 text-[14px] 
 }
+.dheading{
+   @apply font-pop text-[32px] text-gray-900 font-semibold
+}
+.dfont{
+   @apply font-pop text-[14px]
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95) translateY(10px); }
