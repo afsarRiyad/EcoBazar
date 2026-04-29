@@ -55,11 +55,11 @@ useOutsideClick({
 
   return (
     <div className=' bg-gray-900'>
-      <Container>
-        {/* overlay while mobile menu open */}
-         {/* {mobileMenuOpen && ( 
+       {/* overlay while mobile menu open */}
+         {mobileMenuOpen && ( 
            <div className='fixed inset-0 bg-black/40 backdrop-blur-[1px] z-40'></div>
-          )} */}
+          )}
+      <Container>
         <nav className='flex items-center  font-pop  '>
             {/* mobile view menu bar stats herer  */}
             {/* React custom hambarger */}
@@ -75,13 +75,13 @@ useOutsideClick({
                                        active:text-gray-500 absolute top-[-19px] right-3'/>
                       </div>
                     <div className='flex pt-5'>
-                      <h1 onClick={() => setActive(false)} className={`text-[18px] text-gray-400 relative font-medium  h-12  px-3 pt-2
+                      <h1 onClick={() => setActive(false)} className={`text-[18px]  justify-center text-center w-full text-gray-400 relative font-medium  h-12  px-3 pt-2
                          cursor-pointer  after:content[""] after:absolute bg-gray-100 after:h-[2px] after:w-0 after:bg-primary hover:text-black active:text-black
                           hover:after:w-full after:bottom-0 after:right-0 after:transition-all after:duration-150
                           ${!active && 'bg-gray-200 border-b text-gray-800 border-b-primary'}`}>
                         All Categories
                       </h1>
-                      <h1 onClick={() => setActive(true)} className={`text-[18px] w-full flex justify-center text-gray-400 bg-gray-100 relative font-medium  h-12 px-3 pt-2
+                      <h1 onClick={() => setActive(true)} className={`text-[18px] w-full flex justify-center text-gray-400 bg-gray-100 relative font-medium  h-12  pt-2
                          cursor-pointer    after:content[""] after:absolute 
                             after:h-[2px] after:w-0 after:bg-primary
                           hover:after:w-full after:bottom-0 after:left-0 after:transition-all hover:text-black active:text-black after:duration-150
@@ -152,10 +152,10 @@ useOutsideClick({
                   categories.map((item, index) => {
                     const Icon = item.icon;
                     return (
-                      <li key={index} className={`flex gap-3 pr-4 items-center group hover:bg-primary 
+                      <li key={item.name} className={`flex gap-3 pr-4 items-center group hover:bg-primary 
                             ${cate == item.name ? 'bg-primary text-white' : 'bg-white text-black'}`} onClick={() => {setCate(item.name); setLgMenuOpen(false); }}>
                         <span className='pl-5'>
-                          <Icon className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
+                          <Icon key={item.icon} className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
                         </span>
                         <span className='py-4 w-[228px] group-hover:text-white transition-colors duration-150'>
                           {item.name}
@@ -179,7 +179,7 @@ useOutsideClick({
             <ul className=' hidden sm:flex  gap-8 text-gray-400 cursor-pointer select-none  py-[21.5px] px-8 text-[14px]'>
               {
                 menu.map((item, index) => (
-                  <li className='hover:text-white flex items-center gap-1'>{item} <FaAngleUp /></li>
+                  <li key={index} className='hover:text-white flex items-center gap-1'>{item} <FaAngleUp /></li>
                 ))
               }
             </ul>

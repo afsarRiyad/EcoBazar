@@ -1,9 +1,9 @@
 import React from 'react'
 import Container from '../Container'
-import ApplePay from '../../assets/images/footer/ApplePay.png'
-import Visa from '../../assets/images/footer/Visa.png'
-import Discover from '../../assets/images/footer/Discover.png'
-import Mastercard from '../../assets/images/footer/Mastercard.png'
+import ApplePay from '../../assets/images/footer/ApplePay.webp'
+import Visa from '../../assets/images/footer/Visa.webp'
+import Discover from '../../assets/images/footer/Discover.webp'
+import Mastercard from '../../assets/images/footer/Mastercard.webp'
 
 const Copyright = () => {
   return (
@@ -14,7 +14,7 @@ const Copyright = () => {
                     Ecobazar eCommerce © 2021. All Rights Reserved
                 </p>
                 <div className='flex gap-2 sm:justify-end justify-center'>
-                    <img src={ApplePay} alt="ApplePay" className='cursor-pointer'/>
+                    <img src={ApplePay} alt="ApplePay" className='cursor-pointer max-w-11.25 max-h-8'/>
                     <img src={Visa} alt="Visa" className='cursor-pointer'/>
                     <img src={Discover} alt="Discover" className='cursor-pointer'/>
                     <img src={Mastercard} alt="Mastercard" className='cursor-pointer'/>

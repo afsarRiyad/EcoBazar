@@ -1,6 +1,6 @@
 import React from 'react'
-import plant from '../../assets/images/plant.jpg'
-import Ecobazar from '../../assets/images/Ecobazar.png'
+import plant from '../../assets/images/plant.webp'
+import Ecobazar from '../../assets/images/Ecobazar.webp'
 import Container from './../Container'
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";

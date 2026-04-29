@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from '../Container'
-import Ecobazar1 from '../../assets/images/Ecobazar1.png'
-import Plant1 from '../../assets/images/Plant1.png'
+import Ecobazar1 from '../../assets/images/Ecobazar1.webp'
+import Plant1 from '../../assets/images/Plant1.webp'
 import { BiLogoPlayStore } from "react-icons/bi";
 import { FaApple } from "react-icons/fa";
 
@@ -13,8 +13,8 @@ const FooterLinks = () => {
                     {/* company details  */}
                     <div className='sm:w-[336px] pb-4'>
                         <span className='flex gap-2 max-w-[143px] pb-4'>
-                            <img src={Plant1} alt="Plant1" />
-                            <img src={Ecobazar1} alt="Ecobazar1" className='text-white' />
+                            <img src={Plant1} alt="Plant1" className="max-w-[138px] max-h-[38px] object-contain" />
+                            <img src={Ecobazar1} alt="Ecobazar1" className="max-w-[138px] max-h-[38px] object-contain"/>
                         </span>
                         <p className='eliment pb-4 leading-7'>
                             Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum magna congue nec.
