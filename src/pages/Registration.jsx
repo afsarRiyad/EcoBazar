@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Container from '../components/Container'
 import { LuEyeOff, LuEye  } from "react-icons/lu";
+import { Link } from 'react-router';
 // import registra from '../assets/images/registra.webp'
 
 const Registration = () => {
@@ -11,7 +12,7 @@ const Registration = () => {
     {/* <img src={registra} alt="regiImg" /> */}
     <Container>
       <div className='py-[80px]  flex items-center justify-center '>
-        <div className='lg:w-[520px] lg:h-[400px] w-[480px] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.1)]
+        <div className='lg:w-[520px] lg:h-[480px] h-[470px] w-[480px] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.1)]
                          sm:py-7 px-3 py-5 sm:px-6 rounded-xl items-center' >
            <span className='dheading  pb-5'>
             Create Account
@@ -34,7 +35,7 @@ const Registration = () => {
                     <LuEyeOff className='absolute top-[18px] text-[20px] right-3 cursor-pointer' onClick={()=> setConfirmShow(!confirmShow)}/>
                    }         
          </div>
-         <div className='flex items-center justify-between w-full dfont pb-5'> 
+         <div className='flex items-center justify-between w-full dfont pt-3 pb-5 select-none'> 
           <label className='cursor-pointer text-gray-900'>
             <input type="checkbox" className='w-4 h-4'/> Accept All terms & Conditions
           </label>
@@ -43,10 +44,10 @@ const Registration = () => {
                text-white sm:text-[18px] text-sm  font-pop sm:font-semibold sm:py-4.5 py-4 cursor-pointer active:scale-95 transition-all 
                   active:bg-green-600 shadow-lg'>Create Account</button>
          <div className='flex gap-2 pt-5'>
-          <p className='dfont text-gray-600'>
+          <p className='dfont text-gray-600 select-none' >
             Already have account 
           </p>
-          <span className='dfont text-gray-900 font-medium'>Login</span>
+          <span className='dfont text-gray-900 font-medium'><Link to='/login'> Login</Link></span>
          </div>
         </div>
       </div>

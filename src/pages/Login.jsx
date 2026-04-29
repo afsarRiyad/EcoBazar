@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Container from '../components/Container'
 import { AiOutlineEye } from "react-icons/ai";
 import { LuEyeOff, LuEye  } from "react-icons/lu";
+import { Link } from 'react-router';
 // import registra from '../assets/images/registra.webp'
 
 const Login = () => {
@@ -11,7 +12,7 @@ const Login = () => {
     {/* <img src={registra} alt="regiImg" /> */}
     <Container>
       <div className='py-[80px]  flex items-center justify-center '>
-        <div className='lg:w-[520px] lg:h-[400px] w-[480px] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.1)]
+        <div className='lg:w-[520px] lg:h-[420px] h-[390px] w-[480px] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.1)]
                          sm:py-7 px-3 pt-3 pb-5 sm:px-6 rounded-xl items-center' >
            <span className='dheading  pb-5'>
             Sign In
@@ -26,9 +27,9 @@ const Login = () => {
                     <LuEyeOff className='absolute top-[18px] text-[20px] right-3 cursor-pointer' onClick={()=> setShow(!show)}/>
                    }         
          </div>
-         <div className='flex items-center justify-between w-full dfont pb-5'> 
+         <div className='flex items-center justify-between w-full dfont pt-3 pb-5 select-none'> 
           <label className='cursor-pointer text-gray-900'>
-            <input type="checkbox" className='w-4 h-4'/> Remember me
+            <input type="checkbox" className='w-4 h-4 '/> Remember me
           </label>
            <p className='text-gray-900'>Forget Password</p>
          </div>
@@ -36,10 +37,10 @@ const Login = () => {
                text-white sm:text-[18px] text-sm  font-pop font-semibold sm:py-4.5 py-4 cursor-pointer active:scale-95 transition-all 
                   active:bg-green-600 shadow-lg '>Login</button>
          <div className='flex gap-2 pt-5'>
-          <p className='dfont text-gray-600'>
+          <p className='dfont text-gray-600 select-none'>
             Don't have account? 
           </p>
-          <span className='dfont text-gray-900 font-medium'>Register</span>
+          <span className='dfont text-gray-900 font-medium'><Link to='/registration'> Register</Link></span>
          </div>
         </div>
       </div>

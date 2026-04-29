@@ -4,6 +4,7 @@ import Ecobazar from '../../assets/images/Ecobazar.webp'
 import Container from './../Container'
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { Link } from 'react-router';
 
 
 const MainHeader = () => {
@@ -12,10 +13,12 @@ const MainHeader = () => {
             <Container>
                 <div className="flex justify-between items-center py-5 sm:py-9 font-pop gap-1 sm:gap-0 z-10" >
                       {/* Logo here  */}
+                    <Link to='/'>
                     <div className='flex-shrink-0 flex flex-col sm:flex-row  items-center gap-1 sm:gap-2 cursor-pointer'>
                         <img src={plant} alt="plant" className='sm:w-8 sm:h-8 w-4 h-4' />
                         <img src={Ecobazar} alt="ecoBazar" className='h-4 sm:w-full sm:h-full' />
                     </div>
+                    </Link>
                      {/* Logo ends here  */}
 
                       {/* search bar here  */}
