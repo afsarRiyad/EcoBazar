@@ -5,27 +5,32 @@ import Modal from '../components/ui/Modal'
 
 const Home = () => {
   const [open, setOpen] = useState(false)
-  const [dontShow, setDontShow] = useState(false)
   const STORAGE_KEYS = 'checkbox_clicked'
+  const [dontShow, setDontShow] = useState(()=>{
+    return localStorage.getItem(STORAGE_KEYS) === 'true';
+  })
 
-  const dismissed = localStorage.getItem(STORAGE_KEYS)
-
-
+  
   useEffect(() => {
-    if (dismissed == true) {
-      setOpen(false)
-    } return
+    const dismissed = localStorage.getItem(STORAGE_KEYS)
+    if (dismissed === 'true') return
 
     const timer = setTimeout(() => {
-      setOpen(true)
+      setOpen('true')
     }, 1000)
     return () => clearTimeout(timer)
   }, [])
 
-  if (dontShow == true && !open) {
-    localStorage.setItem(dismissed, true)
-  }
-  console.log(localStorage.getItem(dismissed));
+ useEffect(()=>{
+    if(dontShow){
+      localStorage.setItem(STORAGE_KEYS, 'true')
+    }else {
+      localStorage.removeItem(STORAGE_KEYS)
+    }
+ },[dontShow])
+
+
+ 
 
 
   return (

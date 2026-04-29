@@ -13,7 +13,7 @@ const Modal = ({modalOpen, setModalOpen, dontShow, setDontShow}) => {
     enable: modalOpen
   })
  
-if(!modalOpen) return null
+if(!modalOpen) return
     return (
     <>
 
