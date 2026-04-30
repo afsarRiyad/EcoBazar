@@ -35,8 +35,17 @@
    @apply font-pop text-[14px]
 }
 
+
+
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95) translateY(10px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/Poppins/Poppins-Regular.woff2") format("woff2");
+}

@@ -1,13 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Container from '../Container'
 import { FaAngleUp, FaAngleDown, FaAngleRight } from "react-icons/fa6";
-import { PiPhoneCallThin, PiFish } from "react-icons/pi";
-import { CiApple, CiBowlNoodles, CiHeart } from "react-icons/ci";
-import { IoIceCreamOutline } from "react-icons/io5";
-import { GiChickenLeg, GiCupcake, GiButter, GiCampCookingPot } from "react-icons/gi";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { IoAddSharp, IoClose  } from "react-icons/io5";
-import { RiDrinksLine } from "react-icons/ri";
+import { Heart, Apple, Soup, Shrimp, Drumstick ,PhoneIncoming, CupSoda, IceCreamCone, Dessert, CookingPot, ShoppingCart , CircleX ,Plus   } from 'lucide-react';
+import {GiButter} from "react-icons/gi";
 import useOutsideClick from '../../hooks/outsideClick';
 import Hamburger from '../Hamburger';
 
@@ -31,15 +26,15 @@ useOutsideClick({
   const [clickedMenu, setClickedMenu] = useState('Menu')
   const [active, setActive] = useState(false)
   const categories = [
-    { name: 'Fresh Fruits', icon: CiApple },
-    { name: 'Vegetables', icon: CiBowlNoodles },
-    { name: 'River Fish', icon: PiFish },
-    { name: 'Chicken & Meat', icon: GiChickenLeg },
-    { name: 'Drinks & Water', icon: RiDrinksLine },
-    { name: 'Yogurt & Ice Cream', icon: IoIceCreamOutline },
-    { name: 'Cake & Bread', icon: GiCupcake },
+    { name: 'Fresh Fruits', icon: Apple },
+    { name: 'Vegetables', icon: Soup  },
+    { name: 'River Fish', icon: Shrimp },
+    { name: 'Chicken & Meat', icon: Drumstick },
+    { name: 'Drinks & Water', icon: CupSoda  },
+    { name: 'Yogurt & Ice Cream', icon: IceCreamCone  },
+    { name: 'Cake & Bread', icon: Dessert  },
     { name: 'Butter & Cream', icon: GiButter },
-    { name: 'Cooking', icon: GiCampCookingPot },
+    { name: 'Cooking', icon: CookingPot  },
 
   ]
   
@@ -71,7 +66,7 @@ useOutsideClick({
                     ${mobileMenuOpen ? '-translate-x-0  opacity-100 z-50' : 
                     '-translate-x-full opacity-100 pointer-events-none '}`}>
                       <div className='text-3xl relative w-full '>
-                        Menu  <IoClose onClick={()=> setMobileMenuOpen(false)} className='cursor-pointer
+                        Menu  <CircleX  onClick={()=> setMobileMenuOpen(false)} className='cursor-pointer
                                        active:text-gray-500 absolute top-[-19px] right-3'/>
                       </div>
                     <div className='flex pt-5'>
@@ -166,7 +161,7 @@ useOutsideClick({
                 }
                 <li className='flex gap-3 pr-4 items-center group hover:bg-primary border-t border-t-gray-300'>
                   <span className='pl-5'>
-                    <IoAddSharp className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
+                    <Plus  className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
                   </span>
                   <span className='py-4 w-[228px] group-hover:text-white transition-colors duration-300'>View All Categories</span>
                 </li>
@@ -184,7 +179,7 @@ useOutsideClick({
               }
             </ul>
             <div className='text-white hidden sm:flex flex items-center gap-2'>
-              <PiPhoneCallThin className='w-10 h-10 cursor-pointer' />
+              <PhoneIncoming className='w-10 h-10 text-gray-300 cursor-pointer' />
               <div className='pr-4'>
                 <p className='text-gray-400 text-[14px]'>Customer Service</p>
                 <p className='text-gray-100 text-[16px]'>+1 (123) 456-7890</p>
@@ -193,8 +188,8 @@ useOutsideClick({
             {/* mobile view Wishlist and cart icons starts here  */}
             <div className='flex gap-3 items-center text-white sm:hidden w-full justify-end'>
               <div className='flex items-center  gap-x-2 relative   after:content[""] after:w-[1px] after:h-6 after:bg-gray-300 after:absolute after:left-[45%] '>
-                <CiHeart className='w-8 h-8 cursor-pointer mr-3 transition-colors hover:text-primary' />
-                <HiOutlineShoppingBag className='w-8 h-8 cursor-pointer sm:ml-0 mx-2 text-gray-300 transition-colors hover:text-primary' />
+                <Heart className='w-8 h-8 cursor-pointer mr-3 transition-colors hover:text-primary' />
+                <ShoppingCart className='w-8 h-8 cursor-pointer sm:ml-0 mx-2 text-gray-300 transition-colors hover:text-primary' />
               </div>
             </div>
             {/* mobile view Wishlist and cart icons starts here  */}

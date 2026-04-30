@@ -2,8 +2,8 @@ import React from 'react'
 import plant from '../../assets/images/plant.webp'
 import Ecobazar from '../../assets/images/Ecobazar.webp'
 import Container from './../Container'
-import { CiSearch, CiHeart } from "react-icons/ci";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { CiSearch } from "react-icons/ci";
+import { Heart, ShoppingCart  } from 'lucide-react';
 import { Link } from 'react-router';
 
 
@@ -33,8 +33,8 @@ const MainHeader = () => {
                         {/* cart and wishlist starts here   */}
                     <div className='shrink-0 flex gap-3 items-center hidden sm:flex'>
                         <div className='flex items-center sm:gap-x-8 gap-x-2 relative after:content[""] after:w-[1px] after:h-6 after:bg-gray-300 after:absolute after:left-1/2'>
-                            <CiHeart className='w-8 h-8 cursor-pointer '/>
-                            <HiOutlineShoppingBag className='w-8 h-8 cursor-pointer ml-2'/>
+                            <Heart  className='w-8 h-8 cursor-pointer '/>
+                            <ShoppingCart  className='w-8 h-8 cursor-pointer ml-2'/>
                         </div>
                              <div className='flex flex-col  '>
                                 <span className='font-pop text-[12px] text-gray-700'>Shopping cart</span>
