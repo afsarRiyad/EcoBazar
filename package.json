@@ -20,7 +20,8 @@
     "react-router": "^7.14.2",
     "slick-carousel": "^1.8.1",
     "tailwind-scrollbar": "^4.0.2",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.2.4",
+    "vite-plugin-svgr": "^5.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

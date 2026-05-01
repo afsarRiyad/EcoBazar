@@ -1,6 +1,9 @@
 import React from 'react'
 import Container from '../Container'
-import { FaFacebook, FaTwitter, FaPinterestP, FaInstagram    } from "react-icons/fa";
+import Facebook from "../../assets/iconsSocial/facebook.svg?react";
+import Twitter from '../../assets/iconsSocial/twitter.svg?react'
+import Pinterest from '../../assets/iconsSocial/pinterest.svg?react'
+import Instagram from '../../assets/iconsSocial/instagram.svg?react'
 
 const NewsLetter = () => {
   return (
@@ -24,10 +27,10 @@ const NewsLetter = () => {
                       '>Subscribe</button>
                      </div>
                     <div className='flex items-center gap-4 text-gray-500'>
-                       <FaFacebook className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer hover:text-gray-600  active:text-primary transition ease-in-out'/>
-                          <FaTwitter className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer hover:text-gray-600  active:text-primary transition ease-in-out'/>
-                           <FaPinterestP className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer hover:text-gray-600 active:text-primary  transition ease-in-out'/>
-                             <FaInstagram className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer hover:text-gray-600  active:text-primary transition ease-in-out'/>
+                       <Facebook fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary active:text-green-500  transition ease-in-out'/>
+                          <Twitter fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary  active:text-green-500 transition ease-in-out'/>
+                           <Pinterest fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary  active:text-green-500  transition ease-in-out'/>
+                             <Instagram fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary active:text-green-500  transition ease-in-out'/>
                     </div>
                 </div>
              </div>

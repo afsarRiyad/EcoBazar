@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Container from '../Container'
-import { FaAngleUp, FaAngleDown, FaAngleRight } from "react-icons/fa6";
-import { Heart, Apple, Soup, Shrimp, Drumstick ,PhoneIncoming, CupSoda, IceCreamCone, Dessert, CookingPot, ShoppingCart , CircleX ,Plus   } from 'lucide-react';
-import {GiButter} from "react-icons/gi";
+import { Heart, Apple, Soup, Shrimp, Drumstick ,PhoneIncoming, CupSoda, IceCreamCone, Dessert, CookingPot, ShoppingCart , CircleX ,Plus, Cuboid, ChevronDown, ChevronRight} from 'lucide-react';
 import useOutsideClick from '../../hooks/outsideClick';
 import Hamburger from '../Hamburger';
 
@@ -33,7 +31,7 @@ useOutsideClick({
     { name: 'Drinks & Water', icon: CupSoda  },
     { name: 'Yogurt & Ice Cream', icon: IceCreamCone  },
     { name: 'Cake & Bread', icon: Dessert  },
-    { name: 'Butter & Cream', icon: GiButter },
+    { name: 'Butter & Cream', icon: Cuboid },
     { name: 'Cooking', icon: CookingPot  },
 
   ]
@@ -63,8 +61,8 @@ useOutsideClick({
                  <span className='text-white sm:hidden pl-4 whitespace-nowrap'>{clickedMenu}</span>
               <div ref={mobileMenuRef} className={`fixed top-0 left-0 h-full w-[75%] pt-6 border whitespace-nowrap bg-white z-50 border-gray-200  
                   select-none transition-all transform duration-300  ease-in-out 
-                    ${mobileMenuOpen ? '-translate-x-0  opacity-100 z-50' : 
-                    '-translate-x-full opacity-100 pointer-events-none '}`}>
+                    ${mobileMenuOpen ? '-translate-x-0 z-50' : 
+                    '-translate-x-full pointer-events-none '}`}>
                       <div className='text-3xl relative w-full '>
                         Menu  <CircleX  onClick={()=> setMobileMenuOpen(false)} className='cursor-pointer
                                        active:text-gray-500 absolute top-[-19px] right-3'/>
@@ -118,7 +116,7 @@ useOutsideClick({
                               whitespace-nowrap items-center group mobilemenuLi transition-all active:translate-x-1
                              hover:bg-primary transition-colors group hover:text-white 
                               ${clickedMenu === item && 'bg-primary text-white'}`} key={index}
-                      onClick={() => {setClickedMenu(item); setMobileMenuOpen(false)}}> {item} <span className='w-full flex justify-end'>{clickedMenu == item ? <FaAngleRight /> : <FaAngleDown />} </span>
+                      onClick={() => {setClickedMenu(item); setMobileMenuOpen(false)}}> {item} <span className='w-full flex justify-end'>{clickedMenu == item ? <ChevronRight  /> : <ChevronDown  />} </span>
                     </li>
                   ))
                 }
@@ -131,7 +129,7 @@ useOutsideClick({
             
               {/*large device categories dropdown starts here  */}
             <div ref={lgMenuRef}>
-              <div className=' hidden sm:flex relative ' onClick={()=> setLgMenuOpen(!lgMenuOpen)}>
+              <div className=' hidden sm:flex relative ' onMouseEnter={()=> setLgMenuOpen(!lgMenuOpen)} onMouseLeave={()=> setLgMenuOpen(!lgMenuOpen)}>
                <div className='flex flex-col items-center gap-2 cursor-pointer justify-center px-5 h-16 bg-primary' >
                 <span className={`w-5 h-[2px] bg-white ${lgMenuOpen && ' rotate-45 translate-y-[6px] '} 
                                                      transition-transform duration-300`}></span>
@@ -140,7 +138,7 @@ useOutsideClick({
                 <span className={`w-5 h-[2px] bg-white ${lgMenuOpen && ' -rotate-45 -translate-y-[6px]'}
                                                                transition-transform duration-300`}></span>
                         </div>
-                <div className='flex hidden sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer select-none text-[16px] bg-gray-700 py-5 pl-4 text-gry'>{cate} <FaAngleDown className={`absolute right-6 ${lgMenuOpen && 'rotate-180'} transition-transform duration-300`} />
+                <div className='flex hidden sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer select-none text-[16px] bg-gray-700 py-5 pl-4 text-gry'>{cate} <ChevronDown  className={`absolute right-6 ${lgMenuOpen && 'rotate-180'} transition-transform duration-300`} />
               </div>
               <ul className={`absolute lg:inline top-full  border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${lgMenuOpen ? 'scale-y-100 origin-top opacity-100 z-50' : 'scale-y-0 origin-top opacity-0 pointer-events-none '}`}>
                 {
@@ -174,7 +172,7 @@ useOutsideClick({
             <ul className=' hidden sm:flex  gap-8 text-gray-400 cursor-pointer select-none  py-[21.5px] px-8 text-[14px]'>
               {
                 menu.map((item, index) => (
-                  <li key={index} className='hover:text-white flex items-center gap-1'>{item} <FaAngleUp /></li>
+                  <li key={index} className='hover:text-white flex items-center gap-1'>{item} <ChevronDown  /></li>
                 ))
               }
             </ul>

@@ -2,8 +2,8 @@ import React from 'react'
 import Container from '../Container'
 import Ecobazar1 from '../../assets/images/Ecobazar1.webp'
 import Plant1 from '../../assets/images/Plant1.webp'
-import { BiLogoPlayStore } from "react-icons/bi";
-import { FaApple } from "react-icons/fa";
+import GoogleStore from '../../assets/iconsStore/googleplay.svg?react'
+import AppleStore from '../../assets/iconsStore/appstore.svg?react'
 
 const FooterLinks = () => {
     return (
@@ -71,7 +71,7 @@ const FooterLinks = () => {
                         {/* card  */}
                         <div className='flex gap-5  col-span-2'>
                             <div className='flex gap-1 items-center p-[10px] bg-gray-600 rounded hover:bg-gray-500 active:bg-gray-500'>
-                                <FaApple className='text-white w-10 h-10 cursor-pointer transition-colors' />
+                                <AppleStore fill='currentColor' className='text-white w-10 h-10 cursor-pointer transition-colors' />
                                 <div className='text-white font-pop '>
                                     <p className='text-gray-400 text-[14px] '>Download on the</p>
                                     <p className='font-medium text-[16px] cursor-pointer'>App Store</p>
@@ -79,8 +79,8 @@ const FooterLinks = () => {
                             </div>
                             {/* card 2  */}
                             <div className='flex fluid gap-1 items-center p-[10px]
-                              bg-gray-600 rounded hover:bg-gray-500 transition-colors active:bg-gray-500'>
-                                <BiLogoPlayStore className='text-white w-10 h-10 cursor-pointer' />
+                              bg-gray-600 rounded hover:bg-gray-500 transition-colors text-white active:bg-gray-500'>
+                                <GoogleStore fill='currentColor' className='text-white w-10 h-10 cursor-pointer' />
                                 <div className='text-white font-pop '>
                                     <p className='text-gray-400 text-[14px] '>Download on the</p>
                                     <p className='font-medium text-[16px] cursor-pointer'>Google Play</p>

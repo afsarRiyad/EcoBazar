@@ -1,9 +1,8 @@
 import Container from '../Container'
-import { CiLocationOn } from "react-icons/ci";
-import { FaAngleDown } from "react-icons/fa6";
 import useOutsideClick from "../../hooks/outsideClick"
 import { useRef, useState } from 'react';
 import { Link } from "react-router"
+import { ChevronDown, MapPin  } from 'lucide-react'
 import Login from './../../pages/Login';
 
 const TopBar = () => {
@@ -42,9 +41,9 @@ const TopBar = () => {
                 <div className='flex items-center justify-between gap-3 z-10'>
                        {/* location starts here  */}
                     <div className='flex items-center sm:gap-2  min-w-0'>
-                        <CiLocationOn className='shrink-0 hidden sm:block'/> 
+                        <MapPin className='shrink-0 hidden sm:block'/> 
                         <p className='truncate hidden sm:block sm:max-w-[260px] md:max-w-none'>Store Location: Lincoln- 344, Illinois, Chicago, USA</p>
-                        <CiLocationOn className='shrink-0 block sm:hidden'/> 
+                        <MapPin className='shrink-0 block sm:hidden'/> 
                         <p className='inline sm:hidden'>BD</p>
                     </div>
                           {/* location ends here  */}
@@ -52,7 +51,7 @@ const TopBar = () => {
                              {/* language dropdown section starts here  */}
                         <div ref={langRef} className='relative min-w-[50px] z-50'>
                             <div className='flex items-center justify-around  cursor-pointer select-none hover:bg-gray-200 active:bg-gray-100 ' onClick={()=> setLangOpen(!langOpen)}>{selectedLang}
-                              <FaAngleDown className={`transition transform duration-300 ${langOpen && 'rotate-180'}`}/>
+                              <ChevronDown className={`transition transform duration-300 ${langOpen && 'rotate-180'}`}/>
                             </div>
                             
                                 <div className='absolute top-full left-0 mt-1  bg-gry  ' >
@@ -71,7 +70,7 @@ const TopBar = () => {
                                 {/* currency dropdown starts here  */}
                         <div ref={currencyRef} className='relative min-w-[50px] z-50'>
                             <div className=' hover:bg-gray-200 justify-around active:bg-gray-100 flex items-center cursor-pointer  items-center select-none' onClick={()=> setCurrencyOpen(!currencyOpen)}>{selectedCrncy}
-                                 <FaAngleDown className={`transition transform duration-300 ${currencyOpen && 'rotate-180'}`}/>
+                                 <ChevronDown className={`transition transform duration-300 ${currencyOpen && 'rotate-180'}`}/>
                             </div>
                            
                                <div className='absolute top-full left-0 bg-gry cursor-pointer px-1 '>

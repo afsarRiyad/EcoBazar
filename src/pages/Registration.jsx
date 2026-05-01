@@ -47,7 +47,10 @@ const Registration = () => {
           <p className='dfont text-gray-600 select-none' >
             Already have account 
           </p>
-          <span className='dfont text-gray-900 font-medium'><Link to='/login'> Login</Link></span>
+          <Link to='/login' className='dfont relative text-gray-900 font-bold hover:text-blue-700 
+                       after:content-[""] after:absolute after:w-full after:h-[2px] 
+                       after:bg-blue-600 after:bottom-[-2px] after:left-0 after:scale-x-0
+                       hover:after:scale-x-100 after:origin-left after:duration-300 after:transition-transform'> Login</Link>
          </div>
         </div>
       </div>
