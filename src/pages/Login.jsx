@@ -34,7 +34,7 @@ const Login = () => {
               <Link to='/reset_password' className='dfont relative text-gray-900  hover:text-blue-700 
                                  '>Forget Password</Link>
             </div>
-            <button className='w-full bg-primary rounded rounded-full
+            <button className='w-full bg-primary  rounded-full
                text-white sm:text-[18px] text-sm  font-pop font-semibold sm:py-4.5 py-4 cursor-pointer active:scale-95 transition-all 
                   active:bg-green-600 shadow-lg '>Login</button>
             <div className='flex gap-2 pt-5'>

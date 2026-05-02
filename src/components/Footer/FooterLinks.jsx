@@ -9,7 +9,7 @@ const FooterLinks = () => {
     return (
         <div className='sm:py-15 bg-gray-900'>
             <Container>
-                <div className='sm:flex  sm:gap-12 grid grid-cols-2 w-full gap-x-14 py-10'>
+                <div className='sm:flex  sm:gap-12 grid grid-cols-2 w-full gap-x-14 py-10 lg:h-[290px]'>
                     {/* company details  */}
                     <div className='sm:w-[336px] pb-4'>
                         <span className='flex gap-2 max-w-[143px] pb-4'>
@@ -20,18 +20,18 @@ const FooterLinks = () => {
                             Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum magna congue nec.
                         </p>
                         <div className='fheading col-span-2 flex gap-2 '>
-                            <p className='border-b border-b-primary pb-1  hidden sm:inline border-b-0 hover:border-b-1 transition'>
+                            <p className='footerAfter hidden sm:inline'>
                                 (219) 555-0114
                             </p>
                             <span className='hidden sm:inline'>or</span>
-                            <p className='border-b border-b-primary pb-1 h-7 am:h-full border-b-0 hover:border-b-1 transition'>
+                            <p className='footerAfter'>
                                 Proxy@gmail.com
                             </p>
                         </div>
                     </div>
                     {/* My accounts section  */}
                     <div className=''>
-                        <h2 className='fheading '>
+                        <h2 className='fheading  footerAfterUl'>
                             My Account
                         </h2>
                         <ul className='cursor-pointer space-y-2 sm:space-y-0'>
@@ -43,7 +43,7 @@ const FooterLinks = () => {
                     </div>
                     {/* Helps section  */}
                     <div>
-                        <h2 className='fheading'>
+                        <h2 className='fheading footerAfterUl'>
                             Helps
                         </h2>
                         <ul className='cursor-pointer space-y-2 sm:space-y-0'>
@@ -55,7 +55,7 @@ const FooterLinks = () => {
                     </div>
                     {/* proxy section  */}
                     <div>
-                        <h2 className='fheading'>
+                        <h2 className='fheading footerAfterUl'>
                             Proxy
                         </h2>
                         <ul className='cursor-pointer space-y-2 sm:space-y-0'>
@@ -67,10 +67,11 @@ const FooterLinks = () => {
                     </div>
                     {/* apple & google store */}
                     <div className='col-span-2'>
-                        <h2 className="fheading whitespace-nowrap">Download Mobile App</h2>
+                        <h2 className="fheading whitespace-nowrap footerAfterUl">Download Mobile App</h2>
                         {/* card  */}
                         <div className='flex gap-5  col-span-2'>
-                            <div className='flex gap-1 items-center p-[10px] bg-gray-600 rounded hover:bg-gray-500 active:bg-gray-500'>
+                            <div className='flex gap-1 items-center p-[10px] rounded active:bg-gray-600
+                             bg-gray-800 hover:bg-gray-700 border border-gray-600 '>
                                 <AppleStore fill='currentColor' className='text-white w-10 h-10 cursor-pointer transition-colors' />
                                 <div className='text-white font-pop '>
                                     <p className='text-gray-400 text-[14px] '>Download on the</p>
@@ -78,8 +79,8 @@ const FooterLinks = () => {
                                 </div>
                             </div>
                             {/* card 2  */}
-                            <div className='flex fluid gap-1 items-center p-[10px]
-                              bg-gray-600 rounded hover:bg-gray-500 transition-colors text-white active:bg-gray-500'>
+                            <div className='flex gap-1 items-center p-[10px]
+                              bg-gray-800 rounded hover:bg-gray-700 border border-gray-600 transition-colors text-white active:bg-gray-600'>
                                 <GoogleStore fill='currentColor' className='text-white w-10 h-10 cursor-pointer' />
                                 <div className='text-white font-pop '>
                                     <p className='text-gray-400 text-[14px] '>Download on the</p>

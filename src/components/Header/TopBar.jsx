@@ -84,7 +84,7 @@ const TopBar = () => {
                                 </div>
                         </div>
                         {/* currency dropdown ends here  */}
-                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-14px] sm:after:left-[-18px] whitespace-nowrap sm-after:top-0 '><Link to='login'> Sign In </Link> / <Link to='registration '> Sign Up </Link></div>
+                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-14px] sm:after:left-[-18px] whitespace-nowrap sm-after:top-0 '><Link className='hover:text-blue-500 hover:font-bold' to='login'> Sign In </Link> / <Link className='hover:text-blue-500 hover:font-bold' to='registration '> Sign Up </Link></div>
                     </div>
                 </div>
             </Container>

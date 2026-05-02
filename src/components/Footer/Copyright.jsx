@@ -9,7 +9,7 @@ const Copyright = () => {
   return (
     <div className='bg-gray-900 font-pop '>
         <Container>
-            <footer role='contentinfo' className='sm:flex items-center justify-between border-t text-center sm:text-start border-t-gray-600 py-6'>
+            <footer role='contentinfo' className='flex flex-col sm:flex-row gap-2 items-center justify-between border-t text-center sm:text-start border-t-gray-600 py-6'>
                 <p className='text-gray-400 sm:w-full '>
                     Ecobazar eCommerce © 2021. All Rights Reserved
                 </p>

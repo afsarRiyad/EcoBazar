@@ -8,7 +8,7 @@ const ForgotPass = () => {
   return (
      <Container>
         <div className='py-[80px]  flex items-center justify-center '>
-          <div className='lg:w-[520px] lg:h-[350px] h-[330px] w-[480px] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.1)]
+          <div className='lg:w-[520px] lg:h-[380px] h-[355px] w-[480px] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.1)]
                          sm:py-7 px-3 pt-3 pb-5 sm:px-6 rounded-xl items-center' >
             <span className='dheading  pb-3'>
               Forgot Password?
@@ -25,13 +25,14 @@ const ForgotPass = () => {
               <p className='dfont text-gray-600 select-none'>
                 Didn't receive link?
               </p>
-              <p className='dfont relative text-gray-900 font-bold hover:text-blue-700 
+              <p className='dfont relative text-gray-900 font-bold cursor-pointer hover:text-blue-700 
                                  after:content-[""] after:absolute after:w-full after:h-[2px] 
                                  after:bg-blue-600 after:bottom-[-2px] after:left-0 after:scale-x-0
                                  hover:after:scale-x-100 after:origin-left after:duration-300 after:transition-transform'>
                 Send again
               </p>
             </div>
+                <Link to='/login' className='dfont border-b border-b-blue-700 hover:text-blue-800 hover:font-semibold pt-3 text-gray-700'>Go back to Login</Link>
           </div>
         </div>
       </Container>

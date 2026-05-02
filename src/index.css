@@ -34,7 +34,15 @@
 .dfont{
    @apply font-pop text-[14px]
 }
-
+.footerAfter{
+   @apply relative after:absolute after:w-[80px] after:h-[2px] 
+                                 after:bg-primary after:bottom-[-8px] after:left-0  after:duration-300 after:transition-transform
+}
+.footerAfterUl{
+   @apply relative after:absolute  after:w-[40px] after:h-[2px] 
+                                 after:bg-primary after:bottom-3 after:left-0 after:scale-x-0
+                                 hover:after:scale-x-100 after:origin-left after:duration-300 after:transition-transform
+}
 
 
 @keyframes fadeIn {

@@ -40,8 +40,8 @@ const Registration = () => {
             <input type="checkbox" className='w-4 h-4'/> Accept All terms & Conditions
           </label>
          </div>
-         <button className='w-full bg-primary rounded rounded-full
-               text-white sm:text-[18px] text-sm  font-pop sm:font-semibold sm:py-4.5 py-4 cursor-pointer active:scale-95 transition-all 
+         <button className='w-full bg-primary rounded-full
+               text-white sm:text-[18px] text-sm  font-semibold  font-pop sm:py-4.5 py-4 cursor-pointer active:scale-95 transition-all 
                   active:bg-green-600 shadow-lg'>Create Account</button>
          <div className='flex gap-2 pt-5'>
           <p className='dfont text-gray-600 select-none' >
