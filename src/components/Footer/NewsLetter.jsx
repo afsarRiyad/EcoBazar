@@ -16,7 +16,7 @@ const NewsLetter = () => {
                 </span>
                 <div className='flex items-center gap-6 md:flex-row flex-col lg:w-auto'>
                      <div className='relative w-full sm:w-[400px] lg:w-[450px] '>
-                        <input type="text"
+                        <input type="email"
                          placeholder='Your email address ' 
                          className='w-full bg-white outline-none rounded-full py-4 pl-6 pr-32 border border-transparent focus:border-primary transition-all
                                       '/> 

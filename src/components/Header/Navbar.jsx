@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Container from '../Container'
-import { Heart, Apple, Soup, Shrimp, Drumstick ,PhoneIncoming, CupSoda, IceCreamCone, Dessert, CookingPot, ShoppingCart , CircleX ,Plus, Cuboid, ChevronDown, ChevronRight} from 'lucide-react';
+import { Heart, Apple, Soup, Shrimp, Drumstick ,PhoneIncoming, CupSoda, IceCreamCone, Dessert, CookingPot, ShoppingCart , CircleX ,Plus, Cuboid, ChevronDown } from 'lucide-react';
 import useOutsideClick from '../../hooks/outsideClick';
 import Hamburger from '../Hamburger';
 
@@ -9,6 +9,7 @@ import Hamburger from '../Hamburger';
 const Navbar = () => {
   const [lgMenuOpen, setLgMenuOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [hasIcon, setHasIcon] = useState(false)
   const lgMenuRef = useRef(null)
   const mobileMenuRef = useRef(null)
  useOutsideClick({
@@ -38,13 +39,13 @@ useOutsideClick({
   
 
   const menu = [
-    'Home',
-    'Shop',
-    'Pages',
-    'Blog',
-    'About Us',
-    'Contact Us',
-  ]
+  { name: "Home", hasIcon: true },
+  { name: "Shop", hasIcon: true },
+  { name: "Pages", hasIcon: true },
+  { name: "Blog", hasIcon: true },
+  { name: "About", hasIcon: false },
+  { name: "Contact Us", hasIcon: false },
+];
 
   return (
     <div className=' bg-gray-900'>
@@ -67,6 +68,17 @@ useOutsideClick({
                         Menu  <CircleX  onClick={()=> setMobileMenuOpen(false)} className='cursor-pointer
                                        active:text-gray-500 absolute top-[-19px] right-3'/>
                       </div>
+                     <div className='relative w-full sm:w-[400px] lg:w-[450px] mt-4 mb-1 px-2'>
+                        <input type="text"
+                         placeholder='Search for items' 
+                         className='w-full bg-white outline-none rounded-full py-4 pl-6 pr-32 border border-gray-400 focus:border-primary transition-all
+                                      '/> 
+                      <button className='
+                           absolute bg-primary text-white px-8 py-3 rounded-full 
+                           text-[15px] top-1 right-3 bottom-1 active:scale-95 transition-all active:bg-green-600
+                           cursor-pointer
+                      '>Search</button>
+                     </div>
                     <div className='flex pt-5'>
                       <h1 onClick={() => setActive(false)} className={`text-[18px]  justify-center text-center w-full text-gray-400 relative font-medium  h-12  px-3 pt-2
                          cursor-pointer  after:content[""] after:absolute bg-gray-100 after:h-[2px] after:w-0 after:bg-primary hover:text-black active:text-black
@@ -115,8 +127,10 @@ useOutsideClick({
                     <li className={`flex gap-3 px-8 py-5 border-b border-b-gray-200 cursor-pointer active:scale-[0.97] active:bg-primary/40 touch-manipulation
                               whitespace-nowrap items-center group mobilemenuLi transition-all active:translate-x-1
                              hover:bg-primary transition-colors group hover:text-white 
-                              ${clickedMenu === item && 'bg-primary text-white'}`} key={index}
-                      onClick={() => {setClickedMenu(item); setMobileMenuOpen(false)}}> {item} <span className='w-full flex justify-end'>{clickedMenu == item ? <ChevronRight  /> : <ChevronDown  />} </span>
+                              ${clickedMenu === item.name && 'bg-primary text-white'}`} key={index}
+                      onClick={() => {setClickedMenu(item.name); setMobileMenuOpen(false)}}> {item.name} 
+                        {item.hasIcon &&
+                        <span className='w-full flex justify-end'> <ChevronDown  /> </span>}
                     </li>
                   ))
                 }
@@ -129,7 +143,7 @@ useOutsideClick({
             
               {/*large device categories dropdown starts here  */}
             <div ref={lgMenuRef}>
-              <div className=' hidden sm:flex relative ' onMouseEnter={()=> setLgMenuOpen(!lgMenuOpen)} onMouseLeave={()=> setLgMenuOpen(!lgMenuOpen)}>
+              <div className={` hidden sm:flex relative `} onMouseEnter={()=> setLgMenuOpen(true)} onMouseLeave={()=> setLgMenuOpen(false)}>
                <div className='flex flex-col items-center gap-2 cursor-pointer justify-center px-5 h-16 bg-primary' >
                 <span className={`w-5 h-[2px] bg-white ${lgMenuOpen && ' rotate-45 translate-y-[6px] '} 
                                                      transition-transform duration-300`}></span>
@@ -140,7 +154,7 @@ useOutsideClick({
                         </div>
                 <div className='flex hidden sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer select-none text-[16px] bg-gray-700 py-5 pl-4 text-gry'>{cate} <ChevronDown  className={`absolute right-6 ${lgMenuOpen && 'rotate-180'} transition-transform duration-300`} />
               </div>
-              <ul className={`absolute lg:inline top-full  border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out ${lgMenuOpen ? 'scale-y-100 origin-top opacity-100 z-50' : 'scale-y-0 origin-top opacity-0 pointer-events-none '}`}>
+              <ul className={`absolute lg:inline top-full  border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out  ${lgMenuOpen ? 'scale-y-100 origin-top opacity-100 z-50' : 'scale-y-0 origin-top opacity-0 pointer-events-none '}`}>
                 {
                   categories.map((item, index) => {
                     const Icon = item.icon;
@@ -172,7 +186,10 @@ useOutsideClick({
             <ul className=' hidden sm:flex  gap-8 text-gray-400 cursor-pointer select-none  py-[21.5px] px-8 text-[14px]'>
               {
                 menu.map((item, index) => (
-                  <li key={index} className='hover:text-white flex items-center gap-1'>{item} <ChevronDown  /></li>
+                  <li key={index} className='hover:text-white flex items-center gap-1'>{item.name} 
+                   {item.hasIcon && 
+                   <ChevronDown  />}
+                  </li>
                 ))
               }
             </ul>

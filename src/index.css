@@ -18,7 +18,7 @@
  }
 
  .footerHover{
-    @apply hover:text-white transition-colors active:text-white
+    @apply hover:text-white transition-all active:text-white duration-150 ease-in-out
  }
 
 .mobilemenuLi{

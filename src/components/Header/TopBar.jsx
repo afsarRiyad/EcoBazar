@@ -3,7 +3,6 @@ import useOutsideClick from "../../hooks/outsideClick"
 import { useRef, useState } from 'react';
 import { Link } from "react-router"
 import { ChevronDown, MapPin  } from 'lucide-react'
-import Login from './../../pages/Login';
 
 const TopBar = () => {
     const [langOpen, setLangOpen] = useState(false)
@@ -23,7 +22,7 @@ const TopBar = () => {
     const [selectedCrncy, setSelectedCrncy] = useState('BDT')
 
     const langOptions = [
-                       'ENG',
+                        'ENG',
                        'BN',
                        'HI', 
                        'ZH'
@@ -58,7 +57,7 @@ const TopBar = () => {
                                     <ul className={`select-none absolute top-full  cursor-pointer transform transition-all duration-300 ease-in-out ${langOpen ? 'translate-y-0 opacity-100 z-50' : '-translate-y-3 opacity-0 pointer-events-none'}`}>
                                         {
                                             langOptions.map((item, index )=> (
-                                            <li key={index} className={`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedLang == item ? 'bg-gray-200' : 'bg-gray-100'}`} onClick={()=>{ setSelectedLag(item) ; setLangOpen(false) }} >{item}</li>
+                                            <li key={index} className={`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedLang === item ? 'bg-gray-200' : 'bg-gray-100'}`} onClick={()=>{ setSelectedLag(item) ; setLangOpen(false) }} >{item}</li>
                                             )) 
                                         }
                                     </ul>
@@ -77,14 +76,14 @@ const TopBar = () => {
                                     <ul className={`select-none absolute top-full cursor-pointer transform transition-all duration-300 ease-in-out ${currencyOpen ? 'translate-y-1 opacity-100 z-50' : '-translate-y-3 opacity-0 pointer-events-none'}`}>
                                         {
                                             currencyOptions.map((item, index) =>(
-                                                <li key={index} className= {`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedCrncy == item ? 'bg-gray-200' : 'bg-gray-100' }`} onClick={()=> {setSelectedCrncy(item) ; setCurrencyOpen(false)}}>{item}</li>
+                                                <li key={index} className= {`pe-5 ps-3 py-1 hover:bg-gray-200 active:bg-gray-100 ${selectedCrncy === item ? 'bg-gray-200' : 'bg-gray-100' }`} onClick={()=> {setSelectedCrncy(item) ; setCurrencyOpen(false)}}>{item}</li>
                                             ))
                                         }
                                     </ul>
                                 </div>
                         </div>
                         {/* currency dropdown ends here  */}
-                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-14px] sm:after:left-[-18px] whitespace-nowrap sm-after:top-0 '><Link className='hover:text-blue-500 hover:font-bold' to='login'> Sign In </Link> / <Link className='hover:text-blue-500 hover:font-bold' to='registration '> Sign Up </Link></div>
+                        <div className='select-none relative ml-2 after:content[""] after:w-[1px] after:h-5 after:bg-gray-300 after:absolute after:left-[-14px] sm:after:left-[-18px] whitespace-nowrap sm-after:top-0 '><Link className='hover:text-blue-500 hover:font-bold' to='/login'> Sign In </Link> / <Link className='hover:text-blue-500 hover:font-bold' to='/registration '> Sign Up </Link></div>
                     </div>
                 </div>
             </Container>
