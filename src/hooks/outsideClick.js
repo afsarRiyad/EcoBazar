@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 
-const useOutsideClick = ({ref, callback, enable = false}) => {
+const useOutsideClick = (ref, callback, enable = false) => {
    useEffect(()=>{
            if(!enable) return
          const handleClick = (e) =>{
@@ -9,8 +9,10 @@ const useOutsideClick = ({ref, callback, enable = false}) => {
             }
          }
     document.addEventListener('mousedown', handleClick)
+    document.addEventListener('touchstart', handleClick)
       return () =>{
             document.removeEventListener('mousedown', handleClick)
+            document.removeEventListener('touchstart', handleClick)
       }
    },[ref, callback, enable])
 }

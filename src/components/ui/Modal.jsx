@@ -7,11 +7,7 @@ import useOutsideClick from '../../hooks/outsideClick';
 
 const Modal = ({modalOpen, setModalOpen, dontShow, setDontShow}) => {
   const modalRef = useRef()
-  useOutsideClick({
-    ref: modalRef,
-    callback: ()=> setModalOpen(false),
-    enable: modalOpen
-  })
+  useOutsideClick(modalRef,()=> setModalOpen(false),modalOpen)
  
 if(!modalOpen) return
     return (

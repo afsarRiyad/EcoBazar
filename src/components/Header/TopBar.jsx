@@ -9,15 +9,8 @@ const TopBar = () => {
     const [currencyOpen, setCurrencyOpen] = useState(false)
     const langRef = useRef(null)
     const currencyRef = useRef(null)
-    useOutsideClick({
-        ref: langRef, 
-        callback: () => setLangOpen(false),
-        enable: langOpen })
-    useOutsideClick({
-        ref: currencyRef,
-        callback: () => setCurrencyOpen(false),
-        enable: currencyOpen 
-    })
+    useOutsideClick(langRef, () => setLangOpen(false),langOpen )
+    useOutsideClick(currencyRef, ()=> setCurrencyOpen(false), currencyOpen)
     const [selectedLang, setSelectedLag] = useState('ENG')
     const [selectedCrncy, setSelectedCrncy] = useState('BDT')
 
@@ -49,7 +42,7 @@ const TopBar = () => {
                     <div className='flex items-center gap-x-3 sm:gap-x-4 md:gap-x-5 relative flex-wrap'>
                              {/* language dropdown section starts here  */}
                         <div ref={langRef} className='relative min-w-[50px] z-50'>
-                            <div className='flex items-center justify-around  cursor-pointer select-none hover:bg-gray-200 active:bg-gray-100 ' onClick={()=> setLangOpen(!langOpen)}>{selectedLang}
+                            <div className='flex items-center justify-around  cursor-pointer select-non active:bg-gray-100 ' onClick={()=> setLangOpen(!langOpen)}>{selectedLang}
                               <ChevronDown className={`transition transform duration-300 ${langOpen && 'rotate-180'}`}/>
                             </div>
                             
@@ -68,7 +61,7 @@ const TopBar = () => {
                                           
                                 {/* currency dropdown starts here  */}
                         <div ref={currencyRef} className='relative min-w-[50px] z-50'>
-                            <div className=' hover:bg-gray-200 justify-around active:bg-gray-100 flex items-center cursor-pointer  items-center select-none' onClick={()=> setCurrencyOpen(!currencyOpen)}>{selectedCrncy}
+                            <div className='justify-around active:bg-gray-100 flex items-center cursor-pointer  items-center select-none' onClick={()=> setCurrencyOpen(!currencyOpen)}>{selectedCrncy}
                                  <ChevronDown className={`transition transform duration-300 ${currencyOpen && 'rotate-180'}`}/>
                             </div>
                            
