@@ -44,6 +44,10 @@
                                  hover:after:scale-x-100 after:origin-left after:duration-300 after:transition-transform
 }
 
+@keyframes sideBar {
+   from{transform: translateX(0)}
+   to{transform: translateX(full)}
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95) translateY(10px); }
