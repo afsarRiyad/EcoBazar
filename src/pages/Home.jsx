@@ -35,7 +35,7 @@ const Home = () => {
 
   return (
     <Container>
-      <h1 className='h-[400px]'>home</h1>
+      <h1 className='h-[400px] bg-amber-400'>home</h1>
       {open && <Modal modalOpen={open} dontShow={dontShow} setDontShow={setDontShow} setModalOpen={setOpen} />}
     </Container>
   )

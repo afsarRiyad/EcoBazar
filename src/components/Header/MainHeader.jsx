@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import plant from '../../assets/images/plant.webp'
 import Ecobazar from '../../assets/images/Ecobazar.webp'
 import Container from './../Container'
 import { Search } from 'lucide-react'
-import { Heart, ShoppingCart  } from 'lucide-react';
+import { ShoppingCart  } from 'lucide-react';
 import { Link } from 'react-router';
+import Heart from '../../assets/icons/Heart'
+import CartPopup from '../../pages/CartPopup'
 
 
 const MainHeader = () => {
+    const [open, setOpen] = useState(false)
     return (
         <>
             <Container>
                 <div className="flex justify-between items-center py-5 sm:py-9 font-pop gap-1 sm:gap-0 z-10" >
                       {/* Logo here  */}
                     <Link to='/'>
-                    <div className='flex-shrink-0 flex flex-col sm:flex-row  items-center gap-1 sm:gap-2 cursor-pointer'>
+                    <div className=' flex flex-col sm:flex-row  items-center gap-1 sm:gap-2 cursor-pointer'>
                         <img src={plant} alt="plant" className='sm:w-8 sm:h-8 w-4 h-4' />
                         <img src={Ecobazar} alt="ecoBazar" className='h-4 sm:w-full sm:h-full' />
                     </div>
@@ -22,7 +25,7 @@ const MainHeader = () => {
                      {/* Logo ends here  */}
 
                       {/* search bar here  */}
-                    <div className='flex-shrink-1 relative gap-[1px]'>
+                    <div className=' relative gap-[1px]'>
                         <Search className='absolute hover:text-gray-700 active:text-gray-500 top-1/2 sm:top-1/2 right-3 cursor-pointer -translate-y-1/2 sm:left-4 text-gray-900 w-5 h-5' />
                     <input type="text" className='sm:px-11 px-3 w-55 sm:w-100 sm:py-3 py-2 pr-10  border font-pop rounded sm:rounded-l border-gray-300 outline-none focus:border-gray-300 focus:ring-2  placeholder:text-gray-500 placeholder:text-[15px]   focus:ring-gray-200 transition'
                             placeholder='Search' />
@@ -31,10 +34,11 @@ const MainHeader = () => {
                        {/* search bar ends here  */ }
                       
                         {/* cart and wishlist starts here   */}
-                    <div className='shrink-0 flex gap-3 items-center hidden sm:flex'>
+                    <div className=' gap-3 items-center hidden sm:flex'>
                         <div className='flex items-center sm:gap-x-8 gap-x-2 relative after:content[""] after:w-[1px] after:h-6 after:bg-gray-300 after:absolute after:left-1/2'>
-                            <Heart  className='w-8 h-8 cursor-pointer '/>
-                            <ShoppingCart  className='w-8 h-8 cursor-pointer ml-2'/>
+                            <Link to='#'><Heart  className=' text-white cursor-pointer '/></Link>
+                            <ShoppingCart  className='w-8 h-8 cursor-pointer ml-2' onClick={()=> setOpen(true)}/>
+                             <CartPopup open={open} setOpen={setOpen} />
                         </div>
                              <div className='flex flex-col  '>
                                 <span className='font-pop text-[12px] text-gray-700'>Shopping cart</span>

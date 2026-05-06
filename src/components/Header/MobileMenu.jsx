@@ -4,9 +4,11 @@ import { ChevronDown, CircleX, Heart, ShoppingCart   } from 'lucide-react';
 import useOutsideClick from '../../hooks/outsideClick';
 import { useRef, useState } from 'react'
 import { categories, menu } from '../../data/navigation';
+import CartPopup from '../../pages/CartPopup';
 
 
 const MobileMenu = () => {
+  const [open, setOpen] = useState(false)
       const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
         const [clickedMenu, setClickedMenu] = useState('')
           const [active, setActive] = useState(false)
@@ -31,7 +33,7 @@ const MobileMenu = () => {
                         Menu  <CircleX  onClick={()=> setMobileMenuOpen(false)} className='cursor-pointer
                                        active:text-gray-500 absolute top-[-19px] right-3'/>
                       </div>
-                     <div className='relative w-full sm:w-[400px] lg:w-[450px] mt-4 mb-1 px-2'>
+                     <div className='relative w-full mt-4 mb-1 px-2'>
                         <input type="text"
                          placeholder='Search for items' 
                          className='w-full bg-white outline-none rounded py-3 pl-2 pr-23 border border-gray-300 focus:border-primary transition-all
@@ -106,7 +108,8 @@ const MobileMenu = () => {
             <div className='flex gap-3 items-center text-white sm:hidden w-full justify-end'>
               <div className='flex items-center  gap-x-2 relative   after:content[""] after:w-[1px] after:h-6 after:bg-gray-300 after:absolute after:left-[45%] '>
                 <Heart className='w-8 h-8 cursor-pointer mr-3 transition-colors hover:text-primary' />
-                <ShoppingCart className='w-8 h-8 cursor-pointer sm:ml-0 mx-2 text-gray-300 transition-colors hover:text-primary' />
+                <ShoppingCart className='w-8 h-8 cursor-pointer sm:ml-0 mx-2 text-gray-300 transition-colors hover:text-primary' onClick={()=> setOpen(true)}/>
+                 <CartPopup open={open} setOpen={setOpen} />
               </div>
             </div>
             {/* mobile view Wishlist and cart icons starts here  */}

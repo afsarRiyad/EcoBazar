@@ -3,7 +3,7 @@ import Container from '../Container'
 import useOutsideClick from '../../hooks/outsideClick';
 import MobileMenu from './MobileMenu';
 import { categories, menu, allCategories } from '../../data/navigation';
-import { ChevronDown, Plus, PhoneIncoming, ChevronRight, Search  } from 'lucide-react';
+import { ChevronDown, Plus, PhoneIncoming, ChevronRight, Search, X  } from 'lucide-react';
 import Hamburger from './../Hamburger';
 
 const Navbar = () => {
@@ -28,14 +28,18 @@ const Navbar = () => {
             <div className={` hidden sm:flex relative `}>
               <div ref={sideBarRef} >
                 <Hamburger open={desktopSidebar} toggle={() => setDesktopSidebar(prev => !prev)} />
-                <div className={`absolute border border-gray-300 rounded-b bg-white text-black z-50 h-auto top-full left-0 w-80 ps-3 py-5 px- 
-                                  ${desktopSidebar ? '-translate-x-0 opacity-100' : 'opacity-0 -translate-x-full pointer-events-none'} transform transition-transform  will-change-transform ease-in-out duration-300`}>
+                  {
+                    desktopSidebar &&
+                    <div className='fixed inset-0 bg-black/60 backdrop:-blur-[1px] z-50' onClick={()=> setDesktopSidebar(false)}/>
+                  }
+                <div className={`fixed inset-0 border border-gray-300 rounded-b bg-white text-black z-50 h-auto  w-116 ps-10 pt-10 px- 
+                                  ${desktopSidebar ? '-translate-x-0 opacity-100' : 'opacity-0 -translate-x-full pointer-events-none'} transform transition-transform ease-in-out duration-300`}>
                   <div className='font-pop  h-auto '>
-                    <div className='pb-2 border-b font-bold  text-2xl border-b-primary border-b-[2px]'>Shop All</div>
+                    <div className='pb-4 font-bold relative items-center  text-2xl'>Shop All <X className='absolute right-4 -top-7 cursor-pointer' onClick={()=> setDesktopSidebar(false)}/></div>
                     <ul className='py-3  text-[16px] '>
                        <div className='relative gap-[1px] pb-3'>
                         <Search className='absolute hover:text-gray-700 active:text-gray-500 translate-y-1/2 cursor-pointer right-7 text-gray-900 w-6 h-6' />
-                    <input type="text" className=' px-3 w-73 sm:py-3 py-2 pr-10  border font-pop rounded sm:rounded-l border-gray-300 outline-none focus:border-gray-300 focus:ring-2  placeholder:text-gray-500 placeholder:text-[15px]   focus:ring-gray-200 transition'
+                    <input type="text" className=' px-3 w-84 sm:py-3 py-2 pr-10  border font-pop rounded sm:rounded-l border-gray-300 outline-none focus:border-gray-300 focus:ring-2  placeholder:text-gray-500 placeholder:text-[15px]   focus:ring-gray-200 transition'
                             placeholder='Search' />
                     
                     </div>
@@ -62,11 +66,11 @@ const Navbar = () => {
               </div>
               {/* desktop sidebar ends here*/}
               <div onMouseEnter={() => { !desktopSidebar && setLgMenuOpen(true) }} onMouseLeave={() => setLgMenuOpen(false)}>
-                <div onClick={() => setLgMenuOpen(true)} className='flex hidden font-md sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer   select-none text-[16px] bg-gray-700 py-5.25 pl-4 text-gry'>
+                <div className='flex font-md sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer   select-none text-[16px] bg-gray-700 py-5.25 pl-4 text-gry'>
                   {cate}
                   <ChevronDown className={`absolute right-6 ${lgMenuOpen && 'rotate-180'} transition-transform duration-300`} />
                 </div>
-                <ul className={`absolute lg:inline top-full left-0  border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all transform duration-300 ease-in-out  ${lgMenuOpen ? 'scale-y-100 origin-top opacity-100 z-50' : 'scale-y-0 origin-top opacity-0 pointer-events-none '}`}>
+                <ul className={`absolute  top-full left-0 shadow-xl border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all duration-200 ease-out  ${lgMenuOpen ? 'opacity-100 translate-y-0 z-50' : 'translate-y-3 opacity-0 pointer-events-none '}`}>
                   {
                     categories.map((item, index) => {
                       const Icon = item.icon;

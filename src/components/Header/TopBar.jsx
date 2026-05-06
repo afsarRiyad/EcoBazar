@@ -55,7 +55,6 @@ const TopBar = () => {
                                         }
                                     </ul>
                                 </div>
-                            
                         </div>
                              {/* language dropdown ends here   */}
                                           
