@@ -32,10 +32,10 @@ const Navbar = () => {
                     desktopSidebar &&
                     <div className='fixed inset-0 bg-black/60 backdrop:-blur-[1px] z-50' onClick={()=> setDesktopSidebar(false)}/>
                   }
-                <div className={`fixed inset-0 border border-gray-300 rounded-b bg-white text-black z-50 h-auto  w-116 ps-10 pt-10 px- 
+                <div className={`fixed inset-0 border border-gray-300 rounded-b bg-white text-black z-50 h-auto  w-106 ps-4 pt-10 px- 
                                   ${desktopSidebar ? '-translate-x-0 opacity-100' : 'opacity-0 -translate-x-full pointer-events-none'} transform transition-transform ease-in-out duration-300`}>
                   <div className='font-pop  h-auto '>
-                    <div className='pb-4 font-bold relative items-center  text-2xl'>Shop All <X className='absolute right-4 -top-7 cursor-pointer' onClick={()=> setDesktopSidebar(false)}/></div>
+                    <div className='pb-4 font-bold relative items-center  text-2xl'>Shop All <X className='absolute right-4 top-0 cursor-pointer' onClick={()=> setDesktopSidebar(false)}/></div>
                     <ul className='py-3  text-[16px] '>
                        <div className='relative gap-[1px] pb-3'>
                         <Search className='absolute hover:text-gray-700 active:text-gray-500 translate-y-1/2 cursor-pointer right-7 text-gray-900 w-6 h-6' />

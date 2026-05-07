@@ -6,7 +6,7 @@ import { Search } from 'lucide-react'
 import { ShoppingCart  } from 'lucide-react';
 import { Link } from 'react-router';
 import Heart from '../../assets/icons/Heart'
-import CartPopup from '../../pages/CartPopup'
+import CartPopup from '../CartPopup'
 
 
 const MainHeader = () => {

@@ -4,7 +4,7 @@ import { ChevronDown, CircleX, Heart, ShoppingCart   } from 'lucide-react';
 import useOutsideClick from '../../hooks/outsideClick';
 import { useRef, useState } from 'react'
 import { categories, menu } from '../../data/navigation';
-import CartPopup from '../../pages/CartPopup';
+import CartPopup from '../CartPopup';
 
 
 const MobileMenu = () => {
