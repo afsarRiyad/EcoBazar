@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from './Container';
-import breadcrumbs from '../../public/Breadcrumbs.webp'
+import breadcrumbsImg from '../../public/Breadcrumbs.webp'
 import { House } from 'lucide-react';
 import { useLocation } from 'react-router';
 
@@ -11,7 +11,7 @@ const Breadcrumbs = () => {
     
 
   return (
-    <div className='max-h-[120px]' style={{background: `url(${breadcrumbs})`}}>
+    <div className='max-h-[120px]' style={{background: `url(${breadcrumbsImg})`}}>
         <Container>
            <div className='py-12 flex gap-2'>
               <House className='text-gray-500'/>
