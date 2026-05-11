@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import Cart from '../assets/images/cart.webp'
+import Cart from '../assets/images/cart/cart.webp'
 import { X } from 'lucide-react';
 import useOutsideClick from '../hooks/outsideClick';
 
