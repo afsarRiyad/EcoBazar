@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import cart from '../assets/images/cart.webp'
+import Cart from '../assets/images/cart.webp'
 import { X } from 'lucide-react';
 import useOutsideClick from '../hooks/outsideClick';
 
@@ -18,7 +18,7 @@ const CartPopup = ({open, setOpen}) => {
        <div className='flex-1 overflow-y-auto space-y-4 sm:px-10 p-2'>
         {/* cart item start */}
          <div className='flex relative items-center mb-4 border-t border-gray-100 py-4'>
-            <img src={cart} alt="product image" className='w-25 h-auto' />
+            <img src={Cart} alt="product image" className='w-25 h-auto' />
             <div className='px-2'>
             <span className='text-gray-900'>Fresh Indian Orange</span>
             <div>
