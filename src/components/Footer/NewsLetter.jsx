@@ -1,9 +1,10 @@
 import React from 'react'
 import Container from '../Container'
-import Facebook from "../../assets/iconsSocial/facebook.svg?react";
-import Twitter from '../../assets/iconsSocial/twitter.svg?react'
-import Pinterest from '../../assets/iconsSocial/pinterest.svg?react'
-import Instagram from '../../assets/iconsSocial/instagram.svg?react'
+import Facebook from "../../assets/iconsSocial/facebookSvg.svg?react";
+import Twitter from '../../assets/iconsSocial/twitterSvg.svg?react'
+import Pinterest from '../../assets/iconsSocial/pinterestSvg.svg?react'
+import Instagram from '../../assets/iconsSocial/instagramSvg.svg?react'
+import { Link } from 'react-router';
 
 const NewsLetter = () => {
   return (
@@ -18,19 +19,27 @@ const NewsLetter = () => {
                      <div className='relative w-full sm:w-[400px] lg:w-[450px] '>
                         <input type="email"
                          placeholder='Your email address ' 
-                         className='w-full bg-white outline-none rounded-full py-4 pl-6 pr-32 border border-transparent focus:border-primary transition-all
+                         className='w-full bg-white outline-none rounded-full py-4 pl-6 pr-40 border border-transparent focus:border-primary transition-all
                                       '/> 
                       <button className='
-                           absolute bg-primary font-semibold text-white px-6 py-3 rounded-full 
-                           text-[15px] top-1 right-1 bottom-1 active:scale-95 transition-all active:bg-green-600
+                           absolute bg-primary font-semibold text-white px-10 py-3 rounded-full 
+                           text-[15px] top-0 right-0 bottom-0 active:scale-95 transition-all active:bg-green-600
                            cursor-pointer
                       '>Subscribe</button>
                      </div>
                     <div className='flex items-center gap-4 text-gray-500'>
-                       <Facebook fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary active:text-green-500  transition ease-in-out'/>
-                          <Twitter fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary  active:text-green-500 transition ease-in-out'/>
-                           <Pinterest fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary  active:text-green-500  transition ease-in-out'/>
-                             <Instagram fill="currentColor" className='sm:h-10 h-8 sm:w-10 w-8  cursor-pointer  hover:text-primary active:text-green-500  transition ease-in-out'/>
+                       <Link to="#" className=' cursor-pointer group hover:bg-primary active:text-green-500  transition ease-in-out py-2 px-3 rounded-full text-center border border-gray-200 duration-300'>
+                        <Facebook fill="currentColor" size={24} className='text-[#3b5998] sm:h-7 h-8 sm:w-6 w-5 group-hover:text-white transition-colors duration-500'/>
+                       </Link>
+                          <Link to="#" className=' cursor-pointer group hover:bg-primary active:text-green-500  transition ease-in-out py-2 px-3 rounded-full text-center border border-gray-200 duration-300'>
+                        <Twitter fill="currentColor"  className='text-[#3b5998] sm:h-7 h-8 sm:w-6 w-5 group-hover:text-white transition-colors duration-500'/>
+                       </Link>
+                           <Link to="#" className=' cursor-pointer group hover:bg-primary active:text-green-500  transition ease-in-out py-2 px-3 rounded-full text-center border border-gray-200 duration-300'>
+                        <Pinterest fill="currentColor" size={24} className='text-gray-500 sm:h-7 h-8 sm:w-6 w-5 group-hover:text-white transition-colors duration-500'/>
+                       </Link>
+                             <Link to="#" className=' cursor-pointer group hover:bg-primary active:text-green-500  transition ease-in-out py-2 px-3 rounded-full text-center border border-gray-200 duration-300'>
+                        <Instagram fill="currentColor" size={24} className='text-gray-500 sm:h-7 h-8 sm:w-6 w-5 group-hover:text-white transition-colors duration-500'/>
+                       </Link>
                     </div>
                 </div>
              </div>
