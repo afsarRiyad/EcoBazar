@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Container from '../components/Container'
 import Modal from '../components/ui/Modal'
+import Slider from '../components/Slider'
 
 const Home = () => {
   const [open, setOpen] = useState(false)
@@ -35,6 +36,7 @@ const Home = () => {
 
   return (
     <Container>
+      <Slider/>
       <h1 className='h-[400px] '>home</h1>
       {open && <Modal modalOpen={open} dontShow={dontShow} setDontShow={setDontShow} setModalOpen={setOpen} />}
     </Container>

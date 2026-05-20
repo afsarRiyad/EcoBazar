@@ -28,8 +28,8 @@ const NewsLetter = () => {
                       '>Subscribe</button>
                      </div>
                     <div className='flex items-center gap-4 text-gray-500'>
-                       <Link to="#" className=' cursor-pointer group hover:bg-primary active:text-green-500  transition ease-in-out py-2 px-3 rounded-full text-center border border-gray-200 duration-300'>
-                        <Facebook fill="currentColor" size={24} className='text-[#3b5998] sm:h-7 h-8 sm:w-6 w-5 group-hover:text-white transition-colors duration-500'/>
+                       <Link to="#" className=' cursor-pointer group hover:bg-primar  w-12 h-12  flex items-center justify-center  active:text-green-500 hover:bg-primary  transition ease-in-out py-2 px-3 rounded-full text-center border border-gray-200 duration-300'>
+                        <Facebook fill="currentColor" className='text-[#3b5998] group-hover:text-white transition-colors duration-500 h-5 w-auto'/>
                        </Link>
                           <Link to="#" className=' cursor-pointer group hover:bg-primary active:text-green-500  transition ease-in-out py-2 px-3 rounded-full text-center border border-gray-200 duration-300'>
                         <Twitter fill="currentColor"  className='text-[#3b5998] sm:h-7 h-8 sm:w-6 w-5 group-hover:text-white transition-colors duration-500'/>

@@ -3,7 +3,7 @@ import Container from '../Container'
 import useOutsideClick from '../../hooks/outsideClick';
 import MobileMenu from './MobileMenu';
 import { categories, menu, allCategories } from '../../data/navigation';
-import { ChevronDown, Plus, PhoneIncoming, ChevronRight, Search, X  } from 'lucide-react';
+import { ChevronDown, Plus, PhoneIncoming, ChevronRight, Search, X, SolarPanel  } from 'lucide-react';
 import Hamburger from './../Hamburger';
 
 const Navbar = () => {
@@ -47,9 +47,9 @@ const Navbar = () => {
                         allCategories.map((item, index) => (
                           <li key={item.name} onClick={() => { setCate(item.name); setDesktopSidebar(false) }} className={`flex relative w-full font-pop text-gray-600 group  gap-3 py-3 ps-2 cursor-pointer items-center border-b border-b-gray-300 group hover:bg-green-500 hover:text-white transition-colors duration-150
                             ${cate == item.name ? 'bg-primary text-white' : 'bg-white text-black'}`}>
-                            <div className='flex justify-between w-full pe-4'>{item.name} {
+                            <span className='flex justify-between w-full pe-4'>{item.name} {
                                        item.hasIcon && <ChevronRight /> 
-                                  } </div>
+                                  } </span>
                             {item.children && (
                               <ul className='absolute opacity-0 translate-x-3 group-hover:translate-x-0 group-hover:opacity-100  left-full top-0 transition-all duration-200 ease-out bg-white border border-gray-200 w-70 shadow-xl pointer-events-none group-hover:pointer-events-auto'>
                                 {item.children.map(child => (
