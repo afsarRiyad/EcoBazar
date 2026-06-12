@@ -7,25 +7,24 @@ import { ShoppingCart  } from 'lucide-react';
 import { Link } from 'react-router';
 import Heart from '../../assets/icons/Heart'
 import CartPopup from '../CartPopup'
+import MobileMenu from './MobileMenu'
 
 
 const MainHeader = () => {
     const [open, setOpen] = useState(false)
     return (
         <>
-            <Container>
-                <div className="flex justify-between items-center py-5 sm:py-9 font-pop gap-1 sm:gap-0 z-10" >
+            <Container className='border-b border-b-gray-400'>
+                <div className="flex justify-between items-center py-4 sm:py-9 font-pop gap-1 sm:gap-0 z-10 " >
                       {/* Logo here  */}
-                    <Link to='/'>
-                    <div className=' flex flex-col sm:flex-row  items-center gap-1 sm:gap-2 cursor-pointer'>
-                        <img src={plant} alt="plant" className='sm:w-8 sm:h-8 w-4 h-4' />
-                        <img src={Ecobazar} alt="ecoBazar" className='h-4 sm:w-full sm:h-full' />
-                    </div>
+                    <Link to='/' className='flex items-center gap-1 sm:gap-2 cursor-pointer'>
+                        <img src={plant} alt="plant" className='w-8 h-8  ' />
+                        <img src={Ecobazar} alt="ecoBazar" className='w-full h-full' />
                     </Link>
                      {/* Logo ends here  */}
 
                       {/* search bar here  */}
-                    <div className=' relative gap-[1px]'>
+                    <div className=' relative gap-[1px] hidden sm:inline-block '>
                         <Search className='absolute hover:text-gray-700 active:text-gray-500 top-1/2 sm:top-1/2 right-3 cursor-pointer -translate-y-1/2 sm:left-4 text-gray-900 w-5 h-5' />
                     <input type="text" className='sm:px-11 px-3 w-55 sm:w-100 sm:py-3 py-2 pr-10  border font-pop rounded sm:rounded-l border-gray-300 outline-none focus:border-gray-300 focus:ring-2  placeholder:text-gray-500 placeholder:text-[15px]   focus:ring-gray-200 transition'
                             placeholder='Search' />
@@ -46,6 +45,8 @@ const MainHeader = () => {
                          </div>
                     </div>
                         {/* cart and wishlist ends here   */}
+                        {/* monile menu here  */}
+                        <div className='sm:hidden'><MobileMenu /></div>
                 </div>
             </Container>
         </>

@@ -10,7 +10,7 @@
 }
 
  .eliment{
-    @apply font-pop text-gray-500 text-[14px] pb-4
+    @apply font-pop text-gray-500 text-[14px] sm:pb-4 pb-2
  }
 
  .fheading{
@@ -60,4 +60,12 @@
   font-weight: 400;
   font-display: swap;
   src: url("./assets/fonts/Poppins/Poppins-Regular.woff2") format("woff2");
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-in-out;
 }

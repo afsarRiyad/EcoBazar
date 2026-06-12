@@ -16,7 +16,7 @@ const MobileMenu = () => {
     useOutsideClick(mobileMenuRef, () => setMobileMenuOpen(false), mobileMenuOpen)
   return (
     <>
-    <div className='sm:hidden flex justify-between w-full'>   
+    <div className='sm:hidden flex justify-center  '  >   
          {mobileMenuOpen && ( 
            <div className='fixed inset-0 bg-black/40 backdrop-blur-[1px] z-40'></div>
           )}
@@ -31,7 +31,7 @@ const MobileMenu = () => {
                     '-translate-x-full pointer-events-none '}`}>
                       <div className='text-xl font-bold ps-4 relative w-full '>
                         Menu  <CircleX  onClick={()=> setMobileMenuOpen(false)} className='cursor-pointer
-                                       active:text-gray-500 absolute top-[-19px] right-3'/>
+                                       active:text-gray-500 absolute top-[0px] right-3'/>
                       </div>
                      <div className='relative w-full mt-4 mb-1 px-2'>
                         <input type="text"
@@ -105,13 +105,13 @@ const MobileMenu = () => {
                   
               </div>
                           {/* mobile view Wishlist and cart icons starts here  */}
-            <div className='flex gap-3 items-center text-white sm:hidden w-full justify-end'>
+            {/* <div className='flex gap-3 items-center text-white sm:hidden w-full justify-end'>
               <div className='flex items-center  gap-x-2 relative   after:content[""] after:w-[1px] after:h-6 after:bg-gray-300 after:absolute after:left-[45%] '>
                 <Heart className='w-8 h-8 cursor-pointer mr-3 transition-colors hover:text-primary' />
                 <ShoppingCart className='w-8 h-8 cursor-pointer sm:ml-0 mx-2 text-gray-300 transition-colors hover:text-primary' onClick={()=> setOpen(true)}/>
                  <CartPopup open={open} setOpen={setOpen} />
               </div>
-            </div>
+            </div> */}
             {/* mobile view Wishlist and cart icons starts here  */}
               </div>
 

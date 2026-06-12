@@ -60,80 +60,14 @@ const Slider = () => {
         </div>
         <div>
             <div className='relative cursor-pointer w-[423px] h-[288px]'>
-      <Swiper
-        slidesPerView={1}
-        grabCursor={true}
-        autoplay={{
-          delay: 2000
-        }}
-        loop={true}
-        keyboard={{
-          enabled: true,
-        }}
-        breakpoints={{
-          769: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-          },
-        }}
-        scrollbar={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Keyboard, Scrollbar, Pagination, Autoplay]}
-        className="mySwiper"
-      >
-               <SwiperSlide>
+             <div>
                 <img src={Banner1} alt="banner1" />
-               </SwiperSlide>
-               <SwiperSlide>
-                <img src={Banner1} alt="banner1" />
-               </SwiperSlide>
-               <SwiperSlide>
-                <img src={Banner1} alt="banner1" />
-               </SwiperSlide>
-               <SwiperSlide>
-                <img src={Banner1} alt="banner1" />
-               </SwiperSlide>
-             </Swiper>
+             </div>
             </div>
             <div className='mt-6 cursor-pointer w-[423px] h-[288px]'>
-                 <Swiper
-        slidesPerView={1}
-        grabCursor={true}
-        autoplay={{
-          delay: 2500
-        }}
-        loop={true}
-        keyboard={{
-          enabled: true,
-        }}
-        breakpoints={{
-          769: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-          },
-        }}
-        scrollbar={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Keyboard, Scrollbar, Pagination, Autoplay]}
-        className="mySwiper"
-      >
-           <SwiperSlide>
+                <div>
                 <img src={Banner2} alt="banner2" />
-            </SwiperSlide>
-           <SwiperSlide>
-                <img src={Banner2} alt="banner2" />
-            </SwiperSlide>
-           <SwiperSlide>
-                <img src={Banner2} alt="banner2" />
-            </SwiperSlide>
-           <SwiperSlide>
-                <img src={Banner2} alt="banner2" />
-            </SwiperSlide>
-            </Swiper>
+            </div>
             </div>
         </div>
       </div>

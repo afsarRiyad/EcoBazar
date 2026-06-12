@@ -28,15 +28,13 @@ const TopBar = () => {
                         ]
 
     return (
-        <div className='border-b border-gry text-[#666666] font-pop text-sm  sm:py-3.5 py-2'>
+        <div className='border-b hidden sm:flex border-gry text-[#666666] font-pop text-sm  sm:py-3.5 py-2'>
             <Container>
                 <div className='flex items-center justify-between gap-3 z-10'>
                        {/* location starts here  */}
-                    <div className='flex items-center sm:gap-2  min-w-0'>
+                    <div className='items-center sm:gap-2  min-w-0 flex'>
                         <MapPin className='shrink-0 hidden sm:block'/> 
                         <p className='truncate hidden sm:block sm:max-w-[260px] md:max-w-none'>Store Location: Lincoln- 344, Illinois, Chicago, USA</p>
-                        <MapPin className='shrink-0 block sm:hidden'/> 
-                        <p className='inline sm:hidden'>BD</p>
                     </div>
                           {/* location ends here  */}
                     <div className='flex items-center gap-x-3 sm:gap-x-4 md:gap-x-5 relative flex-wrap'>
@@ -59,7 +57,7 @@ const TopBar = () => {
                              {/* language dropdown ends here   */}
                                           
                                 {/* currency dropdown starts here  */}
-                        <div ref={currencyRef} className='relative min-w-[50px] z-50'>
+                        <div ref={currencyRef} className='relative min-w-[50px] z-50 '>
                             <div className='justify-around active:bg-gray-100 flex items-center cursor-pointer  items-center select-none' onClick={()=> setCurrencyOpen(!currencyOpen)}>{selectedCrncy}
                                  <ChevronDown className={`transition transform duration-300 ${currencyOpen && 'rotate-180'}`}/>
                             </div>

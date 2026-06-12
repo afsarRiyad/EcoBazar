@@ -16,7 +16,7 @@ const FooterLinks = () => {
                             <img src={Plant1} alt="Plant1" className="max-w-[138px] max-h-[38px] object-contain" />
                             <img src={Ecobazar1} alt="Ecobazar1" className="max-w-[138px] max-h-[38px] object-contain"/>
                         </span>
-                        <p className='eliment pb-4 leading-7'>
+                        <p className='eliment pb-4 sm:leading-7 leading-5 '>
                             Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum magna congue nec.
                         </p>
                         <div className='fheading col-span-2 flex gap-2 '>
@@ -34,7 +34,7 @@ const FooterLinks = () => {
                         <h2 className='fheading  footerAfterUl'>
                             My Account
                         </h2>
-                        <ul className='cursor-pointer space-y-2 sm:space-y-0'>
+                        <ul className='cursor-pointer'>
                             <li className='eliment footerHover'>My Account</li>
                             <li className='eliment footerHover'>Order History</li>
                             <li className='eliment footerHover'>Shopping Cart</li>
@@ -46,7 +46,7 @@ const FooterLinks = () => {
                         <h2 className='fheading footerAfterUl'>
                             Helps
                         </h2>
-                        <ul className='cursor-pointer space-y-2 sm:space-y-0'>
+                        <ul className='cursor-pointer '>
                             <li className='eliment footerHover'>Contact</li>
                             <li className='eliment footerHover'>FAQs</li>
                             <li className='eliment footerHover whitespace-nowrap'>Terms & Conditions</li>
@@ -58,7 +58,7 @@ const FooterLinks = () => {
                         <h2 className='fheading footerAfterUl'>
                             Proxy
                         </h2>
-                        <ul className='cursor-pointer space-y-2 sm:space-y-0'>
+                        <ul className='cursor-pointer '>
                             <li className='eliment footerHover'>About</li>
                             <li className='eliment footerHover'>Shop</li>
                             <li className='eliment footerHover'>Product</li>
