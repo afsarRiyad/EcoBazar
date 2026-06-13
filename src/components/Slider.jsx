@@ -17,8 +17,8 @@ import { Keyboard, Scrollbar, Navigation, Pagination, Autoplay } from 'swiper/mo
 const Slider = () => {
   return (
     <Container>
-      <div className='flex gap-x-6 py-6 relative'>
-        <div className='relative max-w-[872px] h-[600px] cursor-pointer'>
+      <div className='flex flex-col lg:flex-row lg:gap-x-6 py-6 relative'>
+        <div className='relative lg:max-w-[872px] lg:h-[600px] w-full cursor-pointer'>
           <SwiperNavigation />
            <Swiper
         slidesPerView={1}
@@ -59,12 +59,12 @@ const Slider = () => {
            </Swiper>
         </div>
         <div>
-            <div className='relative cursor-pointer w-[423px] h-[288px]'>
+            <div className='relative cursor-pointer w-[423px] h-[288px] hidden lg:block'>
              <div>
                 <img src={Banner1} alt="banner1" />
              </div>
             </div>
-            <div className='mt-6 cursor-pointer w-[423px] h-[288px]'>
+            <div className='mt-6 cursor-pointer w-[423px] h-[288px] hidden lg:block'>
                 <div>
                 <img src={Banner2} alt="banner2" />
             </div>

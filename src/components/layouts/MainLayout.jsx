@@ -11,6 +11,7 @@ import Breadcrumbs from '../Breadcrumbs'
 
 import BottomNav from '../BottomNav'
 import SearchPopup from '../SearchPopup'
+import StickyTopbar from '../Header/StickyTopbar'
 
 const MainLayout = () => {
   const page = useLocation().pathname
@@ -18,6 +19,7 @@ const MainLayout = () => {
 
   return (
     <>
+    <StickyTopbar />
       <TopBar />
       <MainHeader />
       <Navbar />
@@ -31,7 +33,7 @@ const MainLayout = () => {
       <Copyright />
 
       <SearchPopup open={searchOpen} setOpen={setSearchOpen} />
-      
+
       <BottomNav setSearchOpen={setSearchOpen} />
     </>
   )

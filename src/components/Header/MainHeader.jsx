@@ -14,7 +14,7 @@ const MainHeader = () => {
     const [open, setOpen] = useState(false)
     return (
         <>
-            <Container className='border-b border-b-gray-400'>
+            <Container className='hidden sm:block'>
                 <div className="flex justify-between items-center py-4 sm:py-9 font-pop gap-1 sm:gap-0 z-10 " >
                       {/* Logo here  */}
                     <Link to='/' className='flex items-center gap-1 sm:gap-2 cursor-pointer'>
@@ -44,9 +44,6 @@ const MainHeader = () => {
                               <span className='font-pop text-[14px] text-gray-900 font-medium'>Amount</span>
                          </div>
                     </div>
-                        {/* cart and wishlist ends here   */}
-                        {/* monile menu here  */}
-                        <div className='sm:hidden'><MobileMenu /></div>
                 </div>
             </Container>
         </>

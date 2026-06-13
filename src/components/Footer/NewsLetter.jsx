@@ -22,7 +22,7 @@ const NewsLetter = () => {
                          className='w-full bg-white outline-none rounded-full py-4 pl-6 pr-40 border border-transparent focus:border-primary transition-all
                                       '/> 
                       <button className='
-                           absolute bg-primary font-semibold text-white px-10 py-3 rounded-full 
+                           absolute bg-primary font-semibold text-white px-5 sm:px-10 py-3 rounded-full 
                            text-[15px] top-0 right-0 bottom-0 active:scale-95 transition-all active:bg-green-600
                            cursor-pointer
                       '>Subscribe</button>

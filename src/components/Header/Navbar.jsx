@@ -19,6 +19,7 @@ const Navbar = () => {
     <div className=' bg-gray-900'>
       <Container>
         <nav className='sm:flex items-center  font-pop  '>
+      
           {/*Desktop categories dropdown starts here  */}
           <div >
             <div className={` hidden sm:flex relative `}>
