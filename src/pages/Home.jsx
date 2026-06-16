@@ -3,17 +3,21 @@ import { useSelector } from 'react-redux'
 import Container from '../components/Container'
 import Modal from '../components/ui/Modal'
 import Slider from '../components/Slider'
+import CustomerBenefits from '../components/CustomerBenefits'
+import axios from 'axios'
+import ProductShowcase from '../components/ProductShowcase'
 
 const Home = () => {
   const [open, setOpen] = useState(false)
-  const STORAGE_KEYS = 'checkbox_clicked'
+  const [allCat, setAllCat] = useState([])
+  const clicked = 'checkbox_clicked'
   const [dontShow, setDontShow] = useState(()=>{
-    return localStorage.getItem(STORAGE_KEYS) === 'true';
+    return localStorage.getItem(clicked) === 'true';
   })
 
   
   useEffect(() => {
-    const dismissed = localStorage.getItem(STORAGE_KEYS)
+    const dismissed = localStorage.getItem(clicked)
     if (dismissed === 'true') return
 
     const timer = setTimeout(() => {
@@ -24,21 +28,29 @@ const Home = () => {
 
  useEffect(()=>{
     if(dontShow){
-      localStorage.setItem(STORAGE_KEYS, 'true')
+      localStorage.setItem(clicked, 'true')
     }else {
-      localStorage.removeItem(STORAGE_KEYS)
+      localStorage.removeItem(clicked)
     }
  },[dontShow])
 
 
- 
+ useEffect(()=>{
+    const Cat = async () =>{
+      let allCategories = await axios.get('https://dummyjson.com/products/categories');
+      setAllCat(allCategories.data)
+    }
+    Cat()
+ },[])
 
 
   return (
     <Container>
       <Slider/>
-      <h1 className='h-[400px] '>home</h1>
+      <CustomerBenefits/>
+
       {open && <Modal modalOpen={open} dontShow={dontShow} setDontShow={setDontShow} setModalOpen={setOpen} />}
+      <ProductShowcase type={"category"} allPro={allCat.slice(0,12)} />
     </Container>
   )
 }
