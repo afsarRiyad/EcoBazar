@@ -3,6 +3,7 @@ import truck from '../assets/images/truck.webp'
 import headset from '../assets/images/headset.webp'
 import bag from '../assets/images/bag.webp'
 import returns from '../assets/images/returns.webp'
+import Container from './Container'
 
 const valueProps = [
     {
@@ -30,6 +31,7 @@ const valueProps = [
 const CustomerBenefits = () => {
     return (
         <>
+        <Container>
             <div className='flex w-full rounded-lg lg:py-8 lg:px-8 p-4 shadow-[0_4px_20px_rgba(0,0,0,0.08)] overflow-x-auto  touch-auto gap-18 lg:gap-0'>
                 {valueProps.map((prop, index) => (
                     <div key={index} className='flex-1 flex gap-2 whitespace-nowrap' >
@@ -41,6 +43,7 @@ const CustomerBenefits = () => {
                     </div>
                 ))}
             </div>
+         </Container>
         </>
     )
 }
