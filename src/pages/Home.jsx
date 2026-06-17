@@ -10,6 +10,7 @@ import ProductShowcase from '../components/ProductShowcase'
 const Home = () => {
   const [open, setOpen] = useState(false)
   const [allCat, setAllCat] = useState([])
+  const [allPro, setAllPro] = useState([])
   const clicked = 'checkbox_clicked'
   const [dontShow, setDontShow] = useState(()=>{
     return localStorage.getItem(clicked) === 'true';
@@ -42,6 +43,14 @@ const Home = () => {
     }
     Cat()
  },[])
+ useEffect(()=>{
+    const Cat = async () =>{
+      let allProducts = await axios.get('https://dummyjson.com/products');
+      setAllPro(allProducts.data.products) 
+   
+    }
+    Cat()
+ },[])
 
 
   return (
@@ -50,7 +59,9 @@ const Home = () => {
       <CustomerBenefits/>
 
       {open && <Modal modalOpen={open} dontShow={dontShow} setDontShow={setDontShow} setModalOpen={setOpen} />}
-      <ProductShowcase type={"category"} allPro={allCat.slice(0,12)} />
+      <ProductShowcase type={"category"} link="/categories" title={'Popular Categories'} allPro={allCat.slice(0,12)} />
+      <ProductShowcase type={"products"} hover={true} title={'Popular Products'} link='/all-products' allPro={allPro.slice(0,10)} />
+      <ProductShowcase type={"products"} subType={"deal"} title={'Hot Deals'}  link='/deals' allPro={allPro.slice(0,10)} />
     </Container>
   )
 }

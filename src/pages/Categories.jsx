@@ -15,7 +15,7 @@ const Categories = () => {
 
   return (
     <Container>
-      <ProductShowcase  allPro={allCat} type={'allCate'}/>
+      <ProductShowcase  allPro={allCat} title={'Popular Categories'}  type={'allCate'}/>
     </Container>
   )
 }

@@ -5,6 +5,7 @@ import Login from "./pages/Login.jsx";
 import Registration from './pages/Registration';
 import ForgotPass from "./pages/ForgotPass.jsx";
 import Categories from "./pages/Categories.jsx";
+import AllProducts from "./pages/AllProducts.jsx";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
    <Route path="/registration" element={<Registration />} />
    <Route path="/reset_password" element={<ForgotPass />} />
    <Route path="/categories" element={<Categories />} />
+   <Route path="/all-products" element={<AllProducts />} />
    </Route>
  </Routes>
     </>
