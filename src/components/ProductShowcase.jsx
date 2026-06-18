@@ -6,9 +6,10 @@ import { IoIosStar, IoMdStarOutline } from "react-icons/io";
 import { Handbag, Eye, Heart } from 'lucide-react';
 import Container from './Container';
 import { useEffect, useState } from 'react';
+import { useCountDown } from '../hooks/CountDown';
 
 const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
-    const [timer, setTimer] = useState({})
+    const timer = useCountDown("July 15, 2026 16:37:25")
     const isCategory = type === "category" || type === "allCate";
     const isProduct = type === 'products' || type === 'allProducts';
     const isDeal = subType === 'deal' || subType === 'allDeal';
@@ -26,21 +27,6 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
         }
         return stars
     }
-
-        useEffect(()=>{
-         const iterval = setInterval(() => {
-                 let count = new Date("15 july, 2026 16:37:25").getTime()
-           let now = new Date().getTime()
-           let distance = count - now
-           let days = Math.floor(distance / (1000 * 60 * 60 * 24) )
-           let hours =Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-           let min = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-           let sec = Math.floor((distance % (1000 * 60)) / 1000);
-           setTimer({days, hours, min, sec})
-             }, 1000);
-                 return ()=> clearInterval(interval)
-        },[])
-
 
     return (
         <>
@@ -82,24 +68,27 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
                                     </div>
                                     {/* deals timer  */}
                                     {isDeal && index === 0 &&
+                                    <>
+                                            <div className='timerH'>Hurry up! Offer ends In:</div>
                                       <div className='flex justify-center gap-3'>
                                         <div className='flex flex-col'>
-                                           <p> {timer.days} </p>
-                                            <span>Days</span>
+                                           <p  className='font-pop text-gray-900 text-[18px] font-bold'> {timer.days} </p>
+                                            <span className='timer'>Days</span>
                                         </div>
                                         <div className='flex flex-col'>
-                                           <p> {timer.hours} </p>
-                                            <span>Hours</span>
+                                           <p className='font-pop text-gray-900 text-[18px] font-bold '> {timer.hours} :</p>
+                                            <span className='timer'>Hours</span>
                                         </div>
                                         <div className='flex flex-col'>
-                                           <p> {timer.min} </p>
-                                            <span>Min</span>
+                                           <p className='font-pop text-gray-900 text-[18px] font-bold'> {timer.min}  :</p>
+                                            <span className='timer'>Min</span>
                                         </div>
                                         <div className='flex flex-col'>
-                                           <p> {timer.sec} </p>
-                                            <span>Sec</span>
+                                           <p className='font-pop text-gray-900 text-[18px] font-bold'> {timer.sec} </p>
+                                            <span className='timer'>Sec</span>
                                         </div>
                                       </div>
+                                      </>
                                      }
                                     {productHover &&
                                         <>

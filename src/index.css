@@ -69,3 +69,9 @@
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-in-out;
 }
+.timer{
+   @apply font-pop text-gray-400 text-[12px]
+}
+.timerH{
+   @apply font-pop text-gray-400 text-[14px]
+}

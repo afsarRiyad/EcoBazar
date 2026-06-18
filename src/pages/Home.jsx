@@ -6,6 +6,10 @@ import Slider from '../components/Slider'
 import CustomerBenefits from '../components/CustomerBenefits'
 import axios from 'axios'
 import ProductShowcase from '../components/ProductShowcase'
+import Sale from '../components/Sale'
+import discountBanner from '../assets/images/discountBanner.webp'
+import LatestNews from '../components/LatestNews'
+import Testimonials from '../components/Testimonials'
 
 const Home = () => {
   const [open, setOpen] = useState(false)
@@ -61,7 +65,14 @@ const Home = () => {
       {open && <Modal modalOpen={open} dontShow={dontShow} setDontShow={setDontShow} setModalOpen={setOpen} />}
       <ProductShowcase type={"category"} link="/categories" title={'Popular Categories'} allPro={allCat.slice(0,12)} />
       <ProductShowcase type={"products"} hover={true} title={'Popular Products'} link='/all-products' allPro={allPro.slice(0,10)} />
+      <Sale/>
       <ProductShowcase type={"products"} subType={"deal"} title={'Hot Deals'}  link='/deals' allPro={allPro.slice(0,12)} />
+      <Container>
+        <img src={discountBanner} alt="discountBanner"  className='cursor-pointer'/>
+      </Container>
+        <ProductShowcase type={"products"} link="/" hover={true} title={'Featured Products'} allPro={allPro.slice(0,10)} />
+        <LatestNews/>
+        <Testimonials/>
     </>
   )
 }
