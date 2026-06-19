@@ -46,14 +46,14 @@ export default function LatestNews() {
           <h2 className="text-gray-900 text-[32px] pb-6 font-bold text-center tracking-tight mb-3">
             Latest News
           </h2>
-        <div className="grid grid-cols-3 gap-6 max-[900px]:grid-cols-1 max-[900px]:max-w-[420px] max-[900px]:mx-auto">
+        <div className="grid grid-cols-3 gap-6 max-[900px]:grid-cols-1  max-[900px]:max-w-[420px] max-[900px]:mx-auto">
 
           {newsItems.map((item) => (
             <article
               key={item.id}
               className="bg-white rounded-md overflow-hidden transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)]"
             >
-              <div className="relative h-[320px] overflow-hidden">
+              <div className="relative h-[320px] overflow-hidden ">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -87,7 +87,7 @@ export default function LatestNews() {
                     {item.comments} Comments
                   </span>
                 </div>
-                <h3 className="text-[18px] font-semibold leading-relaxed text-gray-900 mb-5">
+                <h3 className="text-[18px] hover:text-primary duration-200 font-semibold leading-relaxed text-gray-900 mb-5">
                   {item.title}
                 </h3>
 
@@ -96,7 +96,7 @@ export default function LatestNews() {
                   className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-green-600 group hover:text-green-700"
                 >
                   Read More
-                  <ArrowRight className="transition-transform duration-200 group-hover:translate-x-1" />
+                  <ArrowRight size={19} className="transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
 
               </div>

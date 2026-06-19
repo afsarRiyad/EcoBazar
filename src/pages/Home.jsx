@@ -66,7 +66,7 @@ const Home = () => {
       <ProductShowcase type={"category"} link="/categories" title={'Popular Categories'} allPro={allCat.slice(0,12)} />
       <ProductShowcase type={"products"} hover={true} title={'Popular Products'} link='/all-products' allPro={allPro.slice(0,10)} />
       <Sale/>
-      <ProductShowcase type={"products"} subType={"deal"} title={'Hot Deals'}  link='/deals' allPro={allPro.slice(0,12)} />
+      <ProductShowcase type={"products"} subType={"deal"} title={'Hot Deals'}  link='/deals' allPro={allPro.slice(0,10)} />
       <Container>
         <img src={discountBanner} alt="discountBanner"  className='cursor-pointer'/>
       </Container>

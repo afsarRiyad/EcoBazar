@@ -51,7 +51,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <div className=" py-13 flex items-center justify-center bg-gray-100 px-4 mb-5">
+    <div className=" py-13 flex items-center justify-center bg-gray-100 px-4">
 
       <Container >
 
