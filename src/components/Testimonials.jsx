@@ -57,14 +57,14 @@ export default function Testimonials() {
 
         {/* Header */}
         <div className="flex items-center justify-between mb-8 relative">
-          <h2 className="text-[32px] sm:text-3xl font-semibold text-gray-900">
+          <h2 className="text-[22px] sm:text-3xl font-semibold text-gray-900">
             Client Testimonials
           </h2>
-          <button className="hidden sm:inline custom-prev  cursor-pointer absolute right-20 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow disabled:bg-green-500 disabled:text-white">
+          <button className=" custom-prev  cursor-pointer absolute sm:right-20 right-12 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow disabled:bg-green-500 disabled:text-white">
         <ChevronLeft />
       </button>
 
-     <button className="hidden sm:inline  custom-next cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow disabled:bg-green-500 disabled:text-white">
+     <button className=" custom-next cursor-pointer absolute sm:right-4 right-0 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow disabled:bg-green-500 disabled:text-white">
         <ChevronRight />
       </button>
         </div>

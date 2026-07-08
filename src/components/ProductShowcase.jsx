@@ -35,7 +35,7 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
             <div className={`${isDeal && 'bg-gray-200 my-8 pb-15'}`}>
                 <Container>
                     <div className={`flex justify-between items-center  `}>
-                        <span className=' font-pop text-gray-900 text-[32px] font-semibold pb-8 pt-10'>
+                        <span className=' font-pop text-gray-900 lg:text-[32px] sm:text-[26px] text-xl font-semibold pb-8 pt-10'>
                             {title}
                         </span>
                         <Link to={link} className={`flex cursor-pointer text-primary font-pop ${type === "allCate" && 'hidden'} ${type === "allProducts" && 'hidden'}`}>
@@ -58,6 +58,7 @@ const isLastCol = (index + 1) % cols === 0;
                                         <p className='text-gray-800 font-medium font-semibold'>{item.price && '$'}{item.price && item.price}</p>
                                         <p className={`${isProduct && "flex pt-[6px] pb-3"} `}>{item.price && star(item.rating)}</p>
                                     </div>
+                                    {/* on hover cart and wishlist startrs here  */}
                                     {productHover &&
                                         <>
                                             <div className='absolute right-5 -top-10  flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200  hover:bg-primary group-hover/cart:duration-600 duration-300 ease-in-out group-hover/cart:top-13 z-10 group/eye'>
@@ -68,14 +69,15 @@ const isLastCol = (index + 1) % cols === 0;
                                             </div>
                                         </>
                                     }
+                                    {/* on hover cart and wishlist ends here  */}
                                     {isProduct &&
                                         <div className={`absolute right-5 bottom-4 w-10 h-10 bg-gray-200 flex justify-center items-center rounded-full group-hover/cart:bg-primary duration-500 ease-in-out `}>
                                             <Handbag className='group-hover/cart:text-white duration-300' />
                                         </div>}
                                     {/* hover  */}
-
+                                    {/* hot deals hover card starts here  */}
                                     {isDeal &&
-                                        <div className={`  text-center  absolute w-[198%] h-[208%] bg-white z-40 border border-gray-200 rounded-md shadow-md opacity-0 pointer-events-none scale-90
+                                        <div className={`hidden lg:block  text-center  absolute w-[198%] h-[208%] bg-white z-40 border border-gray-200 rounded-md shadow-md opacity-0 pointer-events-none scale-90
                                             group-hover/deals:opacity-100 group-hover/deals:pointer-events-auto  group-hover/deals:scale-102  transition-all duration-300  transform origin-center ease-in-out                 ${(index + 1) % 5 === 0 ? '-left-full' : 'left-0'} ${isLastRow ? '-top-full' : 'top-0'}`}>
                                             <img src={Product} alt="productImg" className='pb-4 flex items-center justify-center w-full' />
                                             <div className='flex flex-row justify-center items-center w-full gap-2'>
@@ -97,6 +99,7 @@ const isLastCol = (index + 1) % cols === 0;
                                                 <p className={`${isProduct && "flex pt-[6px] pb-3"}  ${isDeal && 'justify-center'}`}>{item.price && star(item.rating)}</p>
                                             </div>
                                             <>
+                                            {/* timer starts here  */}
                                                 <div className='timerH'>Hurry up! Offer ends In:</div>
                                                 <div className='flex justify-center gap-3'>
                                                     <div className='flex flex-col'>

@@ -10,6 +10,7 @@ import Sale from '../components/Sale'
 import discountBanner from '../assets/images/discountBanner.webp'
 import LatestNews from '../components/LatestNews'
 import Testimonials from '../components/Testimonials'
+import SponsorLogo from '../components/SponsorLogo'
 
 const Home = () => {
   const [open, setOpen] = useState(false)
@@ -73,6 +74,7 @@ const Home = () => {
         <ProductShowcase type={"products"} link="/" hover={true} title={'Featured Products'} allPro={allPro.slice(0,10)} />
         <LatestNews/>
         <Testimonials/>
+        <SponsorLogo/>
     </>
   )
 }

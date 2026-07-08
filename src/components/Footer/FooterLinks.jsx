@@ -9,7 +9,7 @@ const FooterLinks = () => {
     return (
         <div className='sm:py-15 bg-gray-900'>
             <Container>
-                <div className='sm:flex  sm:gap-12 grid grid-cols-2 w-full gap-x-14 py-10 lg:h-[290px]'>
+                <div className='sm:flex sm:flex-wrap  sm:gap-12 grid grid-cols-2 w-full gap-x-14 py-10 lg:h-[290px]'>
                     {/* company details  */}
                     <div className='sm:w-[336px] pb-4'>
                         <span className='flex gap-2 max-w-[143px] pb-4'>

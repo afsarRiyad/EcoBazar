@@ -32,7 +32,7 @@ const CustomerBenefits = () => {
     return (
         <>
         <Container>
-            <div className='flex w-full rounded-lg lg:py-8 lg:px-8 p-4 shadow-[0_4px_20px_rgba(0,0,0,0.08)] overflow-x-auto  touch-auto gap-18 lg:gap-0'>
+            <div className='flex w-full rounded-lg lg:py-8 lg:px-8 p-4 shadow-[0_4px_20px_rgba(0,0,0,0.08)] overflow-x-auto  touch-auto gap-18 lg:gap-20'>
                 {valueProps.map((prop, index) => (
                     <div key={index} className='flex-1 flex gap-2 whitespace-nowrap' >
                         <img src={prop.icon} alt={prop.title} className='w-10 h-10 mb-2 ' />

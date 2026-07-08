@@ -62,12 +62,12 @@ const Navbar = () => {
                 </div>
               </div>
               {/* desktop sidebar ends here*/}
-              <div onMouseEnter={() => { !desktopSidebar && setLgMenuOpen(true) }} onMouseLeave={() => setLgMenuOpen(false)}>
+              <div onMouseEnter={() => { !desktopSidebar && setLgMenuOpen(true) }} onMouseLeave={() => setLgMenuOpen(false)} className='hidden xl:flex'>
                 <div className='flex font-md sm:flex items-center relative w-[240px] rounded-r-[10px] cursor-pointer   select-none text-[16px] bg-gray-700 py-5.25 pl-4 text-gry'>
                   {cate}
                   <ChevronDown className={`absolute right-6 ${lgMenuOpen && 'rotate-180'} transition-transform duration-300`} />
                 </div>
-                <ul className={`absolute  top-full left-0 shadow-xl border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all duration-200 ease-out  ${lgMenuOpen ? 'opacity-100 translate-y-0 z-50' : 'translate-y-3 opacity-0 pointer-events-none '}`}>
+              <ul className={`absolute  top-full left-0 shadow-xl border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all duration-200 ease-out  ${lgMenuOpen ? 'opacity-100 translate-y-0 z-50' : 'translate-y-3 opacity-0 pointer-events-none '}`}>
                   {
                     categories.map((item, index) => {
                       const Icon = item.icon;
@@ -84,7 +84,7 @@ const Navbar = () => {
                       )
                     })
                   }
-                  <li onClick={() => { setDesktopSidebar(true); setLgMenuOpen(false) }} className='flex gap-3 pr-4 items-center group hover:bg-primary border-t border-t-gray-300'>
+                  <li onClick={() => { setDesktopSidebar(true); setLgMenuOpen(false) }} className='flex gap-3 pr-4 items-center group hover:bg-primary border-t border-t-gray-300 '>
                     <span className='pl-5'>
                       <Plus className='text-gray-400 w-6 h-6 group-hover:text-white transition-colors duration-300' />
                     </span>
@@ -106,7 +106,7 @@ const Navbar = () => {
                 ))
               }
             </ul>
-            <div className='text-white hidden sm:flex flex items-center gap-2'>
+            <div className='text-white hidden :flex flex items-center gap-2'>
               <PhoneIncoming className='w-10 h-10 text-gray-300 cursor-pointer' />
               <div className='pr-4'>
                 <p className='text-gray-400 text-[14px]'>Customer Service</p>
