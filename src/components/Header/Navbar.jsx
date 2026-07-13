@@ -106,7 +106,7 @@ const Navbar = () => {
                 ))
               }
             </ul>
-            <div className='text-white hidden :flex flex items-center gap-2'>
+            <div className='text-white hidden lg:flex  items-center gap-2'>
               <PhoneIncoming className='w-10 h-10 text-gray-300 cursor-pointer' />
               <div className='pr-4'>
                 <p className='text-gray-400 text-[14px]'>Customer Service</p>

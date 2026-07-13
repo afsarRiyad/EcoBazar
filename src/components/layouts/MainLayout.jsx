@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Outlet, useLocation } from 'react-router'
 
 import TopBar from '../Header/TopBar'
-import MainHeader from '../Header/MainHeader'
+import Searchbar from '../Header/Searchbar'
 import Navbar from '../Header/Navbar'
 import NewsLetter from '../Footer/NewsLetter'
 import FooterLinks from '../Footer/FooterLinks'
@@ -21,7 +21,7 @@ const MainLayout = () => {
     <>
     <StickyTopbar />
       <TopBar />
-      <MainHeader />
+      <Searchbar />
       <Navbar />
 
       {page !== '/' && <Breadcrumbs />}

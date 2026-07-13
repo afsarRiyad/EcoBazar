@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import plant from '../../assets/images/plant.webp'
 import Ecobazar from '../../assets/images/Ecobazar.webp'
-import Container from './../Container'
+import Container from '../Container'
 import { Search } from 'lucide-react'
 import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router';

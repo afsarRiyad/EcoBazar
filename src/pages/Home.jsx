@@ -11,6 +11,7 @@ import discountBanner from '../assets/images/discountBanner.webp'
 import LatestNews from '../components/LatestNews'
 import Testimonials from '../components/Testimonials'
 import SponsorLogo from '../components/SponsorLogo'
+import InstagramSection from '../components/InstagramSection'
 
 const Home = () => {
   const [open, setOpen] = useState(false)
@@ -75,6 +76,7 @@ const Home = () => {
         <LatestNews/>
         <Testimonials/>
         <SponsorLogo/>
+        <InstagramSection/>
     </>
   )
 }
