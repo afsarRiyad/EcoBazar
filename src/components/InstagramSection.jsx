@@ -70,7 +70,7 @@ export default function InstagramSection() {
   }, [activePost]);
 
   return (
-    <Container className="font-pop w-full py-14 px-4 bg-white">
+    <Container className="font-pop w-full py-4 pb-12 px-4 bg-white">
       <h2 className="text-center text-3xl md:text-4xl font-pop font-bold text-gray-900 mb-8">
         Follow us on Instagram
       </h2>

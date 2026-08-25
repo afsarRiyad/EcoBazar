@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import plant from '../../assets/images/plant.webp'
 import Ecobazar from '../../assets/images/Ecobazar.webp'
-import Container from '../Container'
 import { Search } from 'lucide-react'
 import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router';
 import Heart from '../../assets/icons/Heart'
 import CartPopup from '../CartPopup'
 import MobileMenu from './MobileMenu'
+import Container from '../Container';
+import Tooltip from '../ui/Tooltip';
+
 
 
 const MainHeader = () => {
@@ -40,8 +42,12 @@ const MainHeader = () => {
                     {/* cart and wishlist starts here   */}
                     <div className=' gap-3 items-center hidden sm:flex'>
                         <div className='flex items-center sm:gap-x-8 gap-x-2 relative after:content[""] after:w-[1px] after:h-6 after:bg-gray-300 after:absolute after:left-1/2'>
-                            <Link to='#'><Heart className=' text-white cursor-pointer ' /></Link>
-                            <ShoppingCart className='w-8 h-8 cursor-pointer ml-2' onClick={() => setOpen(true)} />
+                            <Tooltip text="Wishlist" position="bottom">
+                                <Link to='#'><Heart className=' text-white cursor-pointer ' /></Link>
+                            </Tooltip>
+                            <Tooltip text="Shopping Cart" position="bottom">
+                                <ShoppingCart className='w-8 h-8 cursor-pointer ml-2' onClick={() => setOpen(true)} />
+                            </Tooltip>
                             <CartPopup open={open} setOpen={setOpen} />
                         </div>
                         <div className='flex flex-col  '>

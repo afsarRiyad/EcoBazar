@@ -70,14 +70,15 @@ import { Link } from 'react-router';
                       <li key={item.name} className={`flex gap-3 text-gray-900 px-8 py-1 border-b text-[16px] border-b-gray-200 
                               whitespace-nowrap items-center group mobilemenuLi  active:scale-[0.97] active:bg-primary/40 touch-manipulation 
                              hover:bg-primary transition-colors group hover:text-white 
-                              ${clickedMenu === item.name && 'bg-primary text-white'}`}
-                        onClick={() => { setClickedMenu(item.name); setMobileMenuOpen(false) }}>
+                              ${clickedMenu === item.name && 'bg-primary text-white'}`}>
+                        <Link to={`/shop?category=${encodeURIComponent(item.name)}`} onClick={() => { setClickedMenu(item.name); setMobileMenuOpen(false) }} className='flex gap-3 items-center w-full'>
                         <span className=''>
                           <Icon key={item.icon} className={`text-gray-400 w-5 h-5 group-active:text-white  group-hover:text-white transition-colors duration-300 ${clickedMenu == item.name && 'text-white'}`} />
                         </span>
                         <span className='py-3 w-[228px] group-hover:text-white transition-colors duration-150'>
                           {item.name}
                         </span>
+                        </Link>
                       </li>
                     )
                   })
@@ -92,10 +93,11 @@ import { Link } from 'react-router';
                     <li className={`flex gap-3 px-8 py-4 border-b text-gray-900 border-b-gray-200 cursor-pointer active:scale-[0.97] active:bg-primary/40 touch-manipulation
                               whitespace-nowrap items-center group mobilemenuLi transition-all active:translate-x-1
                              hover:bg-primary transition-colors group hover:text-white 
-                              ${clickedMenu === item.name && 'bg-primary text-white'}`} key={item.name}
-                      onClick={() => { setClickedMenu(item.name); setMobileMenuOpen(false) }}> {item.name}
+                              ${clickedMenu === item.name && 'bg-primary text-white'}`} key={item.name}>
+                      <Link to={item.name === 'Home' ? '/' : item.name === 'Shop' ? '/shop' : '#'} onClick={() => { setClickedMenu(item.name); setMobileMenuOpen(false) }} className='flex items-center gap-3 w-full'> {item.name}
                       {item.hasIcon &&
                         <span className='w-full flex justify-end'> <ChevronDown /> </span>}
+                      </Link>
                     </li>
                   ))
                 }

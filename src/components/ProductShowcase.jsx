@@ -1,12 +1,18 @@
-import Product from '../assets/images/product.webp'
+import Product from '../assets/images/product.webp';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { IoStarHalfSharp } from "react-icons/io5";
 import { IoIosStar, IoMdStarOutline } from "react-icons/io";
 import { Handbag, Eye, Heart } from 'lucide-react';
 import Container from './Container';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useCountDown } from '../hooks/CountDown';
+import Tooltip from './ui/Tooltip';
+import QuickViewModal from './ui/QuickViewModal';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../slices/cartSlice';
+import { addToWishlist } from '../slices/wishlistSlice';
+import { showToast } from '../hooks/useActionToast';
 
 const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
     const cols = 5;
@@ -16,6 +22,24 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
     const isProduct = type === 'products' || type === 'allProducts';
     const isDeal = subType === 'deal' || subType === 'allDeal';
     const productHover = (type === 'products' || type === 'allProducts') && hover === true
+    const [quickView, setQuickView] = useState(false);
+    const [quickViewProduct, setQuickViewProduct] = useState(null);
+    const [touchedId, setTouchedId] = useState(null);
+    const [pulseKeys, setPulseKeys] = useState({});
+    const gridRef = useRef(null);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (touchedId === null) return;
+        const handleTouchOutside = (e) => {
+            if (gridRef.current && !gridRef.current.contains(e.target)) {
+                setTouchedId(null);
+            }
+        };
+        document.addEventListener('touchstart', handleTouchOutside);
+        return () => document.removeEventListener('touchstart', handleTouchOutside);
+    }, [touchedId]);
+
     const star = (rating) => {
         let stars = []
         for (let i = 1; i <= 5; i++) {
@@ -30,105 +54,140 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
         return stars
     }
 
+    const renderItem = (item, index) => {
+        const isLastRow = Math.floor(index / cols) === totalRows - 1;
+        const isTouched = touchedId === index;
+        const handleItemTouch = (e) => {
+            e.stopPropagation();
+            if (isTouched) {
+                setTouchedId(null);
+            } else {
+                setTouchedId(index);
+                setPulseKeys((prev) => ({ ...prev, [index]: (prev[index] || 0) + 1 }));
+            }
+        };
+        const categorySlug = isCategory ? (item.slug || item.name || '').toLowerCase().replace(/\s+/g, '-') : null;
+        const imgSrc = isCategory ? Product : (item.thumbnail || item.images?.[0] || item.image || '');
+
+        const cardContent = (
+            <>
+                <img src={imgSrc} alt={item.title || item.name || 'product'} className='pb-4 flex items-center justify-center w-full object-contain' />
+                <div className='px-2 font-pop'>
+                    <div className={`truncate ${isCategory ? 'text-center pb-6 text-gray-900 text-[18px]' : 'text-gray-700 text-[14px] pt-4 pb-1'}`}>
+                        {item.name || item.title}
+                    </div>
+                    <div>
+                        <p className='text-gray-800 font-medium font-semibold'>{item.price && '$'}{item.price && item.price}</p>
+                        <p className={`${isProduct && "flex pt-[6px] pb-3"}`}>{item.price && star(item.rating)}</p>
+                    </div>
+                    {productHover && (
+                        <>
+                            <div key={pulseKeys[index] || 0} className={`absolute right-5 -top-10 flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200 hover:bg-primary duration-300 ease-in-out z-10 group/eye ${isTouched ? 'top-13 animate-touchPulse' : '-top-10 group-hover/cart:top-13'}`}>
+                                <Tooltip text="Quick View" position="left">
+                                    <Eye size={18} className='group-hover/eye:text-white duration-200 cursor-pointer' onClick={(e) => { e.stopPropagation(); setQuickViewProduct(item); setQuickView(true); }} />
+                                </Tooltip>
+                            </div>
+                            <div key={`wish-${pulseKeys[index] || 0}`} className={`absolute right-5 -top-10 flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200 hover:bg-primary duration-300 ease-in-out group/wish ${isTouched ? 'top-3 animate-touchPulse' : '-top-10 group-hover/cart:top-3'}`}>
+                                <Tooltip text="Add to Wishlist" position="left">
+                                    <Heart size={18} className='group-hover/wish:text-white duration-300 cursor-pointer' onClick={(e) => { e.stopPropagation(); dispatch(addToWishlist(item)); showToast('wishlist', `${item.title || item.name}`); }} />
+                                </Tooltip>
+                            </div>
+                        </>
+                    )}
+                    {isProduct && (
+                        <div className='absolute right-5 bottom-4'>
+                            <Tooltip text="Add to Cart" position="left">
+                                <button onClick={(e) => { e.stopPropagation(); dispatch(addToCart(item)); showToast('cart', `${item.title || item.name}`); }} className={`w-10 h-10 flex justify-center items-center rounded-full duration-500 ease-in-out cursor-pointer ${isTouched ? 'bg-primary animate-touchPulse' : 'bg-gray-200 group-hover/cart:bg-primary'}`}>
+                                    <Handbag className={`duration-300 ${isTouched ? 'text-white' : 'group-hover/cart:text-white'}`} />
+                                </button>
+                            </Tooltip>
+                        </div>
+                    )}
+                    {isDeal && (
+                        <div className={`text-center absolute w-[198%] h-[208%] bg-white z-40 border border-gray-200 rounded-md shadow-md opacity-0 pointer-events-none scale-90
+                            ${isTouched ? 'opacity-100 pointer-events-auto scale-102' : 'hidden lg:block group-hover/deals:opacity-100 group-hover/deals:pointer-events-auto group-hover/deals:scale-102'} transition-all duration-300 transform origin-center ease-in-out ${(index + 1) % 5 === 0 ? '-left-full' : 'left-0'} ${isLastRow ? '-top-full' : 'top-0'}`}>
+                            <img src={imgSrc} alt={item.title || item.name || 'product'} className='pb-4 flex items-center justify-center w-full object-contain' />
+                            <div className='flex flex-row justify-center items-center w-full gap-2'>
+                                <Tooltip text="Add to Wishlist" position="left">
+                                    <button onClick={(e) => { e.stopPropagation(); dispatch(addToWishlist(item)); showToast('wishlist', `${item.title || item.name}`); }} className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200 hover:bg-primary duration-500 ease-in-out cursor-pointer'>
+                                        <Heart size={20} className='hover:text-white duration-300' />
+                                    </button>
+                                </Tooltip>
+                                <button onClick={(e) => { e.stopPropagation(); dispatch(addToCart(item)); showToast('cart', `${item.title || item.name}`); }} className='flex gap-3 font-pop bg-primary w-[350px] rounded-full text-white justify-center items-center cursor-pointer py-3 group hover:bg-green-600 duration-200'>
+                                    Add To Cart <Handbag className='text-white' />
+                                </button>
+                                <Tooltip text="Quick View" position="right">
+                                    <button onClick={(e) => { e.stopPropagation(); setQuickViewProduct(item); setQuickView(true); }} className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200 hover:bg-primary duration-500 ease-in-out group cursor-pointer'>
+                                        <Eye size={20} className='group-hover:text-white duration-300' />
+                                    </button>
+                                </Tooltip>
+                            </div>
+                            <div className={`truncate text-gray-700 text-[14px] pt-4 pb-1 ${isDeal && 'text-[18px] font-pop'}`}>
+                                {item.title}
+                            </div>
+                            <div className={`${isDeal && 'text-[22px]'}`}>
+                                <p className='text-gray-800 font-medium font-semibold'>{item.price && '$'}{item.price && item.price}</p>
+                                <p className={`${isProduct && "flex pt-[6px] pb-3"} ${isDeal && 'justify-center'}`}>{item.price && star(item.rating)}</p>
+                            </div>
+                            <div className='timerH'>Hurry up! Offer ends In:</div>
+                            <div className='flex justify-center gap-3'>
+                                <div className='flex flex-col'>
+                                    <p className='font-pop text-gray-900 text-[18px] font-bold'>{timer.days}</p>
+                                    <span className='timer'>Days</span>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <p className='font-pop text-gray-900 text-[18px] font-bold'>{timer.hours} :</p>
+                                    <span className='timer'>Hours</span>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <p className='font-pop text-gray-900 text-[18px] font-bold'>{timer.min} :</p>
+                                    <span className='timer'>Min</span>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <p className='font-pop text-gray-900 text-[18px] font-bold'>{timer.sec}</p>
+                                    <span className='timer'>Sec</span>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </>
+        );
+
+        if (isCategory) {
+            return (
+                <Link to={`/shop?category=${encodeURIComponent(categorySlug)}`} key={index} onTouchStart={handleItemTouch} className={`w-full border border-gray-200 hover:border-primary duration-150 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer rounded-xl group/cart overflow-hidden relative group/deals block`}>
+                    {cardContent}
+                </Link>
+            );
+        }
+
+        return (
+            <div key={index} onTouchStart={handleItemTouch} className={`w-full border border-gray-200 hover:border-primary duration-150 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer group/cart ${isDeal ? 'bg-white overflow-visible hover:border-none' : 'overflow-hidden'} relative group/deals`}>
+                {cardContent}
+            </div>
+        );
+    };
+
     return (
         <>
             <div className={`${isDeal && 'bg-gray-200 my-8 pb-15'}`}>
                 <Container>
-                    <div className={`flex justify-between items-center  `}>
-                        <span className=' font-pop text-gray-900 lg:text-[32px] sm:text-[26px] text-xl font-semibold pb-8 pt-10'>
+                    <div className='flex justify-between items-center'>
+                        <span className='font-pop text-gray-900 lg:text-[32px] sm:text-[26px] text-xl font-semibold pb-8 pt-10'>
                             {title}
                         </span>
                         <Link to={link} className={`flex cursor-pointer text-primary font-pop ${type === "allCate" && 'hidden'} ${type === "allProducts" && 'hidden'}`}>
-                            View All  <ArrowRight />
+                            View All <ArrowRight />
                         </Link>
                     </div>
-                    <div className={`grid  ${isCategory && "gap-6"}  ${isCategory && 'lg:grid-cols-6 md:grid-cols-4 grid-cols-2'} ${isProduct && 'lg:grid-cols-5 md:grid-cols-4 grid-cols-2'} `}>
-                        {allPro.map((item, index) => {
-                            const rowIndex = Math.floor(index / cols);
-const isLastRow = rowIndex === totalRows - 1;
-const isLastCol = (index + 1) % cols === 0;
-                            return(
-                                <div key={index} className={` w-full  border border-gray-200 hover:border-primary duration-150 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer ${type === 'category' ? 'rounded-xl' : ''} group/cart  ${isDeal ? 'bg-white overflow-visible hover:border-none' : 'overflow-hidden'} relative group/deals `}>
-                                <img src={Product} alt="productImg" className='pb-4 flex items-center justify-center w-full' />
-                                <div className={` px-2 font-pop  `}>
-                                    <div className={` truncate  ${isCategory ? 'text-center  pb-6  text-gray-900 text-[18px]' : ' text-gray-700 text-[14px] pt-4 pb-1'} `}>
-                                        {item.name || item.title}
-                                    </div>
-                                    <div className={` `}>
-                                        <p className='text-gray-800 font-medium font-semibold'>{item.price && '$'}{item.price && item.price}</p>
-                                        <p className={`${isProduct && "flex pt-[6px] pb-3"} `}>{item.price && star(item.rating)}</p>
-                                    </div>
-                                    {/* on hover cart and wishlist startrs here  */}
-                                    {productHover &&
-                                        <>
-                                            <div className='absolute right-5 -top-10  flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200  hover:bg-primary group-hover/cart:duration-600 duration-300 ease-in-out group-hover/cart:top-13 z-10 group/eye'>
-                                                <Eye size={18} className='group-hover/eye:text-white duration-200' />
-                                            </div>
-                                            <div className='absolute right-5 -top-10 flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200  hover:bg-primary duration-500 ease-in-out group-hover/cart:top-3 group/wish'>
-                                                <Heart size={18} className='group-hover/wish:text-white duration-300' />
-                                            </div>
-                                        </>
-                                    }
-                                    {/* on hover cart and wishlist ends here  */}
-                                    {isProduct &&
-                                        <div className={`absolute right-5 bottom-4 w-10 h-10 bg-gray-200 flex justify-center items-center rounded-full group-hover/cart:bg-primary duration-500 ease-in-out `}>
-                                            <Handbag className='group-hover/cart:text-white duration-300' />
-                                        </div>}
-                                    {/* hover  */}
-                                    {/* hot deals hover card starts here  */}
-                                    {isDeal &&
-                                        <div className={`hidden lg:block  text-center  absolute w-[198%] h-[208%] bg-white z-40 border border-gray-200 rounded-md shadow-md opacity-0 pointer-events-none scale-90
-                                            group-hover/deals:opacity-100 group-hover/deals:pointer-events-auto  group-hover/deals:scale-102  transition-all duration-300  transform origin-center ease-in-out                 ${(index + 1) % 5 === 0 ? '-left-full' : 'left-0'} ${isLastRow ? '-top-full' : 'top-0'}`}>
-                                            <img src={Product} alt="productImg" className='pb-4 flex items-center justify-center w-full' />
-                                            <div className='flex flex-row justify-center items-center w-full gap-2'>
-                                                <div className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200  hover:bg-primary duration-500 ease-in-out '>
-                                                    <Heart size={20} className='hover:text-white duration-300' />
-                                                </div>
-                                                <button className='flex gap-3 font-pop bg-primary w-[350px] rounded-full text-white justify-center items-center cursor-pointer py-3 group hover:bg-green-600 duration-200'>
-                                                    Add To Cart  <Handbag className='text-white ' />
-                                                </button>
-                                                <div className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200  hover:bg-primary duration-500 ease-in-out group'>
-                                                    <Eye size={20} className='group-hover:text-white duration-300' />
-                                                </div>
-                                            </div>
-                                            <div className={` truncate  text-gray-700 text-[14px] pt-4 pb-1 ${isDeal && 'text-[18px] font-pop'}`}>
-                                                {item.title}
-                                            </div>
-                                            <div className={` ${isDeal && 'text-[22px]'}`}>
-                                                <p className='text-gray-800 font-medium font-semibold'>{item.price && '$'}{item.price && item.price}</p>
-                                                <p className={`${isProduct && "flex pt-[6px] pb-3"}  ${isDeal && 'justify-center'}`}>{item.price && star(item.rating)}</p>
-                                            </div>
-                                            <>
-                                            {/* timer starts here  */}
-                                                <div className='timerH'>Hurry up! Offer ends In:</div>
-                                                <div className='flex justify-center gap-3'>
-                                                    <div className='flex flex-col'>
-                                                        <p className='font-pop text-gray-900 text-[18px] font-bold'> {timer.days} </p>
-                                                        <span className='timer'>Days</span>
-                                                    </div>
-                                                    <div className='flex flex-col'>
-                                                        <p className='font-pop text-gray-900 text-[18px] font-bold '> {timer.hours} :</p>
-                                                        <span className='timer'>Hours</span>
-                                                    </div>
-                                                    <div className='flex flex-col'>
-                                                        <p className='font-pop text-gray-900 text-[18px] font-bold'> {timer.min}  :</p>
-                                                        <span className='timer'>Min</span>
-                                                    </div>
-                                                    <div className='flex flex-col'>
-                                                        <p className='font-pop text-gray-900 text-[18px] font-bold'> {timer.sec} </p>
-                                                        <span className='timer'>Sec</span>
-                                                    </div>
-                                                </div>
-                                            </>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                            )
-})}
+                    <div ref={gridRef} className={`grid ${isCategory && "gap-6"} ${isCategory && 'lg:grid-cols-6 md:grid-cols-4 grid-cols-2'} ${isProduct && 'lg:grid-cols-5 md:grid-cols-4 grid-cols-2'}`}>
+                        {allPro.map((item, index) => renderItem(item, index))}
                     </div>
                 </Container>
             </div>
+
+            <QuickViewModal open={quickView} onClose={() => setQuickView(false)} product={quickViewProduct} />
         </>
     )
 }

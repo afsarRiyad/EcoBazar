@@ -5,6 +5,7 @@ import MobileMenu from './MobileMenu';
 import { categories, menu, allCategories } from '../../data/navigation';
 import { ChevronDown, Plus, PhoneIncoming, ChevronRight, Search, X, SolarPanel  } from 'lucide-react';
 import Hamburger from './../Hamburger';
+import { Link } from 'react-router';
 
 const Navbar = () => {
   const [lgMenuOpen, setLgMenuOpen] = useState(false)
@@ -42,15 +43,17 @@ const Navbar = () => {
                     </div>
                       {
                         allCategories.map((item, index) => (
-                          <li key={item.name} onClick={() => { setCate(item.name); setDesktopSidebar(false) }} className={`flex relative w-full font-pop text-gray-600 group  gap-3 py-3 ps-2 cursor-pointer items-center border-b border-b-gray-300 group hover:bg-green-500 hover:text-white transition-colors duration-150
+                          <li key={item.name} className={`flex relative w-full font-pop text-gray-600 group  gap-3 py-3 ps-2 cursor-pointer items-center border-b border-b-gray-300 group hover:bg-green-500 hover:text-white transition-colors duration-150
                             ${cate == item.name ? 'bg-primary text-white' : 'bg-white text-black'}`}>
-                            <span className='flex justify-between w-full pe-4'>{item.name} {
+                            <Link to={`/shop?category=${encodeURIComponent(item.name)}`} onClick={() => { setCate(item.name); setDesktopSidebar(false) }} className='flex justify-between w-full pe-4'>{item.name} {
                                        item.hasIcon && <ChevronRight /> 
-                                  } </span>
+                                  } </Link>
                             {item.children && (
                               <ul className='absolute opacity-0 translate-x-3 group-hover:translate-x-0 group-hover:opacity-100  left-full top-0 transition-all duration-200 ease-out bg-white border border-gray-200 w-70 shadow-xl pointer-events-none group-hover:pointer-events-auto'>
                                 {item.children.map(child => (
-                                  <li key={child.name} onClick={(e)=> {e.stopPropagation(); setCate(child.name); setDesktopSidebar(false)}} className={`w-full group text-gray-700 gap-3 py-3 ps-2 cursor-pointer items-center border-b border-b-gray-300 group hover:bg-primary hover:text-white transition-colors duration-150 ${cate == child.name && 'bg-primary text-white' }`}>{child.name}</li>
+                                  <li key={child.name} className={`w-full group text-gray-700 gap-3 py-3 ps-2 cursor-pointer items-center border-b border-b-gray-300 group hover:bg-primary hover:text-white transition-colors duration-150 ${cate == child.name && 'bg-primary text-white' }`}>  
+                                    <Link to={`/shop?category=${encodeURIComponent(child.name)}`} onClick={(e)=> {e.stopPropagation(); setCate(child.name); setDesktopSidebar(false)}}>{child.name}</Link>
+                                  </li>
                                 ))}
                               </ul>
                             )}
@@ -99,7 +102,8 @@ const Navbar = () => {
             <ul className=' hidden sm:flex  gap-8 text-gray-400 cursor-pointer select-none  py-[21.5px] px-8 text-[14px]'>
               {
                 menu.map((item, index) => (
-                  <li key={index} className='hover:text-white flex items-center gap-1'>{item.name}
+                  <li key={index} className='hover:text-white flex items-center gap-1'>
+                    <Link to={item.name === 'Home' ? '/' : item.name === 'Shop' ? '/shop' : '#'}>{item.name}</Link>
                     {item.hasIcon &&
                       <ChevronDown />}
                   </li>
