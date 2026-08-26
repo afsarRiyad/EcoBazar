@@ -24,8 +24,8 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
     const productHover = (type === 'products' || type === 'allProducts') && hover === true
     const [quickView, setQuickView] = useState(false);
     const [quickViewProduct, setQuickViewProduct] = useState(null);
-    const [touchedId, setTouchedId] = useState(null);
     const [pulseKeys, setPulseKeys] = useState({});
+    const [touchedId, setTouchedId] = useState(null);
     const gridRef = useRef(null);
     const dispatch = useDispatch();
 
@@ -105,7 +105,7 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
                     )}
                     {isDeal && (
                         <div className={`text-center absolute w-[198%] h-[208%] bg-white z-40 border border-gray-200 rounded-md shadow-md opacity-0 pointer-events-none scale-90
-                            ${isTouched ? 'opacity-100 pointer-events-auto scale-102' : 'hidden lg:block group-hover/deals:opacity-100 group-hover/deals:pointer-events-auto group-hover/deals:scale-102'} transition-all duration-300 transform origin-center ease-in-out ${(index + 1) % 5 === 0 ? '-left-full' : 'left-0'} ${isLastRow ? '-top-full' : 'top-0'}`}>
+                            hidden lg:block group-hover/deals:opacity-100 group-hover/deals:pointer-events-auto group-hover/deals:scale-102 transition-all duration-300 transform origin-center ease-in-out ${(index + 1) % 5 === 0 ? '-left-full' : 'left-0'} ${isLastRow ? '-top-full' : 'top-0'}`}>
                             <img src={imgSrc} alt={item.title || item.name || 'product'} className='pb-4 flex items-center justify-center w-full object-contain' />
                             <div className='flex flex-row justify-center items-center w-full gap-2'>
                                 <Tooltip text="Add to Wishlist" position="left">
@@ -163,9 +163,9 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
         }
 
         return (
-            <div key={index} onTouchStart={handleItemTouch} className={`w-full border border-gray-200 hover:border-primary duration-150 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer group/cart ${isDeal ? 'bg-white overflow-visible hover:border-none' : 'overflow-hidden'} relative group/deals`}>
+            <Link to={`/product/${item.id}`} key={index} onTouchStart={handleItemTouch} className={`w-full border border-gray-200 hover:border-primary duration-150 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer group/cart ${isDeal ? 'bg-white overflow-visible hover:border-none' : 'overflow-hidden'} relative group/deals block`}>
                 {cardContent}
-            </div>
+            </Link>
         );
     };
 

@@ -8,6 +8,7 @@ import Categories from "./pages/Categories.jsx";
 import AllProducts from "./pages/AllProducts.jsx";
 import Cart from "./pages/Cart.jsx";
 import ShopPage from "./pages/shop/Index.jsx";
+import ProductDetails from './pages/ProductDetails/ProductDetails';
 
 function App() {
 
@@ -22,8 +23,8 @@ function App() {
    <Route path="/registration" element={<Registration />} />
    <Route path="/reset_password" element={<ForgotPass />} />
    <Route path="/categories" element={<Categories />} />
-   <Route path="/all-products" element={<AllProducts />} />
-   <Route path="/shop" element={<ShopPage />} />
+   <Route path="/all-products" element={<AllProducts />} />      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
    </Route>
  </Routes>
     </>

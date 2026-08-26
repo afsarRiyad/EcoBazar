@@ -8,6 +8,7 @@ import { addToCart } from '../../slices/cartSlice';
 import { addToWishlist } from '../../slices/wishlistSlice';
 import useOutsideClick from '../../hooks/outsideClick';
 import { showToast } from '../../hooks/useActionToast';
+import { Link } from 'react-router';
 
 
 const ProductCard = ({ product }) => {
@@ -34,10 +35,11 @@ const ProductCard = ({ product }) => {
     };
 
     return (
-        <div
+        <Link
+            to={`/product/${product.id}`}
             ref={cardRef}
             onTouchStart={handleTouch}
-            className="w-full border rounded-md border-gray-200 hover:border-primary duration-150 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer group/cart overflow-hidden relative"
+            className="w-full border rounded-md border-gray-200 hover:border-primary duration-150 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer group/cart overflow-hidden relative block"
         >
             {/* badges */}
             {outOfStock && (
@@ -127,7 +129,7 @@ const ProductCard = ({ product }) => {
             </div>
 
             <QuickViewModal open={quickView} onClose={() => setQuickView(false)} product={product} />
-        </div>
+        </Link>
     );
 };
 

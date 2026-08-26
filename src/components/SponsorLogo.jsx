@@ -19,7 +19,7 @@ const SponsorLogo = () => {
     <Container>
          <div className='flex flex-wrap sm:gap-20 gap-10 py-12 justify-center items-center'>
             {logos.map(logo => (
-                <div className={`border-r border-r-gray-300 last:border-r-0 pr-10 sm:pr-0 flex sm:flex-1`} key={logo.id}>
+                <div className={`border-r grayscale-100 hover:grayscale-0 border-r-gray-300 last:border-r-0 pr-10 sm:pr-0 flex sm:flex-1`} key={logo.id}>
                     <img src={logo.src} alt={`Logo ${logo.id}`} className='cursor-pointer' />
                 </div>
             ))} 

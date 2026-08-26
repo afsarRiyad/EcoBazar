@@ -61,6 +61,7 @@ function InstagramIcon({ className = "" }) {
 
 export default function InstagramSection() {
   const [activePost, setActivePost] = useState(null);
+  const [touchedId, setTouchedId] = useState(null);
 
   useEffect(() => {
     document.body.style.overflow = activePost ? "hidden" : "";
@@ -68,6 +69,16 @@ export default function InstagramSection() {
       document.body.style.overflow = "";
     };
   }, [activePost]);
+
+  const handleTouch = (e, post) => {
+    e.preventDefault();
+    if (touchedId === post.id) {
+      setTouchedId(null);
+      setActivePost(post);
+    } else {
+      setTouchedId(post.id);
+    }
+  };
 
   return (
     <Container className="font-pop w-full py-4 pb-12 px-4 bg-white">
@@ -81,17 +92,18 @@ export default function InstagramSection() {
             key={post.id}
             type="button"
             onClick={() => setActivePost(post)}
+            onTouchStart={(e) => handleTouch(e, post)}
             className="group relative aspect-square overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
           >
             <img
               src={post.image}
               alt={post.alt}
-              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              className={`h-full w-full object-cover transition-transform duration-500 ease-out ${touchedId === post.id ? 'scale-110' : 'group-hover:scale-110'}`}
               loading="lazy"
             />
 
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 ease-out group-hover:bg-black/40 group-hover:opacity-100">
-              <InstagramIcon className="h-8 w-8 text-white scale-75 transition-transform duration-300 ease-out group-hover:scale-100" />
+            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out ${touchedId === post.id ? 'bg-black/40 opacity-100' : 'bg-black/0 opacity-0 group-hover:bg-black/40 group-hover:opacity-100'}`}>
+              <InstagramIcon className={`h-8 w-8 text-white transition-transform duration-300 ease-out ${touchedId === post.id ? 'scale-100' : 'scale-75 group-hover:scale-100'}`} />
             </div>
           </button>
         ))}
