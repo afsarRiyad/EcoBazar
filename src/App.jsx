@@ -9,6 +9,9 @@ import AllProducts from "./pages/AllProducts.jsx";
 import Cart from "./pages/Cart.jsx";
 import ShopPage from "./pages/shop/Index.jsx";
 import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Wishlist from './pages/Wishlist.jsx';
+import Checkout from './pages/Checkout.jsx';
+import Contact from './pages/Contact.jsx';
 
 function App() {
 
@@ -19,6 +22,9 @@ function App() {
   <Route element={<MainLayout/>}>
    <Route path="/" element={<Home />} />
    <Route path="/cart" element={<Cart />} />
+   <Route path="/checkout" element={<Checkout />} />
+   <Route path="/wishlist" element={<Wishlist />} />
+   <Route path="/contact" element={<Contact />} />
    <Route path="/login" element={<Login />} />
    <Route path="/registration" element={<Registration />} />
    <Route path="/reset_password" element={<ForgotPass />} />

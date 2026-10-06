@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Minus, Plus, X } from "lucide-react";
+import { Minus, Plus, ShoppingCart, X } from "lucide-react";
 import Container from "../components/Container";
 import { Link } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +13,33 @@ const Cart = () => {
   const [coupon, setCoupon] = useState("");
   const subtotal = total;
   const shipping = 0;
+
+  if (!cart.length) {
+    return (
+      <section className="py-10 sm:py-16">
+        <Container>
+          <h1 className="dheading text-center mb-8 sm:mb-12">
+            My Shopping Cart
+          </h1>
+          <div className="flex flex-col items-center text-center py-10">
+            <ShoppingCart className="w-14 h-14 text-gray-300" />
+            <p className="dfont text-gray-900 font-semibold text-lg pt-6 pb-2">
+              Your cart is empty
+            </p>
+            <p className="default max-w-[420px] pb-8">
+              Looks like nothing has been added yet. Browse the shop to find fresh products and add them to your cart.
+            </p>
+            <Link
+              to="/shop"
+              className="bg-primary text-white dfont font-semibold px-8 py-3 rounded-full hover:brightness-95 transition-all duration-150"
+            >
+              Start Shopping
+            </Link>
+          </div>
+        </Container>
+      </section>
+    );
+  }
 
   return (
     <section className="py-10 sm:py-16">
@@ -171,9 +198,9 @@ const Cart = () => {
             </div>
 
             <Tooltip text="Continue to payment" position="left" wrapperClassName="w-full">
-              <button className="w-full bg-primary text-white dfont font-semibold py-3 rounded-full mt-4 hover:brightness-95 transition-all duration-150">
+              <Link to="/checkout" className="block w-full text-center bg-primary text-white dfont font-semibold py-3 rounded-full mt-4 hover:brightness-95 transition-all duration-150">
                 Proceed to checkout
-              </button>
+              </Link>
             </Tooltip>
           </div>
         </div>

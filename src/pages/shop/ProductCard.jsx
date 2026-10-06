@@ -35,6 +35,7 @@ const ProductCard = ({ product }) => {
     };
 
     return (
+        <>
         <Link
             to={`/product/${product.id}`}
             ref={cardRef}
@@ -63,7 +64,7 @@ const ProductCard = ({ product }) => {
                     <button
                         type="button"
                         aria-label="Add to wishlist"
-                        onClick={(e) => { e.stopPropagation(); dispatch(addToWishlist(product)); setWished(true); showToast('wishlist', name); }}
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); dispatch(addToWishlist(product)); setWished(true); showToast('wishlist', name); }}
                         className="flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200 hover:bg-primary duration-300 ease-in-out cursor-pointer group/wish"
                     >
                         <Heart size={16} fill={wished ? '#00B207' : 'none'} className={`${wished ? 'text-primary' : 'text-gray-500 group-hover/wish:text-white'} duration-300`} />
@@ -73,7 +74,7 @@ const ProductCard = ({ product }) => {
                     <button
                         type="button"
                         aria-label="Quick view"
-                        onClick={(e) => { e.stopPropagation(); setQuickView(true); }}
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuickView(true); }}
                         className="flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200 hover:bg-primary duration-300 ease-in-out cursor-pointer group/eye"
                     >
                         <Eye size={16} className="text-gray-500 group-hover/eye:text-white duration-300" />
@@ -111,7 +112,7 @@ const ProductCard = ({ product }) => {
                             type="button"
                             aria-label={added ? 'Added to cart' : 'Add to cart'}
                             disabled={outOfStock}
-                            onClick={(e) => { e.stopPropagation(); dispatch(addToCart(product)); showToast('cart', name); setAdded(true); setTimeout(() => setAdded(false), 1200); }}
+                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); dispatch(addToCart(product)); showToast('cart', name); setAdded(true); setTimeout(() => setAdded(false), 1200); }}
                             className={`w-10 h-10 flex justify-center items-center rounded-full duration-500 ease-in-out cursor-pointer ${showActions ? 'animate-touchPulse' : ''}
                                         ${outOfStock
                                 ? 'bg-gray-100 text-gray-300 cursor-not-allowed'
@@ -128,8 +129,12 @@ const ProductCard = ({ product }) => {
                 </div>
             </div>
 
-            <QuickViewModal open={quickView} onClose={() => setQuickView(false)} product={product} />
         </Link>
+
+            {/* Outside the card link, so clicks inside the modal can't
+                trigger the card's navigation. */}
+            <QuickViewModal open={quickView} onClose={() => setQuickView(false)} product={product} />
+        </>
     );
 };
 

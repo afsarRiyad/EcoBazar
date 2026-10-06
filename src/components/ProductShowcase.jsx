@@ -84,12 +84,12 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
                         <>
                             <div key={pulseKeys[index] || 0} className={`absolute right-5 -top-10 flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200 hover:bg-primary duration-300 ease-in-out z-10 group/eye ${isTouched ? 'top-13 animate-touchPulse' : '-top-10 group-hover/cart:top-13'}`}>
                                 <Tooltip text="Quick View" position="left">
-                                    <Eye size={18} className='group-hover/eye:text-white duration-200 cursor-pointer' onClick={(e) => { e.stopPropagation(); setQuickViewProduct(item); setQuickView(true); }} />
+                                    <Eye size={18} className='group-hover/eye:text-white duration-200 cursor-pointer' onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuickViewProduct(item); setQuickView(true); }} />
                                 </Tooltip>
                             </div>
                             <div key={`wish-${pulseKeys[index] || 0}`} className={`absolute right-5 -top-10 flex justify-center items-center rounded-full h-8 w-8 border bg-white border-gray-200 hover:bg-primary duration-300 ease-in-out group/wish ${isTouched ? 'top-3 animate-touchPulse' : '-top-10 group-hover/cart:top-3'}`}>
                                 <Tooltip text="Add to Wishlist" position="left">
-                                    <Heart size={18} className='group-hover/wish:text-white duration-300 cursor-pointer' onClick={(e) => { e.stopPropagation(); dispatch(addToWishlist(item)); showToast('wishlist', `${item.title || item.name}`); }} />
+                                    <Heart size={18} className='group-hover/wish:text-white duration-300 cursor-pointer' onClick={(e) => { e.preventDefault(); e.stopPropagation(); dispatch(addToWishlist(item)); showToast('wishlist', `${item.title || item.name}`); }} />
                                 </Tooltip>
                             </div>
                         </>
@@ -97,7 +97,7 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
                     {isProduct && (
                         <div className='absolute right-5 bottom-4'>
                             <Tooltip text="Add to Cart" position="left">
-                                <button onClick={(e) => { e.stopPropagation(); dispatch(addToCart(item)); showToast('cart', `${item.title || item.name}`); }} className={`w-10 h-10 flex justify-center items-center rounded-full duration-500 ease-in-out cursor-pointer ${isTouched ? 'bg-primary animate-touchPulse' : 'bg-gray-200 group-hover/cart:bg-primary'}`}>
+                                <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); dispatch(addToCart(item)); showToast('cart', `${item.title || item.name}`); }} className={`w-10 h-10 flex justify-center items-center rounded-full duration-500 ease-in-out cursor-pointer ${isTouched ? 'bg-primary animate-touchPulse' : 'bg-gray-200 group-hover/cart:bg-primary'}`}>
                                     <Handbag className={`duration-300 ${isTouched ? 'text-white' : 'group-hover/cart:text-white'}`} />
                                 </button>
                             </Tooltip>
@@ -109,15 +109,15 @@ const ProductShowcase = ({ allPro, type, link, hover, subType, title }) => {
                             <img src={imgSrc} alt={item.title || item.name || 'product'} className='pb-4 flex items-center justify-center w-full object-contain' />
                             <div className='flex flex-row justify-center items-center w-full gap-2'>
                                 <Tooltip text="Add to Wishlist" position="left">
-                                    <button onClick={(e) => { e.stopPropagation(); dispatch(addToWishlist(item)); showToast('wishlist', `${item.title || item.name}`); }} className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200 hover:bg-primary duration-500 ease-in-out cursor-pointer'>
+                                    <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); dispatch(addToWishlist(item)); showToast('wishlist', `${item.title || item.name}`); }} className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200 hover:bg-primary duration-500 ease-in-out cursor-pointer'>
                                         <Heart size={20} className='hover:text-white duration-300' />
                                     </button>
                                 </Tooltip>
-                                <button onClick={(e) => { e.stopPropagation(); dispatch(addToCart(item)); showToast('cart', `${item.title || item.name}`); }} className='flex gap-3 font-pop bg-primary w-[350px] rounded-full text-white justify-center items-center cursor-pointer py-3 group hover:bg-green-600 duration-200'>
+                                <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); dispatch(addToCart(item)); showToast('cart', `${item.title || item.name}`); }} className='flex gap-3 font-pop bg-primary w-[350px] rounded-full text-white justify-center items-center cursor-pointer py-3 group hover:bg-green-600 duration-200'>
                                     Add To Cart <Handbag className='text-white' />
                                 </button>
                                 <Tooltip text="Quick View" position="right">
-                                    <button onClick={(e) => { e.stopPropagation(); setQuickViewProduct(item); setQuickView(true); }} className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200 hover:bg-primary duration-500 ease-in-out group cursor-pointer'>
+                                    <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuickViewProduct(item); setQuickView(true); }} className='flex justify-center items-center rounded-full h-10 w-10 border bg-white border-gray-200 hover:bg-primary duration-500 ease-in-out group cursor-pointer'>
                                         <Eye size={20} className='group-hover:text-white duration-300' />
                                     </button>
                                 </Tooltip>

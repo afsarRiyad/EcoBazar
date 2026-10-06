@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { selectWishlistCount } from '../../slices/wishlistSlice'
 import plant from '../../assets/images/plant.webp'
 import Ecobazar from '../../assets/images/Ecobazar.webp'
 import { Search } from 'lucide-react'
@@ -14,6 +16,7 @@ import Tooltip from '../ui/Tooltip';
 
 const MainHeader = () => {
     const [open, setOpen] = useState(false)
+    const wishCount = useSelector(selectWishlistCount)
     return (
         <>
             <Container className='hidden sm:block'>
@@ -43,7 +46,18 @@ const MainHeader = () => {
                     <div className=' gap-3 items-center hidden sm:flex'>
                         <div className='flex items-center sm:gap-x-8 gap-x-2 relative after:content[""] after:w-[1px] after:h-6 after:bg-gray-300 after:absolute after:left-1/2'>
                             <Tooltip text="Wishlist" position="bottom">
-                                <Link to='#'><Heart className=' text-white cursor-pointer ' /></Link>
+                                <Link
+                                    to='/wishlist'
+                                    aria-label={wishCount > 0 ? `Wishlist, ${wishCount} item${wishCount > 1 ? 's' : ''}` : 'Wishlist'}
+                                    className='relative inline-flex items-center justify-center text-gray-900 hover:text-primary transition-colors duration-200 cursor-pointer'
+                                >
+                                    <Heart filled={wishCount > 0} className='w-8 h-8' />
+                                    {wishCount > 0 && (
+                                        <span className='absolute -top-1.5 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-primary text-white text-[11px] font-semibold flex items-center justify-center'>
+                                            {wishCount}
+                                        </span>
+                                    )}
+                                </Link>
                             </Tooltip>
                             <Tooltip text="Shopping Cart" position="bottom">
                                 <ShoppingCart className='w-8 h-8 cursor-pointer ml-2' onClick={() => setOpen(true)} />

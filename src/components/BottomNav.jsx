@@ -20,7 +20,7 @@ const BottomNav = ({ setSearchOpen }) => {
           <span className="text-xs">Search</span>
         </button>
 
-        <Link to="#" className="flex flex-col items-center flex-1">
+        <Link to="/wishlist" className="flex flex-col items-center flex-1">
           <Heart className="w-7 h-7" />
           <span className="text-xs">Wishlist</span>
         </Link>

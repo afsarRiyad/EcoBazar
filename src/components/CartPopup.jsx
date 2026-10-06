@@ -49,7 +49,7 @@ const CartPopup = ({ open, setOpen }) => {
               <span className='text-[18px] font-semibold text-black'>${total.toFixed(2)}</span>
             </div>
             <div className='space-y-3 flex flex-col sm:p-8 p-4'>
-              <button className='cursor-pointer bg-primary text-white rounded-full font-semibold text-[18px] sm:py-4 py-2 active:scale-95 transition transform hover:bg-green-600 duration-200 ease-in-out'>Checkout</button>
+              <Link to='/checkout' onClick={() => setOpen(false)} className='block text-center cursor-pointer bg-primary text-white rounded-full font-semibold text-[18px] sm:py-4 py-2 active:scale-95 transition transform hover:bg-green-600 duration-200 ease-in-out'>Checkout</Link>
               <Link to='/cart' onClick={() => setOpen(false)} className='cursor-pointer bg-[#56AC59]/10 text-center hover:bg-[#56AC59]/20 rounded-full font-semibold text-[18px] text-primary sm:py-4 py-2 active:scale-95 transition transform duration-200 ease-in-out'>Go To Cart</Link>
             </div>
           </div>

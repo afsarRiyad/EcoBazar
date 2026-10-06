@@ -103,7 +103,7 @@ const Navbar = () => {
               {
                 menu.map((item, index) => (
                   <li key={index} className='hover:text-white flex items-center gap-1'>
-                    <Link to={item.name === 'Home' ? '/' : item.name === 'Shop' ? '/shop' : '#'}>{item.name}</Link>
+                    <Link to={item.name === 'Home' ? '/' : item.name === 'Shop' ? '/shop' : item.name === 'Contact Us' ? '/contact' : '#'}>{item.name}</Link>
                     {item.hasIcon &&
                       <ChevronDown />}
                   </li>
