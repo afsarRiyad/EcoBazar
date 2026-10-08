@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '../Container'
 import Ecobazar1 from '../../assets/images/Ecobazar1.webp'
 import Plant1 from '../../assets/images/Plant1.webp'
+import { Link } from 'react-router'
 import GoogleStore from '../../assets/iconsStore/googleplay.svg?react'
 import AppleStore from '../../assets/iconsStore/appstore.svg?react'
 
@@ -48,7 +49,9 @@ const FooterLinks = () => {
                         </h2>
                         <ul className='cursor-pointer '>
                             <li className='eliment footerHover'>Contact</li>
-                            <li className='eliment footerHover'>FAQs</li>
+                            <li className='eliment footerHover'>
+                                <Link to='/faq'>FAQs</Link>
+                            </li>
                             <li className='eliment footerHover whitespace-nowrap'>Terms & Conditions</li>
                             <li className='eliment footerHover'>Privacy & Policy</li>
                         </ul>

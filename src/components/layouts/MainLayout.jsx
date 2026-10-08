@@ -15,7 +15,7 @@ import StickyTopbar from '../Header/StickyTopbar'
 import ActionToast from '../ui/ActionToast'
 import useActionToast from '../../hooks/useActionToast'
 
-const MainLayout = () => {
+const MainLayout = ({ showBreadcrumbs = true }) => {
   const page = useLocation().pathname
   const [searchOpen, setSearchOpen] = useState(false)
   const { toast, close } = useActionToast()
@@ -27,7 +27,7 @@ const MainLayout = () => {
       <Searchbar />
       <Navbar />
 
-      {page !== '/' && <Breadcrumbs />}
+      {showBreadcrumbs && page !== '/' && <Breadcrumbs />}
 
       <Outlet />
 

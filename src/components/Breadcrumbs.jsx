@@ -7,8 +7,6 @@ import { Link, useLocation } from 'react-router';
 const Breadcrumbs = () => {
     const page = useLocation().pathname
     const arr = page.split("/").filter(item => item !== '')
-    console.log(arr);
-    
 
   return (
     <div className='max-h-[120px]' style={{background: `url(${breadcrumbsImg})`}}>
