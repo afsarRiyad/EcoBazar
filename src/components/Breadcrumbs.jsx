@@ -17,10 +17,13 @@ const Breadcrumbs = () => {
                 arr.map((pathName, index)=>{
                     let lastItem = arr.length - 1;
                     let href = '/' + arr.slice(0, index + 1).join('/')
+                    let label = pathName
+                        .replace(/[-_]/g, ' ')
+                        .replace(/\b\w/g, (char) => char.toUpperCase())
                     return(
                     <div key={index} className='font-pop text-md flex gap-3 items-center'>
                         <span className='text-gray-500 text-xl'>{">"}</span>
-                         <Link to={href} className={`text-gray-500 ${index === lastItem && 'text-primary' }`}>{pathName.charAt(0).toUpperCase() + pathName.slice(1)}</Link>
+                         <Link to={href} className={`text-gray-500 ${index === lastItem && 'text-primary' }`}>{label}</Link>
                     </div>
                     )
                 })

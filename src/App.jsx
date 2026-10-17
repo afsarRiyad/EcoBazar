@@ -14,6 +14,8 @@ import Checkout from './pages/Checkout.jsx';
 import Contact from './pages/Contact.jsx';
 import Error from './pages/Error.jsx';
 import Faq from './pages/Faq.jsx';
+import Blog from './pages/Blog.jsx';
+import SingleBlog from './pages/SingleBlog.jsx';
 
 function App() {
 
@@ -32,8 +34,11 @@ function App() {
    <Route path="/registration" element={<Registration />} />
    <Route path="/reset_password" element={<ForgotPass />} />
    <Route path="/categories" element={<Categories />} />
-   <Route path="/all-products" element={<AllProducts />} />      <Route path="/shop" element={<ShopPage />} />
-      <Route path="/product/:id" element={<ProductDetails />} />
+   <Route path="/all-products" element={<AllProducts />} />
+   <Route path="/shop" element={<ShopPage />} />
+   <Route path="/product/:id" element={<ProductDetails />} />
+   <Route path="/blog" element={<Blog />} />
+   <Route path="/blog/:slug" element={<SingleBlog />} />
    </Route>
    <Route element={<MainLayout showBreadcrumbs={false} />}>
       <Route path="*" element={<Error />} />

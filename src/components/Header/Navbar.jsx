@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Container from '../Container'
 import useOutsideClick from '../../hooks/outsideClick';
 import MobileMenu from './MobileMenu';
@@ -10,10 +10,12 @@ import { Link } from 'react-router';
 const Navbar = () => {
   const [lgMenuOpen, setLgMenuOpen] = useState(false)
   const [desktopSidebar, setDesktopSidebar] = useState(false)
-  const [hasIcon, setHasIcon] = useState(false)
   const sideBarRef = useRef(null)
   useOutsideClick(sideBarRef, () => setDesktopSidebar(false), desktopSidebar)
   const [cate, setCate] = useState('Top Categories')
+  const [openMenu, setOpenMenu] = useState(null)
+  const menuRef = useRef(null)
+  useOutsideClick(menuRef, () => setOpenMenu(null), openMenu !== null)
 
 
   return (
@@ -42,7 +44,7 @@ const Navbar = () => {
                     
                     </div>
                       {
-                        allCategories.map((item, index) => (
+                        allCategories.map((item) => (
                           <li key={item.name} className={`flex relative w-full font-pop text-gray-600 group  gap-3 py-3 ps-2 cursor-pointer items-center border-b border-b-gray-300 group hover:bg-green-500 hover:text-white transition-colors duration-150
                             ${cate == item.name ? 'bg-primary text-white' : 'bg-white text-black'}`}>
                             <Link to={`/shop?category=${encodeURIComponent(item.name)}`} onClick={() => { setCate(item.name); setDesktopSidebar(false) }} className='flex justify-between w-full pe-4'>{item.name} {
@@ -72,7 +74,7 @@ const Navbar = () => {
                 </div>
               <ul className={`absolute  top-full left-0 shadow-xl border bg-white z-50 border-gray-200   select-none cursor-pointer  transition-all duration-200 ease-out  ${lgMenuOpen ? 'opacity-100 translate-y-0 z-50' : 'translate-y-3 opacity-0 pointer-events-none '}`}>
                   {
-                    categories.map((item, index) => {
+                    categories.map((item) => {
                       const Icon = item.icon;
                       return (
                         <li key={item.name} className={`flex gap-3 text-[16px] pr-4 items-center group hover:bg-primary 
@@ -99,15 +101,81 @@ const Navbar = () => {
           </div>
           {/* customer service starts here  */}
           <div className='flex items-center justify-between w-full bg-gray-900'>
-            <ul className=' hidden sm:flex  gap-8 text-gray-400 cursor-pointer select-none  py-[21.5px] px-8 text-[14px]'>
+            <ul ref={menuRef} className=' hidden sm:flex  gap-8 text-gray-400 cursor-pointer select-none  py-[21.5px] px-8 text-[14px]'>
               {
-                menu.map((item, index) => (
-                  <li key={index} className='hover:text-white flex items-center gap-1'>
-                    <Link to={item.name === 'Home' ? '/' : item.name === 'Shop' ? '/shop' : item.name === 'Contact Us' ? '/contact' : '#'}>{item.name}</Link>
-                    {item.hasIcon &&
-                      <ChevronDown />}
-                  </li>
-                ))
+                menu.map((item) => {
+                  const hasChildren = Boolean(item.children?.length)
+                  const isOpen = openMenu === item.name
+
+                  return (
+                    <li
+                      key={item.name}
+                      onMouseEnter={() => hasChildren && setOpenMenu(item.name)}
+                      onMouseLeave={() => hasChildren && setOpenMenu(null)}
+                      className='relative hover:text-white flex items-center gap-1'
+                    >
+                      <Link to={item.to || '#'}>{item.name}</Link>
+                      {hasChildren && (
+                        <button
+                          type='button'
+                          onClick={() => setOpenMenu(item.name)}
+                          aria-expanded={isOpen}
+                          aria-haspopup='true'
+                          aria-label={`${item.name} menu`}
+                          className='flex items-center cursor-pointer'
+                        >
+                          <ChevronDown
+                            className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                      )}
+
+                      {hasChildren && (
+                        <div
+                          className={`absolute left-0 top-full pt-3 z-50 transition-all duration-200 ${isOpen
+                            ? 'opacity-100 visible translate-y-0'
+                            : 'opacity-0 invisible translate-y-1 pointer-events-none'
+                            }`}
+                        >
+                          <ul className='w-[280px] divide-y divide-stone-100 overflow-hidden border border-stone-200 bg-white shadow-[0_24px_44px_-26px_rgba(28,25,23,0.45)]'>
+                            {item.children.map((child) => {
+                              const Icon = child.icon
+
+                              return (
+                                <li key={child.to}>
+                                  <Link
+                                    to={child.to}
+                                    onClick={() => setOpenMenu(null)}
+                                    title={child.name}
+                                    className='group flex items-center gap-3 px-5 py-3.5 font-pop text-[14px] text-stone-700 transition-colors duration-150 hover:bg-primary hover:text-white'
+                                  >
+                                    {Icon && (
+                                      <Icon className='h-[18px] w-[18px] shrink-0 text-stone-400 transition-colors duration-150 group-hover:text-white' />
+                                    )}
+                                    <span className='truncate'>{child.name}</span>
+                                  </Link>
+                                </li>
+                              )
+                            })}
+
+                            {item.footer && (
+                              <li>
+                                <Link
+                                  to={item.footer.to}
+                                  onClick={() => setOpenMenu(null)}
+                                  className='group flex items-center gap-3 px-5 py-3.5 font-pop text-[14px] text-stone-700 transition-colors duration-150 hover:bg-primary hover:text-white'
+                                >
+                                  <Plus className='h-[18px] w-[18px] shrink-0 text-stone-400 transition-colors duration-150 group-hover:text-white' />
+                                  <span className='truncate'>{item.footer.label}</span>
+                                </Link>
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+                      )}
+                    </li>
+                  )
+                })
               }
             </ul>
             <div className='text-white hidden lg:flex  items-center gap-2'>

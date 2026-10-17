@@ -9,9 +9,9 @@ import { Link } from 'react-router';
 
 
   const MobileMenu = () => {
-  const [open, setOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [clickedMenu, setClickedMenu] = useState('')
+  const [expandedMenu, setExpandedMenu] = useState('')
   const [active, setActive] = useState(false)
   const mobileMenuRef = useRef(null)
   useOutsideClick(mobileMenuRef, () => setMobileMenuOpen(false), mobileMenuOpen)
@@ -64,7 +64,7 @@ import { Link } from 'react-router';
               <ul className={` w-full cursor-pointer 
                                     ${!active ? 'opacity-100 transition-all duration-150 ease-in-out translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-3 pointer-events-none'}`}>
                 {
-                  categories.map((item, index) => {
+                  categories.map((item) => {
                     const Icon = item.icon;
                     return (
                       <li key={item.name} className={`flex gap-3 text-gray-900 px-8 py-1 border-b text-[16px] border-b-gray-200 
@@ -89,17 +89,62 @@ import { Link } from 'react-router';
               <ul className={`absolute top-0 left-0 w-full
                                     ${active ? 'opacity-100 transition-all duration-150 ease-in-out pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-3'}`}>
                 {
-                  menu.map((item, index) => (
-                    <li className={`flex gap-3 px-8 py-4 border-b text-gray-900 border-b-gray-200 cursor-pointer active:scale-[0.97] active:bg-primary/40 touch-manipulation
-                              whitespace-nowrap items-center group mobilemenuLi transition-all active:translate-x-1
-                             hover:bg-primary transition-colors group hover:text-white 
-                              ${clickedMenu === item.name && 'bg-primary text-white'}`} key={item.name}>
-                      <Link to={item.name === 'Home' ? '/' : item.name === 'Shop' ? '/shop' : '#'} onClick={() => { setClickedMenu(item.name); setMobileMenuOpen(false) }} className='flex items-center gap-3 w-full'> {item.name}
-                      {item.hasIcon &&
-                        <span className='w-full flex justify-end'> <ChevronDown /> </span>}
-                      </Link>
-                    </li>
-                  ))
+                  menu.map((item) => {
+                    const hasChildren = Boolean(item.children?.length)
+                    const isExpanded = expandedMenu === item.name
+
+                    return (
+                      <li
+                        className={`border-b text-gray-900 border-b-gray-200 cursor-pointer touch-manipulation transition-colors duration-150 hover:bg-gray-50
+                              ${clickedMenu === item.name && 'bg-primary/10'}`}
+                        key={item.name}
+                      >
+                        {hasChildren ? (
+                          <button
+                            type='button'
+                            onClick={() => setExpandedMenu(isExpanded ? '' : item.name)}
+                            aria-expanded={isExpanded}
+                            className='flex w-full items-center justify-between gap-3 px-8 py-4 text-left'
+                          >
+                            {item.name}
+                            <ChevronDown
+                              className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                            />
+                          </button>
+                        ) : (
+                          <Link
+                            to={item.to || '#'}
+                            onClick={() => { setClickedMenu(item.name); setMobileMenuOpen(false) }}
+                            className='flex items-center gap-3 w-full px-8 py-4'
+                          >
+                            {item.name}
+                          </Link>
+                        )}
+
+                        {hasChildren && isExpanded && (
+                          <ul className='pb-3'>
+                            {item.children.map((child) => {
+                              const ChildIcon = child.icon
+
+                              return (
+                                <li key={child.to}>
+                                  <Link
+                                    to={child.to}
+                                    onClick={() => { setClickedMenu(child.name); setMobileMenuOpen(false) }}
+                                    title={child.name}
+                                    className='flex items-center gap-3 px-12 py-2.5 text-[14px] text-gray-500 hover:text-primary transition-colors duration-150'
+                                  >
+                                    {ChildIcon && <ChildIcon className='h-4 w-4 shrink-0 text-stone-400' />}
+                                    <span className='truncate'>{child.name}</span>
+                                  </Link>
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        )}
+                      </li>
+                    )
+                  })
                 }
               </ul>
             </div>

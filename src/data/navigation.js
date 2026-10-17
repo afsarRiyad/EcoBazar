@@ -8,7 +8,18 @@ import {
   Dessert,
   Cuboid,
   CookingPot,
+  LayoutGrid,
+  Layers,
+  Heart,
+  CircleHelp,
+  ShoppingCart,
+  CreditCard,
+  Phone,
+  Citrus,
+  Coffee,
+  Salad,
 } from "lucide-react";
+import { blogPosts } from "./blogPosts";
 
 export const categories = [
   { name: "Fresh Fruits", icon: Apple },
@@ -22,13 +33,43 @@ export const categories = [
   { name: "Cooking", icon: CookingPot },
 ];
 
+const blogDropdownIcons = [Citrus, Coffee, Salad];
+
 export const menu = [
-  { name: "Home", hasIcon: true },
-  { name: "Shop", hasIcon: true },
-  { name: "Pages", hasIcon: true },
-  { name: "Blog", hasIcon: true },
-  { name: "About", hasIcon: false },
-  { name: "Contact Us", hasIcon: false },
+  { name: "Home", to: "/" },
+  {
+    name: "Shop",
+    to: "/shop",
+    footer: { label: "View All Products", to: "/shop" },
+    children: [
+      { name: "All Products", to: "/all-products", icon: LayoutGrid },
+      { name: "Categories", to: "/categories", icon: Layers },
+      { name: "Wishlist", to: "/wishlist", icon: Heart },
+    ],
+  },
+  {
+    name: "Pages",
+    children: [
+      { name: "FAQ", to: "/faq", icon: CircleHelp },
+      { name: "Cart", to: "/cart", icon: ShoppingCart },
+      { name: "Checkout", to: "/checkout", icon: CreditCard },
+      { name: "Contact Us", to: "/contact", icon: Phone },
+    ],
+  },
+  {
+    name: "Blog",
+    to: "/blog",
+    footer: { label: "View All Articles", to: "/blog" },
+    children: [
+      ...blogPosts.slice(0, 3).map((post, index) => ({
+        name: post.title,
+        to: `/blog/${post.slug}`,
+        icon: blogDropdownIcons[index],
+      })),
+    ],
+  },
+  { name: "About" },
+  { name: "Contact Us", to: "/contact" },
 ];
 
 export const allCategories = [
